@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
-import artistReducer from './artistReducer';
+import { searchArtistSlice } from './search-slice';
+import { uiSlice } from './ui-slice';
 
 export function makeStore() {
 	return configureStore({
-		reducer: { artist: artistReducer },
+		reducer: { search: searchArtistSlice.reducer, uiStatus: uiSlice.reducer },
 	});
 }
 

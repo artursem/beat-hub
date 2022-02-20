@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchActions } from '../../store/artistReducer';
+import { searchActions } from '../../store/search-slice';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
