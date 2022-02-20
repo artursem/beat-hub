@@ -1,26 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { AppState, AppThunk } from './store';
 
-export interface ArtistState {
-	artistId: number | null;
-	status: 'idle' | 'loading' | 'failed';
+export interface searchState {
+	searchArtist: string;
 }
 
-const initialState: ArtistState = {
-	artistId: null,
-	status: 'idle',
+const initialState: searchState = {
+	searchArtist: '',
 };
 
-export const artistSlice = createSlice({
-	name: 'artist',
+export const searchArtistSlice = createSlice({
+	name: 'search',
 	initialState,
 	reducers: {
-		setArtist: (state, action) => {
-			state.artistId = action.payload;
+		setSearch: (state, action) => {
+			state.searchArtist = action.payload;
 		},
 	},
 });
 
-export const artistActions = artistSlice.actions;
+export const searchActions = searchArtistSlice.actions;
 
-export default artistSlice.reducer;
+export default searchArtistSlice.reducer;

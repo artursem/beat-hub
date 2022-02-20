@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { artistActions } from '../../store/artistReducer';
+import { searchActions } from '../../store/artistReducer';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -8,8 +8,7 @@ const SearchBox: FC = () => {
 
 	const handleSearch = (e: FormEvent) => {
 		e.preventDefault();
-		console.log(searchTerm);
-		dispatch(artistActions.setArtist(searchTerm));
+		dispatch(searchActions.setSearch(searchTerm));
 	};
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
