@@ -1,7 +1,8 @@
-import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useDebounce } from '../../store/useDebounce';
 import { useAppDispatch } from '../../store/hooks';
 import { searchActions } from '../../store/search-slice';
+import { fetchSearchArtist } from '../../store/search-actions';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -10,8 +11,8 @@ const SearchBox: FC = () => {
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
-			// setIsSearching
-			dispatch(searchActions.setSearch(searchTerm));
+			// dispatch(searchActions.setSearch(searchTerm));
+			dispatch(fetchSearchArtist(searchTerm));
 		} else {
 			dispatch(searchActions.setSearch(''));
 		}
@@ -24,7 +25,6 @@ const SearchBox: FC = () => {
 	return (
 		<>
 			<input type='search' value={searchTerm} onChange={handleChange} />
-			{/* <button type='submit'>OK</button> */}
 		</>
 	);
 };

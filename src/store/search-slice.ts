@@ -1,12 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
-
+import FoundArtist from '../models/foundArtist';
 export interface searchState {
 	searchArtist: string;
+	searchResult: FoundArtist;
 }
 
 const initialState: searchState = {
 	searchArtist: '',
+	searchResult: {
+		id: '',
+		name: '',
+		image: '',
+		bio: '',
+		genre: '',
+		country: '',
+	},
 };
 
 export const searchArtistSlice = createSlice({
@@ -15,6 +24,9 @@ export const searchArtistSlice = createSlice({
 	reducers: {
 		setSearch: (state, action) => {
 			state.searchArtist = action.payload;
+		},
+		setSearchResult: (state, action) => {
+			state.searchResult = action.payload;
 		},
 	},
 });

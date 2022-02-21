@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { RootState } from './store';
 
 export interface appState {
 	notification: 'idle' | 'loading' | 'error';
@@ -19,4 +20,5 @@ export const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
+export const selectStatus = (state: RootState) => state.uiStatus.notification;
 export default uiSlice;
