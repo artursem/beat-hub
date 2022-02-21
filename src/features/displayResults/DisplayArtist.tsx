@@ -1,12 +1,8 @@
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/hooks';
 
 const DisplayArtist = () => {
-	const showArtist = useSelector(
-		(state: RootStateOrAny) => state.search.searchArtist
-	);
-	const notification = useSelector(
-		(state: RootStateOrAny) => state.uiStatus.notification
-	);
+	const showArtist = useAppSelector((state) => state.search.searchArtist);
+	const notification = useAppSelector((state) => state.uiStatus.notification);
 	return (
 		<>
 			<div>{showArtist}</div>
