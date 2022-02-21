@@ -1,16 +1,14 @@
-// import { useAppDispatch } from './hooks';
 import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
 import FoundArtist from '../models/foundArtist';
+import { searchArtistApi } from '../globals/api-routes';
 
 export const fetchSearchArtist = (searchTerm: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(uiActions.showNotification('loading'));
 		const fetchData = async (artist: string) => {
-			const response = await fetch(
-				`https://theaudiodb.com/api/v1/json/2/search.php?s=${artist}`
-			);
+			const response = await fetch(`${searchArtistApi}${artist}`);
 			if (!response.ok) {
 				throw new Error('Error fetching data from db');
 			}
@@ -32,8 +30,8 @@ export const fetchSearchArtist = (searchTerm: string) => {
 				bioShort: strBiographyEN
 					.split(' ')
 					.slice(0, 30)
-					.concat('...')
-					.join(' '),
+					.join(' ')
+					.concat('...'),
 				genre: strGenre,
 				country: strCountry,
 			};
