@@ -29,10 +29,14 @@ export const fetchSearchArtist = (searchTerm: string) => {
 				name: strArtist,
 				image: strArtistThumb,
 				bio: strBiographyEN,
+				bioShort: strBiographyEN
+					.split(' ')
+					.slice(0, 30)
+					.concat('...')
+					.join(' '),
 				genre: strGenre,
 				country: strCountry,
 			};
-			console.log(foundArtist);
 			return foundArtist;
 		};
 

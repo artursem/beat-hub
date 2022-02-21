@@ -3,6 +3,7 @@ type FoundArtist = {
 	name: string;
 	image: string;
 	bio: string;
+	bioShort: string;
 	genre: string;
 	country: string;
 };

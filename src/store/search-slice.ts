@@ -6,6 +6,7 @@ export interface searchState {
 	searchResult: FoundArtist;
 }
 
+// WTF????
 const initialState: searchState = {
 	searchArtist: '',
 	searchResult: {
@@ -13,6 +14,7 @@ const initialState: searchState = {
 		name: '',
 		image: '',
 		bio: '',
+		bioShort: '',
 		genre: '',
 		country: '',
 	},

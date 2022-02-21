@@ -1,12 +1,16 @@
 import FoundArtist from '../../models/foundArtist';
 import { useAppSelector } from '../../store/hooks';
+import { useState } from 'react';
 
 const DisplayArtist = () => {
 	const notification = useAppSelector((state) => state.uiStatus.notification);
 	const showArtist = useAppSelector((state) => state.search.searchResult);
-
-	// WTF????
-	const { id, name, image, bio, genre, country }: FoundArtist = showArtist;
+	const { id, name, image, bio, bioShort, genre, country }: FoundArtist =
+		showArtist;
+	const [shortBio, setShortBio] = useState(true);
+	const toggleBio = () => {
+		setShortBio((prevState) => !prevState);
+	};
 
 	const displayArtistInfo = id ? (
 		<>
@@ -14,7 +18,8 @@ const DisplayArtist = () => {
 			<img src={image} alt={id} width='300' />
 			<h4>{genre}</h4>
 			<h5>{country}</h5>
-			<p>{bio}</p>
+			<p>{shortBio ? bioShort : bio}</p>
+			<button onClick={toggleBio}>{shortBio ? 'more' : 'less'}</button>
 		</>
 	) : (
 		<p>search for artist or a band</p>

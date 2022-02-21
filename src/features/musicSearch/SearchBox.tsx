@@ -11,7 +11,6 @@ const SearchBox: FC = () => {
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
-			// dispatch(searchActions.setSearch(searchTerm));
 			dispatch(fetchSearchArtist(searchTerm));
 		} else {
 			dispatch(searchActions.setSearch(''));
