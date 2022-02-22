@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 import FoundArtist from '../models/foundArtist';
+import ListArtists from '../models/listArtists';
 export interface searchState {
 	searchArtist: string;
-	searchResult: FoundArtist;
+	searchResult: ListArtists;
 }
 
 // WTF????
@@ -13,10 +14,6 @@ const initialState: searchState = {
 		id: '',
 		name: '',
 		image: '',
-		bio: '',
-		bioShort: '',
-		genre: '',
-		country: '',
 	},
 };
 

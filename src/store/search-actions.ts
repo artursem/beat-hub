@@ -2,46 +2,38 @@ import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
 import FoundArtist from '../models/foundArtist';
-import { searchArtistApi } from '../globals/api-routes';
+import ListArtists from '../models/listArtists';
+import { searchArtistApi } from '../globals/api-endpoints';
 
 export const fetchSearchArtist = (searchTerm: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(uiActions.showNotification('loading'));
 		const fetchData = async (artist: string) => {
-			const response = await fetch(`${searchArtistApi}${artist}`);
+			const response = await fetch(
+				`${searchArtistApi}${artist}&type=artist&per_type_limit=5`
+			);
 			if (!response.ok) {
 				throw new Error('Error fetching data from db');
 			}
 			const data = await response.json();
-			const {
-				idArtist,
-				strArtist,
-				strArtistThumb,
-				strBiographyEN,
-				strGenre,
-				strCountry,
-			} = data.artists[0];
 
-			const foundArtist: FoundArtist = {
-				id: idArtist,
-				name: strArtist,
-				image: strArtistThumb,
-				bio: strBiographyEN,
-				bioShort: strBiographyEN
-					.split(' ')
-					.slice(0, 30)
-					.join(' ')
-					.concat('...'),
-				genre: strGenre,
-				country: strCountry,
-			};
-			return foundArtist;
+			const id = data.search.data.artists;
+			const name = data.search.data.artists.name;
+			const image = data.search.data.artists.links.images.href;
+
+			const listArtists: ListArtists[] = data.search.data.artists.map(() => ({
+				id,
+				name,
+				image,
+			}));
+			console.log(listArtists);
+			return listArtists;
 		};
 
 		try {
-			const foundArtist = await fetchData(searchTerm);
+			const listArtists = await fetchData(searchTerm);
 			dispatch(uiActions.showNotification('idle'));
-			dispatch(searchActions.setSearchResult(foundArtist));
+			dispatch(searchActions.setSearchResult(listArtists));
 		} catch (error) {
 			dispatch(uiActions.showNotification('error'));
 		}
