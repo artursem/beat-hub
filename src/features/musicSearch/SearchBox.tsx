@@ -3,7 +3,7 @@ import { useDebounce } from '../../store/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { searchActions } from '../../store/search-slice';
 import { fetchSearchArtist } from '../../store/search-actions';
-import ListArtists from '../../models/listArtists';
+import OptionItem from './OptionItem';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -14,6 +14,7 @@ const SearchBox: FC = () => {
 	useEffect(() => {
 		if (debouncedSearchTerm) {
 			dispatch(fetchSearchArtist(searchTerm));
+			console.log(searchList);
 		} else {
 			dispatch(searchActions.setSearch(''));
 		}
@@ -23,15 +24,20 @@ const SearchBox: FC = () => {
 		setSearchTerm(event.target.value);
 	};
 
-	const showArtist = searchList.map((artist: any) => {
-		return <li key={artist.id}>{artist.name}</li>;
+	const showArtist = searchList.map(({ name, id }) => {
+		return <option key={id}>{name}</option>;
 	});
 
 	return (
-		<>
-			<input type='search' value={searchTerm} onChange={handleChange} />
-			{searchList ? showArtist : null}
-		</>
+		<div>
+			<input
+				type='search'
+				value={searchTerm}
+				onChange={handleChange}
+				list='artists'
+			/>
+			{searchList && <datalist id='artists'>{showArtist}</datalist>}
+		</div>
 	);
 };
 
