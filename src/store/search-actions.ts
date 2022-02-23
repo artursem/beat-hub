@@ -1,7 +1,7 @@
 import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
-import FoundArtist from '../models/foundArtist';
+// import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
 import { searchArtistApi } from '../globals/api-endpoints';
 
@@ -16,17 +16,14 @@ export const fetchSearchArtist = (searchTerm: string) => {
 				throw new Error('Error fetching data from db');
 			}
 			const data = await response.json();
-
-			const id = data.search.data.artists;
-			const name = data.search.data.artists.name;
-			const image = data.search.data.artists.links.images.href;
-
-			const listArtists: ListArtists[] = data.search.data.artists.map(() => ({
-				id,
-				name,
-				image,
-			}));
-			console.log(listArtists);
+			const listArtists: Array<ListArtists> = data.search.data.artists.map(
+				// ANY!!!
+				(artist: any) => ({
+					id: artist.id,
+					name: artist.name,
+					image: artist.links.images.href,
+				})
+			);
 			return listArtists;
 		};
 
@@ -35,6 +32,7 @@ export const fetchSearchArtist = (searchTerm: string) => {
 			dispatch(uiActions.showNotification('idle'));
 			dispatch(searchActions.setSearchResult(listArtists));
 		} catch (error) {
+			console.log(error);
 			dispatch(uiActions.showNotification('error'));
 		}
 	};

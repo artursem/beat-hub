@@ -4,17 +4,13 @@ import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
 export interface searchState {
 	searchArtist: string;
-	searchResult: ListArtists;
+	searchResult: ListArtists[];
 }
 
 // WTF????
 const initialState: searchState = {
 	searchArtist: '',
-	searchResult: {
-		id: '',
-		name: '',
-		image: '',
-	},
+	searchResult: [],
 };
 
 export const searchArtistSlice = createSlice({

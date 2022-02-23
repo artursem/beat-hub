@@ -22,17 +22,15 @@ const SearchBox: FC = () => {
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(event.target.value);
 	};
-	console.log(searchList);
-	// if (searchList) {
-	// 	const showArtist = searchList.map((artist) => {
-	// 		return <li key={artist.id}>{artist.name}</li>;
-	// 	});
-	// }
+
+	const showArtist = searchList.map((artist: any) => {
+		return <li key={artist.id}>{artist.name}</li>;
+	});
 
 	return (
 		<>
 			<input type='search' value={searchTerm} onChange={handleChange} />
-			{/* {searchList ? showArtist : null} */}
+			{searchList ? showArtist : null}
 		</>
 	);
 };
