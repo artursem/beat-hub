@@ -1,11 +1,12 @@
-import { FC } from 'react';
-// MOVE TO .ENV
+import Link from 'next/link';
 import ListArtists from '../../models/listArtists';
 
 const OptionList = ({ id, name }: ListArtists) => {
 	return (
 		<li>
-			<b>{name}</b>
+			<Link href='/artist/${id}'>
+				<a>{name}</a>
+			</Link>
 			<br />
 			<i>{id}</i>
 		</li>

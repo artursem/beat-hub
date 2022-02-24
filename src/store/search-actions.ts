@@ -10,25 +10,44 @@ export const fetchSearchArtist = (searchTerm: string) => {
 		dispatch(uiActions.showNotification('loading'));
 		const fetchData = async (artist: string) => {
 			const response = await fetch(
-				`${searchArtistApi}${artist}&type=artist&per_type_limit=10`
+				`${searchArtistApi}${artist}&type=artist&per_type_limit=5`
 			);
 			if (!response.ok) {
 				throw new Error('Error fetching data from db');
 			}
 			const data = await response.json();
-			console.log(data);
 
-			// data.search.data.artists.forEach(async (artist: any) => {
-			// 	const thumbnailResponse = await fetch(getImagesApi(artist.id));
-			// 	if (!response.ok) {
-			// 		throw new Error('Error fetching images');
-			// 	}
-			// 	const thumbnailData = await thumbnailResponse.json();
-			// 	// console.log(thumbnailData);
-			// 	if (thumbnailData.images.length > 0) {
-			// 		return thumbnailData.images[2].url;
-			// 	}
-			// });
+			// TODO: replace map with reduce and fetch image/thumbnail for each artist
+
+			// const listArtists: Array<ListArtists> = data.search.data.artists.reduce(
+			// 	async (list: [], artist: ListArtists) => {
+			// 		const thumbnailResponse = await fetch(getImagesApi(artist.id));
+			// 		if (!response.ok) {
+			// 			throw new Error('Error fetching thumbnail from db');
+			// 		}
+			// 		const thumbnailData = await thumbnailResponse.json();
+
+			// 		// console.log(
+			// 		// 	thumbnailData.images.length > 0
+			// 		// 		? thumbnailData.images[2].url
+			// 		// 		: 'no img'
+			// 		// );
+
+			// 		const thumbnailUrl =
+			// 			thumbnailData.images.length > 0
+			// 				? thumbnailData.images[2].url
+			// 				: null;
+
+			// 		const newArtist: ListArtists = {
+			// 			id: artist.id,
+			// 			name: artist.name,
+			// 			thumbnail: thumbnailUrl,
+			// 		};
+			// 		return list;
+			// 	},
+			// 	[]
+			// );
+			// console.log(listArtists);
 
 			const listArtists: Array<ListArtists> = data.search.data.artists.map(
 				(artist: ListArtists) => ({
@@ -36,6 +55,7 @@ export const fetchSearchArtist = (searchTerm: string) => {
 					name: artist.name,
 				})
 			);
+
 			return listArtists;
 		};
 

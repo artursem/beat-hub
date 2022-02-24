@@ -25,7 +25,7 @@ const SearchBox: FC = () => {
 	};
 
 	const showArtist = searchList.map(({ name, id }) => {
-		return <option key={id}>{name}</option>;
+		return <OptionItem key={id} id={id} name={name} />;
 	});
 
 	return (
@@ -36,7 +36,7 @@ const SearchBox: FC = () => {
 				onChange={handleChange}
 				list='artists'
 			/>
-			{searchList && <datalist id='artists'>{showArtist}</datalist>}
+			{searchList && <ul>{showArtist}</ul>}
 		</div>
 	);
 };
