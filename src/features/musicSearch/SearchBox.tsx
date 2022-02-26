@@ -9,12 +9,12 @@ const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const dispatch = useAppDispatch();
 	const searchList = useAppSelector((state) => state.search.searchResult);
+	const notification = useAppSelector((state) => state.uiStatus.notification);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
 			dispatch(searchArtist(searchTerm));
-			console.log(searchList);
 		} else {
 			dispatch(searchActions.setSearch(''));
 		}
@@ -37,6 +37,7 @@ const SearchBox: FC = () => {
 				list='artists'
 			/>
 			{searchList && <ul>{showArtist}</ul>}
+			<p>{notification}</p>
 		</div>
 	);
 };

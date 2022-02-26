@@ -9,13 +9,12 @@ const IndexPage: NextPage = () => {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Redux Toolkit</title>
+				<title>beathub</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<header>
 				<SearchBox />
 			</header>
-			<DisplayArtist />
 		</div>
 	);
 };

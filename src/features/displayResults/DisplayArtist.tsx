@@ -1,37 +1,42 @@
-import FoundArtist from '../../models/foundArtist';
-import { useAppSelector } from '../../store/hooks';
-import { useState } from 'react';
+import { FC, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchArtist } from '../../store/search-actions';
 
-const DisplayArtist = () => {
+type DisplayArtistProps = {
+	artistId: string;
+};
+
+const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(fetchArtist(artistId));
+	}, [dispatch]);
+	const foundArtist = useAppSelector((state) => state.search.displayArtist);
+	const { id, name, bio, contemporaries, genres, image } = foundArtist;
+	console.log(bio);
+
 	const notification = useAppSelector((state) => state.uiStatus.notification);
-	// const showArtist = useAppSelector((state) => state.search.searchResult);
-	// const { id, name, image, bio, bioShort, genre, country }: FoundArtist =
-	// 	showArtist;
-	const [shortBio, setShortBio] = useState(true);
-	const toggleBio = () => {
-		setShortBio((prevState) => !prevState);
-	};
 
-	// const displayArtistInfo = id ? (
-	// 	<>
-	// 		<h1>{name}</h1>
-	// 		<img src={image} alt={id} width='300' />
-	// 		<h4>{genre}</h4>
-	// 		<h5>{country}</h5>
-	// 		<p>{shortBio ? bioShort : bio}</p>
-	// 		<button onClick={toggleBio}>{shortBio ? 'more' : 'less'}</button>
-	// 	</>
-	// ) : (
-	<p>search for artist or a band</p>;
-	// );
-
-	return (
-		<>
-			<div>{notification}</div>
-			<hr />
-			{/* <div>{displayArtistInfo}</div> */}
-		</>
+	const artistData = (
+		<section>
+			<h1>{name}</h1>
+			<h4>artist: {id}</h4>
+			<img src={image} alt={id} />
+			<ul>
+				{genres.map((gen) => (
+					<li key={gen}>{gen} </li>
+				))}
+			</ul>
+			<p>{bio}</p>
+			<ul>
+				{contemporaries.map((con) => (
+					<li key={con}>{con}</li>
+				))}
+			</ul>
+		</section>
 	);
+
+	return notification === 'idle' ? artistData : <p>{notification}</p>;
 };
 
 export default DisplayArtist;
