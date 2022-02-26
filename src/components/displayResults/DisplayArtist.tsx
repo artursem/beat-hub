@@ -10,10 +10,11 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(fetchArtist(artistId));
-	}, [dispatch]);
-	const foundArtist = useAppSelector((state) => state.search.displayArtist);
-	const { id, name, bio, contemporaries, genres, image } = foundArtist;
-	console.log(bio);
+	}, [dispatch, artistId]);
+
+	const { id, name, bio, contemporaries, genres, image } = useAppSelector(
+		(state) => state.search.displayArtist
+	);
 
 	const notification = useAppSelector((state) => state.uiStatus.notification);
 
