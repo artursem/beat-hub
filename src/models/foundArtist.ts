@@ -4,8 +4,8 @@ type FoundArtist = {
 	image: string;
 	thumbnail: string;
 	bio: string;
-	genres: string[];
-	contemporaries: string[];
+	genres: string[] | null;
+	contemporaries: string[] | null;
 };
 
 export default FoundArtist;

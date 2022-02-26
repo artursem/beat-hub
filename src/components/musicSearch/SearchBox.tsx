@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useDebounce } from '../../store/useDebounce';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { searchActions } from '../../store/search-slice';
-import { searchArtist } from '../../store/search-actions';
+import { searchArtist } from '../../store/searchArtist';
 import OptionItem from './OptionItem';
 
 const SearchBox: FC = () => {

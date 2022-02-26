@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchArtist } from '../../store/search-actions';
+import { fetchArtist } from '../../store/fetchArtist';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -15,24 +15,18 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	const { id, name, bio, contemporaries, genres, image } = useAppSelector(
 		(state) => state.search.displayArtist
 	);
-
 	const notification = useAppSelector((state) => state.uiStatus.notification);
 
 	const artistData = (
 		<section>
 			<h1>{name}</h1>
 			<h4>artist: {id}</h4>
-			<img src={image} alt={id} />
-			<ul>
-				{genres.map((gen) => (
-					<li key={gen}>{gen} </li>
-				))}
-			</ul>
+			{image && <img src={image} alt={id} />}
+			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
 			<p>{bio}</p>
 			<ul>
-				{contemporaries.map((con) => (
-					<li key={con}>{con}</li>
-				))}
+				{contemporaries &&
+					contemporaries.map((con) => <li key={con}>{con}</li>)}
 			</ul>
 		</section>
 	);
