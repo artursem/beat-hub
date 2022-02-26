@@ -2,10 +2,10 @@ type FoundArtist = {
 	id: string;
 	name: string;
 	image: string;
+	thumbnail: string;
 	bio: string;
-	bioShort: string;
-	genre: string;
-	country: string;
+	genres: string[];
+	contemporaries: string[];
 };
 
 export default FoundArtist;

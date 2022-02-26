@@ -4,7 +4,8 @@ import ListArtists from '../../models/listArtists';
 const OptionList = ({ id, name }: ListArtists) => {
 	return (
 		<li>
-			<Link href='/artist/${id}'>
+			{/* dynamic routing!!!! */}
+			<Link href={`/${id}`}>
 				<a>{name}</a>
 			</Link>
 			<br />

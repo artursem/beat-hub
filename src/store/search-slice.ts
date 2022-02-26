@@ -1,16 +1,26 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
 export interface searchState {
 	searchArtist: string;
 	searchResult: ListArtists[];
+	displayArtist: FoundArtist;
 }
 
-// WTF????
+// WTF?!
 const initialState: searchState = {
 	searchArtist: '',
 	searchResult: [],
+	displayArtist: {
+		id: '',
+		name: '',
+		image: '',
+		thumbnail: '',
+		bio: '',
+		genres: [],
+		contemporaries: [],
+	},
 };
 
 export const searchArtistSlice = createSlice({
@@ -22,6 +32,9 @@ export const searchArtistSlice = createSlice({
 		},
 		setSearchResult: (state, action) => {
 			state.searchResult = action.payload;
+		},
+		setDisplayArtist: (state, action) => {
+			state.displayArtist = action.payload;
 		},
 	},
 });
