@@ -24,14 +24,14 @@ export const fetchArtist = (id: string) => {
 			const image =
 				imageData.images.length > 0 ? imageData.images[0].url : null;
 
-			// const genreHref = data.artists[0].links.genres.href;
-			// const genreResponse = await fetch(getGenericApi(genreHref));
-			// if (!genreResponse.ok) {
-			// 	throw new Error('Error fetching genres from db');
-			// }
-			// const genreData = await genreResponse.json();
-			// const genres =
-			// 	genreData.genres.map((g: any) => g.name).slice(0, 5) || null;
+			const genreHref = data.artists[0].links.genres.href;
+			const genreResponse = await fetch(getGenericApi(genreHref));
+			if (!genreResponse.ok) {
+				throw new Error('Error fetching genres from db');
+			}
+			const genreData = await genreResponse.json();
+			const genres =
+				genreData.genres.map((g: any) => g.name).slice(0, 5) || null;
 
 			let contemporaries = null;
 			if (data.artists[0].links.contemporaries) {
@@ -56,7 +56,7 @@ export const fetchArtist = (id: string) => {
 				bio,
 				image,
 				thumbnail: '',
-				genres: [],
+				genres,
 				contemporaries,
 			};
 			return foundArtist;
