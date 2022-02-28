@@ -2,7 +2,7 @@ import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
 import ListArtists from '../models/listArtists';
-import { getTopApi } from '../globals/api-endpoints';
+import { getArtistApi, getTopApi } from '../globals/api-endpoints';
 
 export const fetchTop = () => {
 	return async (dispatch: AppDispatch) => {
@@ -14,14 +14,25 @@ export const fetchTop = () => {
 				throw new Error('Error fetching data from db');
 			}
 			const data = await response.json();
+			const idList = data.artists.map((artist: any) => artist.id);
+			const urlList = idList.map((id: string) => getArtistApi(id, 'images'));
+
+			const imageResponse = await Promise.all(
+				urlList.map((url: string) => fetch(url))
+			);
+			const imageData = await Promise.all(
+				imageResponse.map((res) => res.json())
+			);
+			const imageList = imageData.map((img) => img.images[0].url);
 
 			const topArtists: Array<ListArtists> = data.artists.map(
-				(artist: ListArtists) => ({
+				(artist: ListArtists, idx: number) => ({
 					id: artist.id,
 					name: artist.name,
+					thumbnail: imageList[idx],
 				})
 			);
-
+			console.log(topArtists);
 			return topArtists;
 		};
 

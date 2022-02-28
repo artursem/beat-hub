@@ -10,11 +10,14 @@ const TopArtists = () => {
 	}, [dispatch]);
 
 	const top = useAppSelector((state) => state.search.topArtists);
-	console.log(top);
-	const displayTopArtists = top.map(({ id, name }) => (
+	const displayTopArtists = top.map(({ id, name, thumbnail }) => (
 		<li key={id}>
 			<Link href={`/${id}`}>
-				<a>{name}</a>
+				<a>
+					{thumbnail && <img src={thumbnail} alt={name} width='150px' />}
+					<br />
+					{name}
+				</a>
 			</Link>
 		</li>
 	));
