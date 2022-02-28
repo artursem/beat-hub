@@ -1,6 +1,7 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchArtist } from '../../store/fetchArtist';
+import SimilarArtists from './SimilarArtists';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -24,14 +25,19 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 			{image && <img src={image} alt={id} />}
 			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
 			<p>{bio}</p>
-			<ul>
-				{contemporaries &&
-					contemporaries.map((con) => <li key={con}>{con}</li>)}
-			</ul>
+
+			{contemporaries && (
+				<ul>
+					{contemporaries.map((con) => (
+						<li key={con}>{con}</li>
+					))}
+				</ul>
+				// <SimilarArtists list={contemporaries} />
+			)}
 		</section>
 	);
 
-	return notification === 'idle' ? artistData : <p>{notification}</p>;
+	return notification === 'idle' ? artistData : <p>{notification} artist</p>;
 };
 
 export default DisplayArtist;

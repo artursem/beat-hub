@@ -13,7 +13,7 @@ export const fetchArtist = (id: string) => {
 				throw new Error('Error fetching artist from db');
 			}
 			const data = await response.json();
-			// console.log(data);
+			console.log(data);
 
 			const imageResponse = await fetch(getArtistApi(id, 'images'));
 			if (!imageResponse.ok) {
@@ -21,8 +21,12 @@ export const fetchArtist = (id: string) => {
 			}
 			const imageData = await imageResponse.json();
 
+			if (imageData.images.length > 0) {
+			}
 			const image =
 				imageData.images.length > 0 ? imageData.images[0].url : null;
+			const thumbnail =
+				imageData.images.length > 0 ? imageData.images[2].url : null;
 
 			const genreHref = data.artists[0].links.genres.href;
 			const genreResponse = await fetch(getGenericApi(genreHref));
@@ -41,7 +45,7 @@ export const fetchArtist = (id: string) => {
 					throw new Error('Error fetching contempos from db');
 				}
 				const contempoData = await contempoResponse.json();
-				console.log(contempoData);
+				// console.log(contempoData);
 				contemporaries = contempoData.artists
 					.map((artist: any) => artist.id)
 					.slice(0, 5);
@@ -56,7 +60,7 @@ export const fetchArtist = (id: string) => {
 				name: data.artists[0].name,
 				bio,
 				image,
-				thumbnail: '',
+				thumbnail,
 				genres,
 				contemporaries,
 			};

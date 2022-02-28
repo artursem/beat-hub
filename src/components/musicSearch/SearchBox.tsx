@@ -36,8 +36,7 @@ const SearchBox: FC = () => {
 				onChange={handleChange}
 				list='artists'
 			/>
-			{searchList && <ul>{showArtist}</ul>}
-			<p>{notification}</p>
+			{searchList ? <ul>{showArtist}</ul> : <p>{notification} search list</p>}
 		</div>
 	);
 };
