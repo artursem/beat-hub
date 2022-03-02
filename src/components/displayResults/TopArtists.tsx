@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchTop } from '../../store/fetchTop';
 
 const TopArtists = () => {
+	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(fetchTop());
@@ -21,12 +22,16 @@ const TopArtists = () => {
 			</Link>
 		</li>
 	));
-	return (
-		<>
-			<h2>TopArtists</h2>
-			<ul>{displayTopArtists}</ul>
-		</>
-	);
+	if (notification === 'idle') {
+		return (
+			<>
+				<h2>Top Artists</h2>
+				<ul>{displayTopArtists}</ul>
+			</>
+		);
+	} else {
+		return <p>{notification} top artists</p>;
+	}
 };
 
 export default TopArtists;
