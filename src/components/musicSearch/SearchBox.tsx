@@ -24,8 +24,8 @@ const SearchBox: FC = () => {
 		setSearchTerm(event.target.value);
 	};
 
-	const showArtist = searchList.map(({ name, id }) => {
-		return <OptionItem key={id} id={id} name={name} />;
+	const showArtist = searchList.map(({ name, id, thumbnail }) => {
+		return <OptionItem key={id} id={id} name={name} thumbnail={thumbnail} />;
 	});
 
 	return (

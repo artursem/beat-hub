@@ -14,6 +14,7 @@ export const fetchTop = () => {
 				throw new Error('Error fetching data from db');
 			}
 			const data = await response.json();
+
 			const idList = data.artists.map((artist: any) => artist.id);
 			const urlList = idList.map((id: string) => getArtistApi(id, 'images'));
 
