@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchArtist } from '../../store/fetchArtist';
-import SimilarArtists from './SimilarArtists';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -13,7 +12,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 		dispatch(fetchArtist(artistId));
 	}, [dispatch, artistId]);
 
-	const { id, name, bio, contemporaries, genres, image } = useAppSelector(
+	const { id, name, bio, genres, image } = useAppSelector(
 		(state) => state.search.displayArtist
 	);
 	const notification = useAppSelector((state) => state.uiStatus.notification);
@@ -25,15 +24,6 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 			{image && <img src={image} alt={id} />}
 			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
 			<p>{bio}</p>
-
-			{contemporaries && (
-				<ul>
-					{contemporaries.map((con) => (
-						<li key={con}>{con}</li>
-					))}
-				</ul>
-				// <SimilarArtists list={contemporaries} />
-			)}
 		</section>
 	);
 

@@ -32,7 +32,6 @@ export const fetchTop = () => {
 					thumbnail: imageList[idx],
 				})
 			);
-			console.log(topArtists);
 			return topArtists;
 		};
 
