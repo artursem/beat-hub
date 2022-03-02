@@ -2,7 +2,6 @@ import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
 import { getArtistApi } from '../globals/api-endpoints';
-import ListArtists from '../models/listArtists';
 
 export const fetchSimilar = (list: string[]) => {
 	return async (dispatch: AppDispatch) => {
@@ -16,11 +15,27 @@ export const fetchSimilar = (list: string[]) => {
 			const artistData = await Promise.all(
 				artistResponse.map((res) => res.json())
 			);
-			// console.log(artistData);
-			const similar = artistData.map((artist) => {
-				return { name: artist.artists[0].name, id: artist.artists[0].id };
+
+			const urlListImages = list.map((id: string) =>
+				getArtistApi(id, 'images')
+			);
+
+			const imageResponse = await Promise.all(
+				urlListImages.map((url: string) => fetch(url))
+			);
+			const imageData = await Promise.all(
+				imageResponse.map((res) => res.json())
+			);
+			const imageList = imageData.map((img) => img.images[0].url);
+
+			const similar = artistData.map((artist, idx) => {
+				return {
+					name: artist.artists[0].name,
+					id: artist.artists[0].id,
+					thumbnail: imageList[idx],
+				};
 			});
-			console.log(similar);
+
 			return similar;
 		};
 

@@ -12,11 +12,9 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 		dispatch(fetchSimilar(list));
 	}, [dispatch, list]);
 
-	console.log(list);
 	const notification = useAppSelector((state) => state.uiStatus.notification);
-
 	const similar = useAppSelector((state) => state.search.similarDetails);
-	// console.log(similar);
+
 	const similarLi = similar
 		? similar.map(({ id, name, thumbnail }) => (
 				<li key={id}>

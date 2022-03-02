@@ -13,7 +13,6 @@ export const fetchArtist = (id: string) => {
 				throw new Error('Error fetching artist from db');
 			}
 			const data = await response.json();
-			// console.log(data);
 
 			const imageResponse = await fetch(getArtistApi(id, 'images'));
 			if (!imageResponse.ok) {
@@ -45,7 +44,6 @@ export const fetchArtist = (id: string) => {
 					throw new Error('Error fetching contempos from db');
 				}
 				const contempoData = await contempoResponse.json();
-				// console.log(contempoData);
 				contemporaries = contempoData.artists
 					.map((artist: any) => artist.id)
 					.slice(0, 5);
