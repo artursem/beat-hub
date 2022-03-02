@@ -33,12 +33,12 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 				</li>
 		  ))
 		: null;
-	const displaySimilar = (
+	const displaySimilar = similar ? (
 		<>
 			<h3>similar artists:</h3>
 			<ul>{similarLi}</ul>
 		</>
-	);
+	) : null;
 
 	return notification === 'idle' ? (
 		displaySimilar

@@ -8,12 +8,12 @@ const Artist = () => {
 	const router = useRouter();
 	const artistId: string = router.asPath.slice(1);
 	const similar = useAppSelector((state) => state.search.similarId);
+	const { name } = useAppSelector((state) => state.search.displayArtist);
 
 	return (
 		<>
 			<Head>
-				{/* fetch artist name */}
-				<title>beathub</title>
+				<title>{name} - beathub</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<DisplayArtist artistId={artistId} />

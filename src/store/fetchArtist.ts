@@ -62,7 +62,6 @@ export const fetchArtist = (id: string) => {
 				genres,
 				contemporaries,
 			};
-			console.log(foundArtist);
 			return foundArtist;
 		};
 		try {
