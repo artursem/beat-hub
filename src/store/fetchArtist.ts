@@ -6,7 +6,7 @@ import { getArtistApi, getGenericApi } from '../globals/api-endpoints';
 
 export const fetchArtist = (id: string) => {
 	return async (dispatch: AppDispatch) => {
-		dispatch(uiActions.showNotification('loading'));
+		dispatch(uiActions.setStatusArtist('loading'));
 		const fetchData = async (id: string) => {
 			const response = await fetch(getArtistApi(id));
 			if (!response.ok) {
@@ -68,10 +68,10 @@ export const fetchArtist = (id: string) => {
 			const foundArtist = await fetchData(id);
 			dispatch(searchActions.setDisplayArtist(foundArtist));
 			dispatch(searchActions.setSimilarId(foundArtist.contemporaries));
-			dispatch(uiActions.showNotification('idle'));
+			dispatch(uiActions.setStatusArtist('idle'));
 		} catch (error) {
 			console.log(error);
-			dispatch(uiActions.showNotification('error'));
+			dispatch(uiActions.setStatusArtist('error'));
 		}
 	};
 };

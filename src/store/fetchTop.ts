@@ -6,7 +6,7 @@ import { getArtistApi, getTopApi } from '../globals/api-endpoints';
 
 export const fetchTop = () => {
 	return async (dispatch: AppDispatch) => {
-		dispatch(uiActions.showNotification('loading'));
+		dispatch(uiActions.setStatusArtist('loading'));
 
 		const fetchData = async () => {
 			const response = await fetch(getTopApi());
@@ -38,11 +38,11 @@ export const fetchTop = () => {
 
 		try {
 			const topArtists = await fetchData();
-			dispatch(uiActions.showNotification('idle'));
+			dispatch(uiActions.setStatusArtist('idle'));
 			dispatch(searchActions.setTopArtists(topArtists));
 		} catch (error) {
 			console.log(error);
-			dispatch(uiActions.showNotification('error'));
+			dispatch(uiActions.setStatusArtist('error'));
 		}
 	};
 };

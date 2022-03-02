@@ -12,7 +12,7 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 		dispatch(fetchSimilar(list));
 	}, [dispatch, list]);
 
-	const notification = useAppSelector((state) => state.uiStatus.notification);
+	const notification = useAppSelector((state) => state.uiStatus.statusSimilar);
 	const similar = useAppSelector((state) => state.search.similarDetails);
 
 	const similarLi = similar

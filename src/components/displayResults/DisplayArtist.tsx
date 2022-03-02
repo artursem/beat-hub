@@ -15,7 +15,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	const { id, name, bio, genres, image } = useAppSelector(
 		(state) => state.search.displayArtist
 	);
-	const notification = useAppSelector((state) => state.uiStatus.notification);
+	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 
 	const artistData = (
 		<section>

@@ -5,7 +5,7 @@ import { getArtistApi } from '../globals/api-endpoints';
 
 export const fetchSimilar = (list: string[]) => {
 	return async (dispatch: AppDispatch) => {
-		dispatch(uiActions.showNotification('loading'));
+		dispatch(uiActions.setStatusSimilar('loading'));
 
 		const fetchDataAll = async (list: string[]) => {
 			const urlList = list.map((id) => getArtistApi(id));
@@ -45,10 +45,10 @@ export const fetchSimilar = (list: string[]) => {
 		try {
 			const similarArtists = await fetchDataAll(list);
 			dispatch(searchActions.setSimilarDetails(similarArtists));
-			dispatch(uiActions.showNotification('idle'));
+			dispatch(uiActions.setStatusSimilar('idle'));
 		} catch (error) {
 			console.log(error);
-			dispatch(uiActions.showNotification('error'));
+			dispatch(uiActions.setStatusSimilar('error'));
 		}
 	};
 };

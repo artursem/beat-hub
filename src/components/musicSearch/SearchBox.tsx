@@ -9,7 +9,7 @@ const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const dispatch = useAppDispatch();
 	const searchList = useAppSelector((state) => state.search.searchResult);
-	const notification = useAppSelector((state) => state.uiStatus.notification);
+	const notification = useAppSelector((state) => state.uiStatus.statusSearch);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 
 	useEffect(() => {

@@ -2,12 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
 export interface appState {
-	notification: 'idle' | 'loading' | 'error';
+	statusSearch: 'idle' | 'loading' | 'error';
+	statusArtist: 'idle' | 'loading' | 'error';
+	statusSimilar: 'idle' | 'loading' | 'error';
 	list: boolean;
 }
 
 const initialState: appState = {
-	notification: 'idle',
+	statusSearch: 'idle',
+	statusArtist: 'idle',
+	statusSimilar: 'idle',
 	list: false,
 };
 
@@ -15,8 +19,14 @@ export const uiSlice = createSlice({
 	name: 'uiStatus',
 	initialState,
 	reducers: {
-		showNotification: (state, action) => {
-			state.notification = action.payload;
+		setStatusArtist: (state, action) => {
+			state.statusArtist = action.payload;
+		},
+		setStatusSearch: (state, action) => {
+			state.statusSearch = action.payload;
+		},
+		setStatusSimilar: (state, action) => {
+			state.statusSimilar = action.payload;
 		},
 		// openSearchList: (state) => {
 		// 	state.list = true;
@@ -28,5 +38,5 @@ export const uiSlice = createSlice({
 });
 
 export const uiActions = uiSlice.actions;
-export const selectStatus = (state: RootState) => state.uiStatus.notification;
+// export const selectStatus = (state: RootState) => state.uiStatus.notification;
 export default uiSlice;
