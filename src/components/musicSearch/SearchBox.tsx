@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
-import { useDebounce } from '../../store/useDebounce';
+import { useDebounce } from '../../store/hooks';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { searchActions } from '../../store/search-slice';
 import { searchArtist } from '../../store/searchArtist';
