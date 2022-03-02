@@ -7,6 +7,7 @@ import { getArtistApi, getGenericApi } from '../globals/api-endpoints';
 export const fetchArtist = (id: string) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(uiActions.setStatusArtist('loading'));
+		dispatch(searchActions.setSimilarId(null));
 		const fetchData = async (id: string) => {
 			const response = await fetch(getArtistApi(id));
 			if (!response.ok) {

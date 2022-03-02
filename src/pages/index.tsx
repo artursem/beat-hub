@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useAppDispatch } from '../store/hooks';
+import { uiActions } from '../store/ui-slice';
 import TopArtists from '../components/displayResults/TopArtists';
 import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(uiActions.setListIsOpen(false));
+	}, []);
+
 	return (
 		<div className={styles.container}>
 			<Head>
