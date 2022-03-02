@@ -15,14 +15,12 @@ export const searchArtist = (searchTerm: string) => {
 			const data = await response.json();
 			const idList = data.search.data.artists.map((artist: any) => artist.id);
 			const urlList = idList.map((id: string) => getArtistApi(id, 'images'));
-			console.log(urlList);
 			const imageResponse = await Promise.all(
 				urlList.map((url: string) => fetch(url))
 			);
 			const imageData = await Promise.all(
 				imageResponse.map((res) => res.json())
 			);
-			console.log(imageData[0]);
 			const imageList = imageData.map((img) =>
 				img.meta.returnedCount === 0 ? null : img.images[1].url
 			);

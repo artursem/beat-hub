@@ -8,7 +8,7 @@ const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 				<a>
 					{thumbnail && (
 						<>
-							<img src={thumbnail} alt={name} width='150px' />
+							<img src={thumbnail} alt={name} width='100px' />
 							<br />
 						</>
 					)}
