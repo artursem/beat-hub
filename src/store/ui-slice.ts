@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from './store';
 
 export interface appState {
 	statusSearch: 'idle' | 'loading' | 'error';
@@ -28,12 +27,9 @@ export const uiSlice = createSlice({
 		setStatusSimilar: (state, action) => {
 			state.statusSimilar = action.payload;
 		},
-		// openSearchList: (state) => {
-		// 	state.list = true;
-		// },
-		// closeSearchList: (state) => {
-		// 	state.list = false;
-		// },
+		setListIsOpen: (state, action) => {
+			state.list = action.payload;
+		},
 	},
 });
 

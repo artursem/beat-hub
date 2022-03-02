@@ -9,6 +9,7 @@ const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const dispatch = useAppDispatch();
 	const searchList = useAppSelector((state) => state.search.searchResult);
+	const resultList = useAppSelector((state) => state.uiStatus.list);
 	const notification = useAppSelector((state) => state.uiStatus.statusSearch);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 
@@ -27,7 +28,6 @@ const SearchBox: FC = () => {
 	const showArtist = searchList.map(({ name, id, thumbnail }) => {
 		return <OptionItem key={id} id={id} name={name} thumbnail={thumbnail} />;
 	});
-
 	return (
 		<div>
 			<input
@@ -36,7 +36,7 @@ const SearchBox: FC = () => {
 				onChange={handleChange}
 				list='artists'
 			/>
-			{searchList ? <ul>{showArtist}</ul> : <p>{notification} search list</p>}
+			{resultList ? <ul>{showArtist}</ul> : <p>{notification} search list</p>}
 		</div>
 	);
 };

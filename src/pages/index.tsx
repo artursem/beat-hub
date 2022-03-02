@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import TopArtists from '../components/displayResults/TopArtists';
-import SimilarArtists from '../components/displayResults/SimilarArtists';
 import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {

@@ -39,6 +39,7 @@ export const searchArtist = (searchTerm: string) => {
 		try {
 			const listArtists = await fetchData(searchTerm);
 			dispatch(uiActions.setStatusArtist('idle'));
+			dispatch(uiActions.setListIsOpen(true));
 			dispatch(searchActions.setSearchResult(listArtists));
 		} catch (error) {
 			console.log(error);
