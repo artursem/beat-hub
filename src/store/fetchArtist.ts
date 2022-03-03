@@ -65,7 +65,6 @@ export const fetchArtist = (id: string) => {
 			if (albumsData.meta.totalCount > 0) {
 				albumsId = albumsData.albums.map((album: any) => album.id);
 			}
-			console.log(albumsId);
 
 			const foundArtist: FoundArtist = {
 				id,
@@ -83,6 +82,7 @@ export const fetchArtist = (id: string) => {
 			const foundArtist = await fetchData(id);
 			dispatch(searchActions.setDisplayArtist(foundArtist));
 			dispatch(searchActions.setSimilarId(foundArtist.contemporaries));
+			dispatch(searchActions.setAlbumsId(foundArtist.albumsId));
 			dispatch(uiActions.setStatusArtist('idle'));
 		} catch (error) {
 			console.log(error);

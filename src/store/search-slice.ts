@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
+import Album from '../models/albums';
 export interface searchState {
 	searchArtist: string;
 	searchResult: ListArtists[];
@@ -9,6 +10,7 @@ export interface searchState {
 	similarId: string[];
 	similarDetails: Array<ListArtists> | null;
 	albumsId: string[] | null;
+	albumsDetails: Array<Album> | null;
 	topArtists: Array<ListArtists>;
 }
 
@@ -29,6 +31,7 @@ const initialState: searchState = {
 	similarId: [],
 	similarDetails: [],
 	albumsId: null,
+	albumsDetails: [],
 	topArtists: [],
 };
 
@@ -56,6 +59,9 @@ export const searchArtistSlice = createSlice({
 		},
 		setAlbumsId: (state, action) => {
 			state.albumsId = action.payload;
+		},
+		setAlbumsDetails: (state, action) => {
+			state.albumsDetails = action.payload;
 		},
 	},
 });

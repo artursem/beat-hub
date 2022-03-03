@@ -24,3 +24,10 @@ export const getTopApi = () => {
 export const getTopAlbums = (id: string) => {
 	return `${address}artists/${id}/albums/top?limit=5&apikey=${apiKey}`;
 };
+
+export const getAlbum = (id: string, more?: string) => {
+	if (more) {
+		return `${address}albums/${id}/${more}?apikey=${apiKey}`;
+	}
+	return `${address}albums/${id}?apikey=${apiKey}`;
+};
