@@ -8,6 +8,7 @@ export interface searchState {
 	displayArtist: FoundArtist;
 	similarId: string[];
 	similarDetails: Array<ListArtists> | null;
+	albumsId: string[] | null;
 	topArtists: Array<ListArtists>;
 }
 
@@ -23,9 +24,11 @@ const initialState: searchState = {
 		bio: '',
 		genres: [],
 		contemporaries: null,
+		albumsId: null,
 	},
 	similarId: [],
 	similarDetails: [],
+	albumsId: null,
 	topArtists: [],
 };
 
@@ -50,6 +53,9 @@ export const searchArtistSlice = createSlice({
 		},
 		setTopArtists: (state, action) => {
 			state.topArtists = action.payload;
+		},
+		setAlbumsId: (state, action) => {
+			state.albumsId = action.payload;
 		},
 	},
 });

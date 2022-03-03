@@ -20,3 +20,7 @@ export const getGenericApi = (link: string) => {
 export const getTopApi = () => {
 	return `https://api.napster.com/v2.2/artists/top?limit=5&apikey=${apiKey}`;
 };
+
+export const getTopAlbums = (id: string) => {
+	return `${address}artists/${id}/albums/top?limit=5&apikey=${apiKey}`;
+};

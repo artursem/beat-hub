@@ -8,7 +8,7 @@ const Layout: FC = ({ children }) => {
 				<SearchBox />
 			</header>
 			<main>{children}</main>
-			<footer>footer</footer>
+			{/* <footer>footer</footer> */}
 		</div>
 	);
 };

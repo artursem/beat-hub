@@ -2,7 +2,11 @@ import { searchActions } from './search-slice';
 import { AppDispatch } from './store';
 import { uiActions } from './ui-slice';
 import FoundArtist from '../models/foundArtist';
-import { getArtistApi, getGenericApi } from '../globals/api-endpoints';
+import {
+	getArtistApi,
+	getGenericApi,
+	getTopAlbums,
+} from '../globals/api-endpoints';
 
 export const fetchArtist = (id: string) => {
 	return async (dispatch: AppDispatch) => {
@@ -21,12 +25,10 @@ export const fetchArtist = (id: string) => {
 			}
 			const imageData = await imageResponse.json();
 
-			if (imageData.images.length > 0) {
-			}
 			const image =
-				imageData.images.length > 0 ? imageData.images[0].url : null;
+				imageData.meta.returnedCount === 0 ? null : imageData.images[0].url;
 			const thumbnail =
-				imageData.images.length > 0 ? imageData.images[2].url : null;
+				imageData.meta.returnedCount === 0 ? null : imageData.images[0].url;
 
 			const genreHref = data.artists[0].links.genres.href;
 			const genreResponse = await fetch(getGenericApi(genreHref));
@@ -54,6 +56,17 @@ export const fetchArtist = (id: string) => {
 				? data.artists[0].bios[0].bio
 				: 'No bio available';
 
+			let albumsId = null;
+			const albumsResponse = await fetch(getTopAlbums(id));
+			if (!albumsResponse.ok) {
+				throw new Error('Error fetching albums from db');
+			}
+			const albumsData = await albumsResponse.json();
+			if (albumsData.meta.totalCount > 0) {
+				albumsId = albumsData.albums.map((album: any) => album.id);
+			}
+			console.log(albumsId);
+
 			const foundArtist: FoundArtist = {
 				id,
 				name: data.artists[0].name,
@@ -62,6 +75,7 @@ export const fetchArtist = (id: string) => {
 				thumbnail,
 				genres,
 				contemporaries,
+				albumsId,
 			};
 			return foundArtist;
 		};

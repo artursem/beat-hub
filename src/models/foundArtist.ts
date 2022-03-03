@@ -6,6 +6,7 @@ type FoundArtist = {
 	bio: string;
 	genres: string[] | null;
 	contemporaries: string[] | null;
+	albumsId: string[] | null;
 };
 
 export default FoundArtist;
