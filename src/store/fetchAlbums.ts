@@ -22,11 +22,9 @@ export const fetchAlbums = (list: string[]) => {
 			const imageData = await Promise.all(
 				imageResponse.map((res) => res.json())
 			);
-
 			const imageList = imageData.map((img) =>
 				img.meta.returnedCount === 0 ? null : img.images[0].url
 			);
-			// console.log(imageList);
 
 			const albums = albumData.map((album: any, idx: number) => {
 				return {
@@ -37,7 +35,6 @@ export const fetchAlbums = (list: string[]) => {
 				};
 			});
 
-			console.log(albums);
 			return albums;
 		};
 

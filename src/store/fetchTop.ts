@@ -24,7 +24,9 @@ export const fetchTop = () => {
 			const imageData = await Promise.all(
 				imageResponse.map((res) => res.json())
 			);
-			const imageList = imageData.map((img) => img.images[0].url);
+			const imageList = imageData.map((img) =>
+				img.meta.returnedCount === 0 ? null : img.images[0].url
+			);
 
 			const topArtists: Array<ListArtists> = data.artists.map(
 				(artist: ListArtists, idx: number) => ({

@@ -25,8 +25,8 @@ const Artist = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<DisplayArtist artistId={artistId} />
-			{similar && <SimilarArtists list={similar} />}
 			{albums && <DisplayAlbums list={albums} />}
+			{similar && <SimilarArtists list={similar} />}
 		</>
 	);
 };
