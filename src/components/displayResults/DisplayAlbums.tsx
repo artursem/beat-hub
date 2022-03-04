@@ -10,7 +10,7 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(fetchAlbums(list));
-	}, [dispatch, list]);
+	}, [dispatch, list, fetchAlbums]);
 
 	const notification = useAppSelector((state) => state.uiStatus.statusAlbums);
 	const albums = useAppSelector((state) => state.search.albumsDetails);
@@ -18,18 +18,14 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
 				<li key={id}>
-					<Link href={`/${id}`}>
-						<a>
-							{thumbnail && (
-								<>
-									<img src={thumbnail} alt={name} width='150px' />
-									<br />
-								</>
-							)}
+					{thumbnail && (
+						<>
+							<img src={thumbnail} alt={name} width='150px' />
+							<br />
+						</>
+					)}
 
-							{name}
-						</a>
-					</Link>
+					{name}
 				</li>
 		  ))
 		: null;
