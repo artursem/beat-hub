@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchAlbums } from '../../store/fetchAlbums';
 
@@ -18,18 +17,14 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
 				<li key={id}>
-					<Link href={`/${id}`}>
-						<a>
-							{thumbnail && (
-								<>
-									<img src={thumbnail} alt={name} width='150px' />
-									<br />
-								</>
-							)}
+					{thumbnail && (
+						<>
+							<img src={thumbnail} alt={name} width='150px' />
+							<br />
+						</>
+					)}
 
-							{name}
-						</a>
-					</Link>
+					{name}
 				</li>
 		  ))
 		: null;

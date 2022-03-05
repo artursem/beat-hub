@@ -6,7 +6,7 @@ import { searchArtistApi, getArtistApi } from '../globals/api-endpoints';
 
 export const searchArtist = (searchTerm: string) => {
 	return async (dispatch: AppDispatch) => {
-		dispatch(uiActions.setStatusArtist('loading'));
+		dispatch(uiActions.setStatusSearch('loading'));
 		const fetchData = async (artist: string) => {
 			const response = await fetch(searchArtistApi(artist));
 			if (!response.ok) {
@@ -38,7 +38,7 @@ export const searchArtist = (searchTerm: string) => {
 
 		try {
 			const listArtists = await fetchData(searchTerm);
-			dispatch(uiActions.setStatusArtist('idle'));
+			dispatch(uiActions.setStatusSearch('idle'));
 			dispatch(uiActions.setListIsOpen(true));
 			dispatch(searchActions.setSearchResult(listArtists));
 		} catch (error) {

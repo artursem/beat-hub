@@ -26,7 +26,6 @@ export const fetchAlbums = (list: string[]) => {
 			const imageList = imageData.map((img) =>
 				img.meta.returnedCount === 0 ? null : img.images[0].url
 			);
-			// console.log(imageList);
 
 			const albums = albumData.map((album: any, idx: number) => {
 				return {
@@ -36,8 +35,6 @@ export const fetchAlbums = (list: string[]) => {
 					thumbnail: imageList[idx],
 				};
 			});
-
-			console.log(albums);
 			return albums;
 		};
 
