@@ -25,7 +25,7 @@ const TopArtists = () => {
 	if (notification === 'idle') {
 		return (
 			<>
-				<h2>Top Artists</h2>
+				<h1>Top Artists</h1>
 				<ul>{displayTopArtists}</ul>
 			</>
 		);

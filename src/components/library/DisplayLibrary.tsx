@@ -18,7 +18,6 @@ const DisplayCollection = () => {
 	const libraryArtists = useAppSelector(
 		(state) => state.library.libraryArtists
 	);
-	// const displayArtists = library.map((art) => <li key={art}>{art}</li>);
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (

@@ -16,20 +16,32 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	const { id, name, bio, genres, image } = useAppSelector(
 		(state) => state.search.displayArtist
 	);
+	const library = useAppSelector((state) => state.library.libraryId);
+	const isInLibrary = (id: string) => {
+		return library.indexOf(id) >= 0;
+	};
+
 	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 
 	const handleAddToLibrary = () => {
 		dispatch(libraryActions.addArtist(artistId));
 	};
+	const handleRemoveFromLibrary = () => {
+		dispatch(libraryActions.removeArtist(id));
+	};
+
+	const libraryButton = isInLibrary(id) ? (
+		<button onClick={handleRemoveFromLibrary}>Remove</button>
+	) : (
+		<button onClick={handleAddToLibrary}>Add</button>
+	);
 
 	const artistData = (
 		<section>
 			<h1>{name}</h1>
 			<h4>artist: {id}</h4>
 			{image && <img src={image} alt={id} />}
-			<p>
-				<button onClick={handleAddToLibrary}>Add</button>
-			</p>
+			<p>{libraryButton}</p>
 			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
 			<p>{bio}</p>
 		</section>
