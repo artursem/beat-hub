@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchArtist } from '../../store/fetchArtist';
-import { collectionActions } from '../../store/collection-slice';
+import { libraryActions } from '../../store/library-slice';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -18,8 +18,8 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	);
 	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 
-	const handleAddToCollection = () => {
-		dispatch(collectionActions.addArtist(artistId));
+	const handleAddToLibrary = () => {
+		dispatch(libraryActions.addArtist(artistId));
 	};
 
 	const artistData = (
@@ -28,7 +28,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 			<h4>artist: {id}</h4>
 			{image && <img src={image} alt={id} />}
 			<p>
-				<button onClick={handleAddToCollection}>Add</button>
+				<button onClick={handleAddToLibrary}>Add</button>
 			</p>
 			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
 			<p>{bio}</p>

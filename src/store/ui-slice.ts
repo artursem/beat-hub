@@ -5,6 +5,7 @@ export interface appState {
 	statusArtist: 'idle' | 'loading' | 'error';
 	statusSimilar: 'idle' | 'loading' | 'error';
 	statusAlbums: 'idle' | 'loading' | 'error';
+	statusLibrary: 'idle' | 'loading' | 'error';
 	list: boolean;
 }
 
@@ -13,6 +14,7 @@ const initialState: appState = {
 	statusArtist: 'idle',
 	statusSimilar: 'idle',
 	statusAlbums: 'idle',
+	statusLibrary: 'idle',
 	list: false,
 };
 
@@ -30,6 +32,9 @@ export const uiSlice = createSlice({
 			state.statusSimilar = action.payload;
 		},
 		setStatusAlbums: (state, action) => {
+			state.statusAlbums = action.payload;
+		},
+		setStatusLibrary: (state, action) => {
 			state.statusAlbums = action.payload;
 		},
 		setListIsOpen: (state, action) => {

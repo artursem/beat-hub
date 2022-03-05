@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import collectionSlice from './collection-slice';
+import librarySlice from './library-slice';
 
 import { searchArtistSlice } from './search-slice';
 import { uiSlice } from './ui-slice';
@@ -9,7 +9,7 @@ export function makeStore() {
 		reducer: {
 			search: searchArtistSlice.reducer,
 			uiStatus: uiSlice.reducer,
-			collection: collectionSlice.reducer,
+			library: librarySlice.reducer,
 		},
 	});
 }
