@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { fetchLibrary } from '../../store/fetchLibrary';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import librarySlice from '../../store/library-slice';
+import { libraryActions } from '../../store/library-slice';
+import { fetchLibrary } from '../../store/fetchLibrary';
+import LibraryItem from './LibraryItem';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -20,20 +22,7 @@ const DisplayCollection = () => {
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (
-				<li key={id}>
-					<Link href={`/${id}`}>
-						<a>
-							{thumbnail && (
-								<>
-									<img src={thumbnail} alt={name} width='150px' />
-									<br />
-								</>
-							)}
-
-							{name}
-						</a>
-					</Link>
-				</li>
+				<LibraryItem key={id} id={id} name={name} thumbnail={thumbnail} />
 		  ))
 		: null;
 	const displayLibrary = library ? (

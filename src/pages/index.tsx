@@ -3,7 +3,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useAppDispatch } from '../store/hooks';
 import { uiActions } from '../store/ui-slice';
-import TopArtists from '../components/displayResults/TopArtists';
+import { libraryActions } from '../store/library-slice';
+import TopArtists from '../components/topArtists/TopArtists';
 import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {
