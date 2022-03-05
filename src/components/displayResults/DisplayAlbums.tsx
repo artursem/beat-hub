@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchAlbums } from '../../store/fetchAlbums';
 

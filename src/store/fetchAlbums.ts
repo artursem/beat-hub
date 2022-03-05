@@ -34,7 +34,6 @@ export const fetchAlbums = (list: string[]) => {
 					thumbnail: imageList[idx],
 				};
 			});
-
 			return albums;
 		};
 
