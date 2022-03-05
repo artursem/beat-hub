@@ -3,6 +3,9 @@ import type { RootState } from './store';
 import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
 import Album from '../models/albums';
+
+import { searchArtist } from './searchArtist';
+
 export interface searchState {
 	searchArtist: string;
 	searchResult: ListArtists[];

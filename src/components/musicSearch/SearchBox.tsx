@@ -1,8 +1,10 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../store/hooks';
 import { searchActions } from '../../store/search-slice';
 import { searchArtist } from '../../store/searchArtist';
+
 import OptionItem from './OptionItem';
+import { uiActions } from '../../store/ui-slice';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +13,9 @@ const SearchBox: FC = () => {
 	const showResultList = useAppSelector((state) => state.uiStatus.list);
 	const notification = useAppSelector((state) => state.uiStatus.statusSearch);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
+	const onClose = () => {
+		dispatch(uiActions.setListIsOpen(false));
+	};
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
