@@ -34,7 +34,6 @@ const SearchBox: FC = () => {
 
 	let displayList;
 	if (showResultList && notification === 'idle') {
-		// show list ?
 		displayList = <ul>{showArtist}</ul>;
 	}
 	if (notification !== 'idle') {
