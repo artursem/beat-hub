@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { selectArtist } from '../../store/artist-slice';
-import { uiActions } from '../../store/ui-slice';
+import { selectAlbums, selectArtist, selectSimilar } from '../../store/artist-slice';
+import { setListIsOpen } from '../../store/ui-slice';
 import DisplayArtist from '../../components/displayResults/DisplayArtist';
 import SimilarArtists from '../../components/displayResults/SimilarArtists';
 import DisplayAlbums from '../../components/displayResults/DisplayAlbums';
@@ -18,7 +18,7 @@ const Artist = () => {
 
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(uiActions.setListIsOpen(false));
+		dispatch(setListIsOpen(false));
 	}, [artistId]);
 
 	return (

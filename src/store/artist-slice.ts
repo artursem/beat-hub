@@ -72,6 +72,8 @@ export const artistSlice = createSlice({
 		builder
 			.addCase(fetchArtistData.pending, (state) => {
 				state.status = 'loading';
+				state.albumsDetails = [];
+				state.similarDetails = [];
 			})
 			.addCase(fetchArtistData.fulfilled, (state, action) => {
 				state.status = 'idle';

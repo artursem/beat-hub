@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../store/hooks';
 import { fetchSearch, selectSearchResult, selectSearchStatus } from '../../store/search-slice';
+import { selectListStatus, setListIsOpen } from '../../store/ui-slice';
 import OptionItem from './OptionItem';
 
 const SearchBox: FC = () => {
@@ -8,11 +9,12 @@ const SearchBox: FC = () => {
 	const dispatch = useAppDispatch();
 	const searchList = useAppSelector(selectSearchResult);
 	const notification = useAppSelector(selectSearchStatus);
-	// const showResultList = useAppSelector((state) => state.uiStatus.list); // ############################ FIX!
+	const showResultList = useAppSelector(selectListStatus);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
+			dispatch(setListIsOpen(true));
 			dispatch(fetchSearch(searchTerm));
 		}
 	}, [debouncedSearchTerm]);
@@ -26,7 +28,7 @@ const SearchBox: FC = () => {
 	});
 
 	let displayList;
-	if (notification === 'idle') {
+	if (showResultList && notification === 'idle') {
 		// show list ?
 		displayList = <ul>{showArtist}</ul>;
 	}

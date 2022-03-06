@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from '../../store/artist-slice';
+import {
+	fetchAlbumsData,
+	selectAlbums,
+	selectAlbumsStatus,
+	selectArtistStatus,
+} from '../../store/artist-slice';
 
 type DisplayAlbumsProps = {
 	list: string[];
@@ -12,6 +17,7 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	}, [dispatch, list, fetchAlbumsData]);
 
 	const notification = useAppSelector(selectAlbumsStatus);
+	const notificationArtist = useAppSelector(selectArtistStatus);
 	const albums = useAppSelector(selectAlbums);
 
 	const albumsLi = albums
@@ -28,12 +34,13 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 				</li>
 		  ))
 		: null;
-	const displaySimilar = albums ? (
-		<>
-			<h3>top albums:</h3>
-			<ul>{albumsLi}</ul>
-		</>
-	) : null;
+	const displaySimilar =
+		albums && notificationArtist === 'idle' ? (
+			<>
+				<h3>top albums:</h3>
+				<ul>{albumsLi}</ul>
+			</>
+		) : null;
 
 	return notification === 'idle' ? displaySimilar : <p>{notification} top albums</p>;
 };
