@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTop } from '../../store/fetchTop';
+import { fetchTopData, selectTop, selectTopStatus } from '../../store/top-slice';
 
 const TopArtists = () => {
-	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchTop());
+		dispatch(fetchTopData());
 	}, [dispatch]);
 
-	const top = useAppSelector((state) => state.search.topArtists);
+	const notification = useAppSelector(selectTopStatus);
+	const top = useAppSelector(selectTop);
+
 	const displayTopArtists = top.map(({ id, name, thumbnail }) => (
 		<li key={id}>
 			<Link href={`/${id}`}>
