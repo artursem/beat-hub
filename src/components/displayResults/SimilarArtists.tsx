@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchSimilar } from '../../store/fetchSimilar';
+import { fetchSimilarData, selectSimilar, selectSimilarStatus } from '../../store/artist-slice';
 
 type SimilarArtistsProps = {
 	list: string[];
@@ -9,11 +9,11 @@ type SimilarArtistsProps = {
 const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchSimilar(list));
+		dispatch(fetchSimilarData(list));
 	}, [dispatch, list]);
 
-	const notification = useAppSelector((state) => state.uiStatus.statusSimilar);
-	const similar = useAppSelector((state) => state.search.similarDetails);
+	const notification = useAppSelector(selectSimilarStatus);
+	const similar = useAppSelector(selectSimilar);
 
 	const similarLi = similar
 		? similar.map(({ id, name, thumbnail }) => (
@@ -40,11 +40,7 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 		</>
 	) : null;
 
-	return notification === 'idle' ? (
-		displaySimilar
-	) : (
-		<p>{notification} similar artist</p>
-	);
+	return notification === 'idle' ? displaySimilar : <p>{notification} similar artist</p>;
 };
 
 export default SimilarArtists;

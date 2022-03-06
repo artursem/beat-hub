@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAlbums } from '../../store/fetchAlbums';
+import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from '../../store/artist-slice';
 
 type DisplayAlbumsProps = {
 	list: string[];
@@ -8,11 +8,11 @@ type DisplayAlbumsProps = {
 const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchAlbums(list));
-	}, [dispatch, list, fetchAlbums]);
+		dispatch(fetchAlbumsData(list));
+	}, [dispatch, list, fetchAlbumsData]);
 
-	const notification = useAppSelector((state) => state.uiStatus.statusAlbums);
-	const albums = useAppSelector((state) => state.search.albumsDetails);
+	const notification = useAppSelector(selectAlbumsStatus);
+	const albums = useAppSelector(selectAlbums);
 
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
@@ -35,11 +35,7 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 		</>
 	) : null;
 
-	return notification === 'idle' ? (
-		displaySimilar
-	) : (
-		<p>{notification} top albums</p>
-	);
+	return notification === 'idle' ? displaySimilar : <p>{notification} top albums</p>;
 };
 
 export default DisplayAlbums;

@@ -1,11 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchArtist } from '../../store/fetchArtist';
-import {
-	addArtist,
-	removeArtist,
-	selectLibraryList,
-} from '../../store/library-slice';
+import { fetchArtistData, selectArtist, selectArtistStatus } from '../../store/artist-slice';
+import { addArtist, removeArtist, selectLibraryList } from '../../store/library-slice';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -14,18 +10,16 @@ type DisplayArtistProps = {
 const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchArtist(artistId));
+		dispatch(fetchArtistData(artistId));
 	}, [dispatch, artistId]);
 
-	const { id, name, bio, genres, image } = useAppSelector(
-		(state) => state.search.displayArtist
-	);
+	const notification = useAppSelector(selectArtistStatus);
+	const { id, name, bio, genres, image } = useAppSelector(selectArtist);
 	const library = useAppSelector(selectLibraryList);
+
 	const isInLibrary = (id: string) => {
 		return library.indexOf(id) >= 0;
 	};
-
-	const notification = useAppSelector((state) => state.uiStatus.statusArtist);
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(artistId));

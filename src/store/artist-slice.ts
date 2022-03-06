@@ -1,29 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from './store';
+
 import FoundArtist from '../models/foundArtist';
 import ListArtists from '../models/listArtists';
 import Album from '../models/albums';
 
 import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';
+import fetchSimilar from './fetchSimilar';
 
-export interface searchState {
-	searchArtist: string;
-	searchResult: ListArtists[];
+export interface ArtistState {
 	displayArtist: FoundArtist;
-	similarId: string[];
 	similarDetails: Array<ListArtists> | null;
-	albumsId: string[] | null;
 	albumsDetails: Array<Album> | null;
-	topArtists: Array<ListArtists>;
 	status: 'idle' | 'loading' | 'failed';
 	statusAlbums: 'idle' | 'loading' | 'failed';
 	statusSimilar: 'idle' | 'loading' | 'failed';
 }
 
-const initialState: searchState = {
-	searchArtist: '',
-	searchResult: [],
+const initialState: ArtistState = {
 	displayArtist: {
 		id: '',
 		name: '',
@@ -34,56 +29,40 @@ const initialState: searchState = {
 		image: '',
 		thumbnail: '',
 	},
-	similarId: [],
 	similarDetails: [],
-	albumsId: null,
 	albumsDetails: [],
-	topArtists: [],
 	status: 'idle',
 	statusAlbums: 'idle',
 	statusSimilar: 'idle',
 };
 
-export const fetchArtistData = createAsyncThunk(
-	'search/fetchArtistData',
-	async (id: string) => {
-		const response = await fetchArtist(id);
-		return response;
-	}
-);
+export const fetchArtistData = createAsyncThunk('artist/fetchArtistData', async (id: string) => {
+	const response = await fetchArtist(id);
+	return response;
+});
 
-export const fetchAlbumsData = createAsyncThunk(
-	'search/fetchAlbumData',
+export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (list: string[]) => {
+	const response = await fetchAlbums(list);
+	return response;
+});
+
+export const fetchSimilarData = createAsyncThunk(
+	'artist/fetchSimilarData',
 	async (list: string[]) => {
-		const response = await fetchAlbums(list);
+		const response = await fetchSimilar(list);
 		return response;
 	}
 );
 
-export const searchArtistSlice = createSlice({
-	name: 'search',
+export const artistSlice = createSlice({
+	name: 'artist',
 	initialState,
 	reducers: {
-		setSearch: (state, action) => {
-			state.searchArtist = action.payload;
-		},
-		setSearchResult: (state, action) => {
-			state.searchResult = action.payload;
-		},
 		setDisplayArtist: (state, action) => {
 			state.displayArtist = action.payload;
 		},
-		setSimilarId: (state, action) => {
-			state.similarId = action.payload;
-		},
 		setSimilarDetails: (state, action) => {
 			state.similarDetails = action.payload;
-		},
-		setTopArtists: (state, action) => {
-			state.topArtists = action.payload;
-		},
-		setAlbumsId: (state, action) => {
-			state.albumsId = action.payload;
 		},
 		setAlbumsDetails: (state, action) => {
 			state.albumsDetails = action.payload;
@@ -104,15 +83,22 @@ export const searchArtistSlice = createSlice({
 			.addCase(fetchAlbumsData.fulfilled, (state, action) => {
 				state.statusAlbums = 'idle';
 				state.albumsDetails = action.payload;
+			})
+			.addCase(fetchSimilarData.pending, (state) => {
+				state.statusSimilar = 'loading';
+			})
+			.addCase(fetchSimilarData.fulfilled, (state, action) => {
+				state.statusSimilar = 'idle';
+				state.similarDetails = action.payload;
 			});
 	},
 });
 
-export const searchActions = searchArtistSlice.actions;
-export const selectSearch = (state: RootState) => state.search.searchArtist;
-export const selectArtist = (state: RootState) => state.search.displayArtist;
-export const selectArtistStatus = (state: RootState) => state.search.status;
-export const selectAlbums = (state: RootState) => state.search.albumsDetails;
-export const selectAlbumsStatus = (state: RootState) =>
-	state.search.statusAlbums;
-export default searchArtistSlice;
+export const artistActions = artistSlice.actions;
+export const selectArtist = (state: RootState) => state.artist.displayArtist;
+export const selectArtistStatus = (state: RootState) => state.artist.status;
+export const selectAlbums = (state: RootState) => state.artist.albumsDetails;
+export const selectAlbumsStatus = (state: RootState) => state.artist.statusAlbums;
+export const selectSimilar = (state: RootState) => state.artist.similarDetails;
+export const selectSimilarStatus = (state: RootState) => state.artist.statusSimilar;
+export default artistSlice;

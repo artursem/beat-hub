@@ -1,18 +1,14 @@
 import { getArtistApi } from '../globals/api-endpoints';
 import ListArtists from '../models/listArtists';
 
-export default async function fetchLibArtists(
-	listId: string[]
-): Promise<Array<ListArtists>> {
+export default async function fetchLibArtists(listId: string[]): Promise<Array<ListArtists>> {
 	const urlList = listId.map((id) => getArtistApi(id));
 	const artistResponse = await Promise.all(urlList.map((url) => fetch(url)));
 	const artistData = await Promise.all(artistResponse.map((res) => res.json()));
 
 	const urlListImages = listId.map((id: string) => getArtistApi(id, 'images'));
 
-	const imageResponse = await Promise.all(
-		urlListImages.map((url: string) => fetch(url))
-	);
+	const imageResponse = await Promise.all(urlListImages.map((url: string) => fetch(url)));
 	const imageData = await Promise.all(imageResponse.map((res) => res.json()));
 
 	const imageList = imageData.map((img) =>
