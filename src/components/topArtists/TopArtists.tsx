@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTopData, selectTop, selectTopStatus } from '../../store/top-slice';
+import { fetchTopData, selectTop, selectTopStatus } from './top-slice';
+import ListArtists from '../../models/listArtists';
 
 const TopArtists = () => {
 	const dispatch = useAppDispatch();
@@ -12,7 +13,7 @@ const TopArtists = () => {
 	const notification = useAppSelector(selectTopStatus);
 	const top = useAppSelector(selectTop);
 
-	const displayTopArtists = top.map(({ id, name, thumbnail }) => (
+	const displayTopArtists = top.map(({ id, name, thumbnail }: ListArtists) => (
 		<li key={id}>
 			<Link href={`/${id}`}>
 				<a>

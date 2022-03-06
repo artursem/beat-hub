@@ -1,5 +1,5 @@
-import ListArtists from '../models/listArtists';
-import { searchArtistApi, getArtistApi } from '../globals/api-endpoints';
+import ListArtists from '../../models/listArtists';
+import { searchArtistApi, getArtistApi } from '../../globals/api-endpoints';
 
 export default async function fetchSearchList(searchTerm: string) {
 	const response = await fetch(searchArtistApi(searchTerm));

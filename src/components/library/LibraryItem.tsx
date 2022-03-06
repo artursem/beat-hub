@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ListArtists from '../../models/listArtists';
 import { useAppDispatch } from '../../store/hooks';
-import { addArtist, removeArtist } from '../../store/library-slice';
+import { addArtist, removeArtist } from './library-slice';
 
 const LibraryItem = ({ id, thumbnail, name }: ListArtists) => {
 	const dispatch = useAppDispatch();

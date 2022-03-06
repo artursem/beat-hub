@@ -1,7 +1,12 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../store/hooks';
-import { fetchSearch, selectSearchResult, selectSearchStatus } from '../../store/search-slice';
-import { selectListStatus, setListIsOpen } from '../../store/ui-slice';
+import {
+	fetchSearch,
+	selectSearchResult,
+	selectSearchStatus,
+	setListIsOpen,
+	selectListStatus,
+} from './search-slice';
 import OptionItem from './OptionItem';
 
 const SearchBox: FC = () => {

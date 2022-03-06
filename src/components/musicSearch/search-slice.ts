@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { RootState } from './store';
-import ListArtists from '../models/listArtists';
+import type { RootState } from '../../store/store';
+import ListArtists from '../../models/listArtists';
 
 import fetchSearchList from './fetchSearchList';
 
 export interface searchState {
 	searchResult: ListArtists[];
+	showList: boolean;
 	status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: searchState = {
 	searchResult: [],
+	showList: false,
 	status: 'idle',
 };
 
@@ -26,8 +28,8 @@ export const searchArtistSlice = createSlice({
 	name: 'search',
 	initialState,
 	reducers: {
-		setSearchResult: (state, action) => {
-			state.searchResult = action.payload;
+		setListIsOpen: (state, action) => {
+			state.showList = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -42,7 +44,8 @@ export const searchArtistSlice = createSlice({
 	},
 });
 
-export const searchActions = searchArtistSlice.actions;
+export const { setListIsOpen } = searchArtistSlice.actions;
 export const selectSearchResult = (state: RootState) => state.search.searchResult;
 export const selectSearchStatus = (state: RootState) => state.search.status;
+export const selectListStatus = (state: RootState) => state.search.showList;
 export default searchArtistSlice;

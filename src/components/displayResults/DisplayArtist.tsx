@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchArtistData, selectArtist, selectArtistStatus } from '../../store/artist-slice';
-import { addArtist, removeArtist, selectLibraryList } from '../../store/library-slice';
+import { fetchArtistData, selectArtist, selectArtistStatus } from './artist-slice';
+import { addArtist, removeArtist, selectLibraryList } from '../library/library-slice';
 
 type DisplayArtistProps = {
 	artistId: string;

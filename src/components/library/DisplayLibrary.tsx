@@ -5,12 +5,18 @@ import {
 	selectLibraryStatus,
 	selectLibraryArtists,
 	fetchLibraryArtists,
-} from '../../store/library-slice';
+	setLibrary,
+} from './library-slice';
 
 import LibraryItem from './LibraryItem';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(setLibrary());
+	}, [dispatch]);
+
 	const library = useAppSelector(selectLibraryList);
 	useEffect(() => {
 		if (!library) return;
@@ -33,11 +39,7 @@ const DisplayCollection = () => {
 		<p>Your library is empty. Please add artists you enjoy</p>
 	);
 
-	return notification === 'idle' ? (
-		displayLibrary
-	) : (
-		<p>{notification} library</p>
-	);
+	return notification === 'idle' ? displayLibrary : <p>{notification} library</p>;
 };
 
 export default DisplayCollection;

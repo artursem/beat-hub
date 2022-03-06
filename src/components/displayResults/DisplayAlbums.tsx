@@ -5,7 +5,7 @@ import {
 	selectAlbums,
 	selectAlbumsStatus,
 	selectArtistStatus,
-} from '../../store/artist-slice';
+} from './artist-slice';
 
 type DisplayAlbumsProps = {
 	list: string[];

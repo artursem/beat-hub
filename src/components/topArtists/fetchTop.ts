@@ -1,5 +1,5 @@
-import ListArtists from '../models/listArtists';
-import { getArtistApi, getTopApi } from '../globals/api-endpoints';
+import ListArtists from '../../models/listArtists';
+import { getArtistApi, getTopApi } from '../../globals/api-endpoints';
 
 export default async function fetchTop() {
 	const response = await fetch(getTopApi());

@@ -2,17 +2,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 import SearchBox from '../musicSearch/SearchBox';
 
-import { useEffect } from 'react';
-import { useAppDispatch } from '../../store/hooks';
-import { setLibrary } from '../../store/library-slice';
-
 const Layout: FC = ({ children }) => {
-	// move somewhere!!!!!!
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(setLibrary());
-	}, [dispatch]);
-
 	return (
 		<div>
 			<header

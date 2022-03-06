@@ -2,15 +2,14 @@ import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useAppDispatch } from '../store/hooks';
-import { uiActions } from '../store/ui-slice';
-import { libraryActions } from '../store/library-slice';
+import { setListIsOpen } from '../components/musicSearch/search-slice';
 import TopArtists from '../components/topArtists/TopArtists';
 import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(uiActions.setListIsOpen(false));
+		dispatch(setListIsOpen(false));
 	}, []);
 
 	return (

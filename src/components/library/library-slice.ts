@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { RootState } from './store';
-import ListArtists from '../models/listArtists';
+import type { RootState } from '../../store/store';
+import ListArtists from '../../models/listArtists';
 import fetchLibArtists from './fetchLibrary';
 
 export interface libraryState {

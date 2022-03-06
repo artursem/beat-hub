@@ -6,7 +6,7 @@ import {
 	selectSimilar,
 	selectSimilarStatus,
 	selectArtistStatus,
-} from '../../store/artist-slice';
+} from './artist-slice';
 
 type SimilarArtistsProps = {
 	list: string[];

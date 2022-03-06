@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { RootState } from './store';
+import type { RootState } from '../../store/store';
 
-import FoundArtist from '../models/foundArtist';
-import ListArtists from '../models/listArtists';
-import Album from '../models/albums';
+import FoundArtist from '../../models/foundArtist';
+import ListArtists from '../../models/listArtists';
+import Album from '../../models/albums';
 
 import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';

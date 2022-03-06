@@ -1,4 +1,4 @@
-import { getAlbum } from '../globals/api-endpoints';
+import { getAlbum } from '../../globals/api-endpoints';
 
 export default async function fetchAlbums(list: string[]) {
 	const urlList = list.map((id) => getAlbum(id));

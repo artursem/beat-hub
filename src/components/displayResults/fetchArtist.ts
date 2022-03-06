@@ -1,5 +1,5 @@
-import FoundArtist from '../models/foundArtist';
-import { getArtistApi, getGenericApi, getTopAlbums } from '../globals/api-endpoints';
+import FoundArtist from '../../models/foundArtist';
+import { getArtistApi, getGenericApi, getTopAlbums } from '../../globals/api-endpoints';
 
 export default async function fetchArtist(id: string): Promise<FoundArtist> {
 	const response = await fetch(getArtistApi(id));
