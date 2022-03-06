@@ -1,49 +1,66 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 import ListArtists from '../models/listArtists';
+import fetchLibArtists from './fetchLibrary';
 
 export interface libraryState {
-	libraryId: string[];
-	libraryArtists: Array<ListArtists> | null;
+	listId: string[];
+	artists: Array<ListArtists> | null;
+	status: 'idle' | 'loading' | 'failed';
 }
 
 const initialState: libraryState = {
-	libraryId: [],
-	libraryArtists: null,
+	listId: [],
+	artists: null,
+	status: 'idle',
 };
+
+export const fetchLibraryArtists = createAsyncThunk(
+	'library/fetchArtists',
+	async (list: string[]) => {
+		const response = await fetchLibArtists(list);
+		return response;
+	}
+);
 
 export const librarySlice = createSlice({
 	name: 'library',
 	initialState,
 	reducers: {
-		setLibraryDetails: (state, action) => {
-			state.libraryArtists = action.payload;
-		},
 		setLibrary: (state) => {
 			const localLibrary = localStorage.getItem('library');
 			if (!localLibrary) return;
-			state.libraryId = JSON.parse(localLibrary);
+			state.listId = JSON.parse(localLibrary);
 		},
 		addArtist: (state, action) => {
 			const newItem = action.payload;
-			if (state.libraryId.indexOf(newItem) >= 0) return;
+			if (state.listId.indexOf(newItem) >= 0) return;
 
-			state.libraryId.push(action.payload);
-			localStorage.setItem('library', JSON.stringify(state.libraryId));
+			state.listId.push(action.payload);
+			localStorage.setItem('library', JSON.stringify(state.listId));
 		},
 		removeArtist: (state, action) => {
 			const removeId = action.payload;
-			state.libraryId = state.libraryId.filter((id) => id !== removeId);
-			if (!state.libraryArtists) return;
-			state.libraryArtists = state.libraryArtists.filter(
-				(artist) => artist.id !== removeId
-			);
-			localStorage.setItem('library', JSON.stringify(state.libraryId));
+			state.listId = state.listId.filter((id) => id !== removeId);
+			if (!state.artists) return;
+			state.artists = state.artists.filter((artist) => artist.id !== removeId);
+			localStorage.setItem('library', JSON.stringify(state.listId));
 		},
-		// remove, set, get, isInLibrary
+	},
+	extraReducers: (builder) => {
+		builder
+			.addCase(fetchLibraryArtists.pending, (state) => {
+				state.status = 'loading';
+			})
+			.addCase(fetchLibraryArtists.fulfilled, (state, action) => {
+				state.status = 'idle';
+				state.artists = action.payload;
+			});
 	},
 });
 
-export const libraryActions = librarySlice.actions;
-export const selectLibrary = (state: RootState) => state.library.libraryId;
+export const { addArtist, removeArtist, setLibrary } = librarySlice.actions;
+export const selectLibraryList = (state: RootState) => state.library.listId;
+export const selectLibraryStatus = (state: RootState) => state.library.status;
+export const selectLibraryArtists = (state: RootState) => state.library.artists;
 export default librarySlice;

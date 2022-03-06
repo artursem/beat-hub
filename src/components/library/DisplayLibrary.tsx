@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import librarySlice from '../../store/library-slice';
-import { libraryActions } from '../../store/library-slice';
-import { fetchLibrary } from '../../store/fetchLibrary';
+import {
+	selectLibraryList,
+	selectLibraryStatus,
+	selectLibraryArtists,
+	fetchLibraryArtists,
+} from '../../store/library-slice';
+
 import LibraryItem from './LibraryItem';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
-	const library = useAppSelector((state) => state.library.libraryId);
+	const library = useAppSelector(selectLibraryList);
 	useEffect(() => {
 		if (!library) return;
-		dispatch(fetchLibrary(library));
+		dispatch(fetchLibraryArtists(library));
 	}, [dispatch, library]);
 
-	const notification = useAppSelector((state) => state.uiStatus.statusLibrary);
-	const libraryArtists = useAppSelector(
-		(state) => state.library.libraryArtists
-	);
+	const notification = useAppSelector(selectLibraryStatus);
+	const libraryArtists = useAppSelector(selectLibraryArtists);
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (

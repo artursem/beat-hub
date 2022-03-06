@@ -4,12 +4,13 @@ import SearchBox from '../musicSearch/SearchBox';
 
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../store/hooks';
-import { libraryActions } from '../../store/library-slice';
+import { setLibrary } from '../../store/library-slice';
 
 const Layout: FC = ({ children }) => {
+	// move somewhere!!!!!!
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(libraryActions.setLibrary());
+		dispatch(setLibrary());
 	}, [dispatch]);
 
 	return (

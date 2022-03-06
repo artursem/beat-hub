@@ -7,7 +7,7 @@ import Album from '../models/albums';
 export interface searchState {
 	searchArtist: string;
 	searchResult: ListArtists[];
-	displayArtist: FoundArtist;
+	displayArtist: FoundArtist | null;
 	similarId: string[];
 	similarDetails: Array<ListArtists> | null;
 	albumsId: string[] | null;
@@ -19,16 +19,7 @@ export interface searchState {
 const initialState: searchState = {
 	searchArtist: '',
 	searchResult: [],
-	displayArtist: {
-		id: '',
-		name: '',
-		image: '',
-		thumbnail: '',
-		bio: '',
-		genres: [],
-		contemporaries: null,
-		albumsId: null,
-	},
+	displayArtist: null,
 	similarId: [],
 	similarDetails: [],
 	albumsId: null,
