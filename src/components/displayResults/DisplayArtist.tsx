@@ -41,7 +41,8 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 			{image && <img src={image} alt={id} />}
 			<p>{libraryButton}</p>
 			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
-			<p>{bio}</p>
+			{/* <p>{bio}</p> */}
+			<p dangerouslySetInnerHTML={{ __html: bio }}></p>
 		</section>
 	);
 
