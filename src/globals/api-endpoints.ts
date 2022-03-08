@@ -1,4 +1,5 @@
 const apiKey = 'MzQyZGE0YzktZDBlZC00MTk2LWIzNjctOTBlNjQ0OTcwNTA3';
+// const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const address = 'https://api.napster.com/v2.2/';
 // MOVE TO .ENV !!!!!!!!!!!!!!!!
 
@@ -17,11 +18,7 @@ export const getGenericApi = (link: string) => {
 	return `${link}?apikey=${apiKey}`;
 };
 
-export const getTopApi = () => {
-	return `https://api.napster.com/v2.2/artists/top?limit=5&apikey=${apiKey}`;
-};
-
-export const getTopAlbums = (id: string) => {
+export const getTopAlbumsByArtist = (id: string) => {
 	return `${address}artists/${id}/albums/top?limit=5&apikey=${apiKey}`;
 };
 
@@ -30,4 +27,12 @@ export const getAlbum = (id: string, more?: string) => {
 		return `${address}albums/${id}/${more}?apikey=${apiKey}`;
 	}
 	return `${address}albums/${id}?apikey=${apiKey}`;
+};
+
+export const getTopApi = () => {
+	return `https://api.napster.com/v2.2/artists/top?limit=5&apikey=${apiKey}`;
+};
+
+export const getTopAlbumsApi = () => {
+	return `${address}albums/top?limit=5&apikey=${apiKey}`;
 };

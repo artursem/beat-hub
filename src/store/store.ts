@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import artistSlice from '../components/displayResults/artist-slice';
 import librarySlice from '../components/library/library-slice';
 import topArtistsSlice from '../components/topArtists/top-slice';
+import topAlbumsSlice from '../components/topAlbums/top-albums-slice';
 import searchArtistSlice from '../components/musicSearch/search-slice';
 
 export function makeStore() {
@@ -10,6 +11,7 @@ export function makeStore() {
 			search: searchArtistSlice.reducer,
 			artist: artistSlice.reducer,
 			topArtists: topArtistsSlice.reducer,
+			topAlbums: topAlbumsSlice.reducer,
 			library: librarySlice.reducer,
 		},
 	});

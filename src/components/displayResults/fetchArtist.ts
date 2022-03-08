@@ -1,5 +1,5 @@
 import FoundArtist from '../../models/foundArtist';
-import { getArtistApi, getGenericApi, getTopAlbums } from '../../globals/api-endpoints';
+import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from '../../globals/api-endpoints';
 
 export default async function fetchArtist(id: string): Promise<FoundArtist> {
 	const response = await fetch(getArtistApi(id));
@@ -39,7 +39,7 @@ export default async function fetchArtist(id: string): Promise<FoundArtist> {
 	const bio = data.artists[0].bios ? data.artists[0].bios[0].bio : 'No bio available';
 
 	let albumsId = null;
-	const albumsResponse = await fetch(getTopAlbums(id));
+	const albumsResponse = await fetch(getTopAlbumsByArtist(id));
 	if (!albumsResponse.ok) {
 		throw new Error('Error fetching albums from db');
 	}

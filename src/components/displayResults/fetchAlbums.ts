@@ -18,6 +18,7 @@ export default async function fetchAlbums(list: string[]) {
 			id: album.albums[0].id,
 			name: album.albums[0].name,
 			artist: album.albums[0].artistName,
+			// artistId: album.links.artists.ids[0],
 			thumbnail: imageList[idx],
 		};
 	});

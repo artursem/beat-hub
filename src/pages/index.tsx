@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useAppDispatch } from '../store/hooks';
 import { setListIsOpen } from '../components/musicSearch/search-slice';
 import TopArtists from '../components/topArtists/TopArtists';
+import TopAlbums from '../components/topAlbums/TopAlbums';
 import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {
@@ -19,6 +20,7 @@ const IndexPage: NextPage = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<TopArtists />
+			<TopAlbums />
 		</div>
 	);
 };

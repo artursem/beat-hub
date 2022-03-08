@@ -36,10 +36,17 @@ const initialState: ArtistState = {
 	statusSimilar: 'idle',
 };
 
-export const fetchArtistData = createAsyncThunk('artist/fetchArtistData', async (id: string) => {
-	const response = await fetchArtist(id);
-	return response;
-});
+export const fetchArtistData = createAsyncThunk(
+	'artist/fetchArtistData',
+	async (id: string, { rejectWithValue }) => {
+		try {
+			const response = await fetchArtist(id);
+			return response;
+		} catch (err) {
+			return rejectWithValue('failed artist fetching');
+		}
+	}
+);
 
 export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (list: string[]) => {
 	const response = await fetchAlbums(list);
@@ -78,6 +85,9 @@ export const artistSlice = createSlice({
 			.addCase(fetchArtistData.fulfilled, (state, action) => {
 				state.status = 'idle';
 				state.displayArtist = action.payload;
+			})
+			.addCase(fetchArtistData.rejected, (state) => {
+				state.status = 'failed';
 			})
 			.addCase(fetchAlbumsData.pending, (state) => {
 				state.statusAlbums = 'loading';

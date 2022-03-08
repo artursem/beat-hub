@@ -18,9 +18,13 @@ const initialState: searchState = {
 
 export const fetchSearch = createAsyncThunk(
 	'search/fetchArtistData',
-	async (searchTerm: string) => {
-		const response = await fetchSearchList(searchTerm);
-		return response;
+	async (searchTerm: string, { rejectWithValue }) => {
+		try {
+			const response = await fetchSearchList(searchTerm);
+			return response;
+		} catch (error) {
+			return rejectWithValue('failed to search for artist');
+		}
 	}
 );
 
@@ -36,6 +40,9 @@ export const searchArtistSlice = createSlice({
 		builder
 			.addCase(fetchSearch.pending, (state) => {
 				state.status = 'loading';
+			})
+			.addCase(fetchSearch.rejected, (state) => {
+				state.status = 'failed';
 			})
 			.addCase(fetchSearch.fulfilled, (state, action) => {
 				state.status = 'idle';

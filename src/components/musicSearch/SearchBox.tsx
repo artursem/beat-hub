@@ -37,7 +37,7 @@ const SearchBox: FC = () => {
 		displayList = <ul>{showArtist}</ul>;
 	}
 	if (notification !== 'idle') {
-		<p>{notification} search list</p>;
+		displayList = <p>{notification} search list</p>;
 	}
 
 	return (

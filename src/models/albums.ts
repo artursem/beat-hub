@@ -1,8 +1,9 @@
 type Album = {
 	id: string;
 	name: string;
-	thumbnail: string;
 	artist: string;
+	artistId: string;
+	thumbnail: string;
 };
 
 export default Album;
