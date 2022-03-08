@@ -30,9 +30,9 @@ export const getAlbum = (id: string, more?: string) => {
 };
 
 export const getTopApi = () => {
-	return `https://api.napster.com/v2.2/artists/top?limit=5&apikey=${apiKey}`;
+	return `https://api.napster.com/v2.2/artists/top?limit=5&range=week&apikey=${apiKey}`;
 };
 
 export const getTopAlbumsApi = () => {
-	return `${address}albums/top?limit=5&apikey=${apiKey}`;
+	return `${address}albums/top?limit=5&range=week&apikey=${apiKey}`;
 };
