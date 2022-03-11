@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import SearchBox from '../musicSearch/SearchBox';
+import { VStack } from '@chakra-ui/react';
 
 const Layout: FC = ({ children }) => {
 	return (
-		<div>
+		<VStack height='100vh' width='full' spacing='0'>
 			<header
 				style={{
 					display: 'flex',
@@ -22,7 +23,7 @@ const Layout: FC = ({ children }) => {
 			</header>
 			<main>{children}</main>
 			{/* <footer>footer</footer> */}
-		</div>
+		</VStack>
 	);
 };
 
