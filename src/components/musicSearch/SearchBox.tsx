@@ -9,6 +9,8 @@ import {
 } from './search-slice';
 import OptionItem from './OptionItem';
 
+import { Input } from '@chakra-ui/react';
+
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const dispatch = useAppDispatch();
@@ -42,7 +44,14 @@ const SearchBox: FC = () => {
 
 	return (
 		<div>
-			<input type='search' value={searchTerm} onChange={handleChange} list='artists' />
+			<Input
+				placeholder='Find artist...'
+				color='gray.100'
+				type='search'
+				value={searchTerm}
+				onChange={handleChange}
+				list='artists'
+			/>
 			{displayList}
 		</div>
 	);
