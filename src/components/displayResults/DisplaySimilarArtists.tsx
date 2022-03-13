@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
 	fetchSimilarData,
@@ -7,6 +6,8 @@ import {
 	selectSimilarStatus,
 	selectArtistStatus,
 } from './artist-slice';
+import ArtistCard from 'src/elements/cards/ArtistCard';
+import HeadingSecondary from '../../elements/headings/HeadingSecondary';
 
 type SimilarArtistsProps = {
 	list: string[];
@@ -23,26 +24,13 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 
 	const similarLi = similar
 		? similar.map(({ id, name, thumbnail }) => (
-				<li key={id}>
-					<Link href={`/${id}`}>
-						<a>
-							{thumbnail && (
-								<>
-									<img src={thumbnail} alt={name} width='150px' />
-									<br />
-								</>
-							)}
-
-							{name}
-						</a>
-					</Link>
-				</li>
+				<ArtistCard key={id} id={id} name={name} thumbnail={thumbnail} />
 		  ))
 		: null;
 	const displaySimilar =
 		similar && notificationArtist === 'idle' ? (
 			<>
-				<h3>similar artists:</h3>
+				<HeadingSecondary>Similar artists:</HeadingSecondary>
 				<ul>{similarLi}</ul>
 			</>
 		) : null;
