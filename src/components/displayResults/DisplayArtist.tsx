@@ -2,8 +2,13 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchArtistData, selectArtist, selectArtistStatus } from './artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from '../library/library-slice';
+import DisplayGenres from './DisplayGenres';
 import BtnRemoveFromLib from 'src/elements/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/elements/buttons/BtnAddToLib';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+import ImgArtist from 'src/elements/images/ImgArtist';
+import Box from 'src/elements/text/Box';
+import Bio from 'src/elements/text/Bio';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -31,23 +36,21 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	};
 
 	const libraryButton = isInLibrary(id) ? (
-		// <button onClick={handleRemoveFromLibrary}>Remove</button>
 		<BtnRemoveFromLib onClick={handleRemoveFromLibrary} />
 	) : (
-		// <button onClick={handleAddToLibrary}>Add</button>
 		<BtnAddToLib onClick={handleAddToLibrary} />
 	);
 
 	const artistData = (
-		<section>
-			<h1>{name}</h1>
-			<h4>artist: {id}</h4>
-			{image && <img src={image} alt={id} />}
-			<p>{libraryButton}</p>
-			<ul>{genres && genres.map((gen) => <li key={gen}>{gen} </li>)}</ul>
-			{/* <p>{bio}</p> */}
-			<p dangerouslySetInnerHTML={{ __html: bio }}></p>
-		</section>
+		<>
+			<HeadingPrimary>{name}</HeadingPrimary>
+			<Box>
+				{image && <ImgArtist src={image} alt={id} />}
+				<Box>{libraryButton}</Box>
+				{genres && <DisplayGenres genres={genres} />}
+			</Box>
+			<Bio content={bio} />
+		</>
 	);
 
 	return notification === 'idle' ? artistData : <p>{notification} artist</p>;
