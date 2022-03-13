@@ -6,7 +6,7 @@ interface ImgThumbnailProps {
 }
 
 const ImgThumbnail = ({ src, alt }: ImgThumbnailProps) => {
-	return <Image src={src} alt={alt} marginBottom='3' maxH={100} objectFit='cover' />;
+	return <Image src={src} alt={alt} maxH={100} objectFit='cover' />;
 };
 
 export default ImgThumbnail;

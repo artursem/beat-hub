@@ -14,14 +14,19 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 	return (
 		<Box
 			display='flex'
-			flexDir={['column', 'row']}
-			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
+			flexDir={{ base: 'row', lg: 'column' }}
+			justifyContent={'flex-start'}
+			width={{ base: '100%', lg: '150px' }}
+			height={{ base: '152px', lg: '300px' }}
 			alignItems='center'
 			borderColor='gray.700'
+			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
 			borderWidth={1}
 			marginY={3}
+			marginX={{ base: 0, lg: 3 }}
+			flexWrap={'wrap'}
 		>
-			<Box margin={0}>
+			<Box margin={0} flex={1}>
 				{artistId ? (
 					<NextLink href={`/${artistId}`} passHref>
 						<Link>
@@ -32,7 +37,7 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 					<ImgAlbum src={thumbnail} alt={name} />
 				)}
 			</Box>
-			<Center flex={1} padding={2}>
+			<Center as='div' flex={2} padding={2} marginY={3}>
 				{artistId ? (
 					<NextLink href={`/${artistId}`} passHref>
 						<Link>{`${name} by ${artist}`}</Link>
