@@ -11,6 +11,7 @@ import ArtistCard from '../cards/ArtistCard';
 import List from 'src/elements/text/List';
 import Li from 'src/elements/text/Li';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -35,14 +36,15 @@ const DisplayCollection = () => {
 				</Li>
 		  ))
 		: null;
-	const displayLibrary = library ? (
-		<>
-			<HeadingPrimary>Your Library</HeadingPrimary>
-			<List>{libraryLi}</List>
-		</>
-	) : (
-		<p>Your library is empty. Please add artists you enjoy</p>
-	);
+	const displayLibrary =
+		library.length > 0 ? (
+			<>
+				<HeadingPrimary>Your Library</HeadingPrimary>
+				<List>{libraryLi}</List>
+			</>
+		) : (
+			<HeadingSecondary>Your library is empty. Please add artists you enjoy</HeadingSecondary>
+		);
 
 	return notification === 'idle' ? displayLibrary : <p>{notification} library</p>;
 };

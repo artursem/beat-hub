@@ -1,4 +1,4 @@
-import List from '../../elements/text/List';
+import ListInline from '../../elements/text/ListInline';
 import Genre from '../../elements/text/Genre';
 import LiInline from 'src/elements/text/LiInline';
 
@@ -8,14 +8,14 @@ interface DisplayGenresProps {
 
 const DisplayGenres = ({ genres }: DisplayGenresProps) => {
 	return (
-		<List>
+		<ListInline>
 			{genres &&
 				genres.map((gen) => (
 					<LiInline key={gen}>
 						<Genre gen={gen} />
 					</LiInline>
 				))}
-		</List>
+		</ListInline>
 	);
 };
 

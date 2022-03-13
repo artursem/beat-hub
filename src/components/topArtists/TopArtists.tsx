@@ -2,6 +2,11 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchTopData, selectTop, selectTopStatus } from './top-slice';
+import List from 'src/elements/text/List';
+import Li from 'src/elements/text/Li';
+import ArtistCard from '../cards/ArtistCard';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+
 import ListArtists from '../../models/listArtists';
 
 const TopArtists = () => {
@@ -14,21 +19,15 @@ const TopArtists = () => {
 	const top = useAppSelector(selectTop);
 
 	const displayTopArtists = top.map(({ id, name, thumbnail }: ListArtists) => (
-		<li key={id}>
-			<Link href={`/${id}`}>
-				<a>
-					{thumbnail && <img src={thumbnail} alt={name} width='150px' />}
-					<br />
-					{name}
-				</a>
-			</Link>
-		</li>
+		<Li key={id}>
+			<ArtistCard id={id} name={name} thumbnail={thumbnail} />
+		</Li>
 	));
 	if (notification === 'idle') {
 		return (
 			<>
-				<h1>Top Artists</h1>
-				<ul>{displayTopArtists}</ul>
+				<HeadingPrimary>Top Artists</HeadingPrimary>
+				<List>{displayTopArtists}</List>
 			</>
 		);
 	} else {

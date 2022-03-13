@@ -3,6 +3,10 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchTopAlbumsData, selectTopAlbums, selectTopAlbumsStatus } from './top-albums-slice';
 import Album from '../../models/albums';
+import List from 'src/elements/text/List';
+import Li from 'src/elements/text/Li';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+import AlbumCard from '../cards/AlbumCard';
 
 const TopAlbums = () => {
 	const dispatch = useAppDispatch();
@@ -14,21 +18,15 @@ const TopAlbums = () => {
 	const top = useAppSelector(selectTopAlbums);
 
 	const displayTopAlbums = top.map(({ id, name, thumbnail, artist, artistId }: Album) => (
-		<li key={id}>
-			<Link href={`/${artistId}`}>
-				<a>
-					{thumbnail && <img src={thumbnail} alt={name} width='150px' />}
-					<br />
-					{name} by {artist}
-				</a>
-			</Link>
-		</li>
+		<Li key={id}>
+			<AlbumCard id={id} name={name} thumbnail={thumbnail} artist={artist} artistId={artistId} />
+		</Li>
 	));
 	if (notification === 'idle') {
 		return (
 			<>
-				<h1>Top Albums</h1>
-				<ul>{displayTopAlbums}</ul>
+				<HeadingPrimary>Top Albums</HeadingPrimary>
+				<List>{displayTopAlbums}</List>
 			</>
 		);
 	} else {
