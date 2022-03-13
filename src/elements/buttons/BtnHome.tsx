@@ -1,5 +1,5 @@
 import { Button } from '@chakra-ui/react';
-import IconHome from './icons/IconHome';
+import IconHome from '../icons/IconHome';
 
 const BtnHome = () => {
 	return (

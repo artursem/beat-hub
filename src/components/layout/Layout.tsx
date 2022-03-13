@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import SearchBox from '../musicSearch/SearchBox';
-import { Flex, VStack, Button, HStack } from '@chakra-ui/react';
-import BtnHome from 'src/elements/BtnHome';
+import { Flex, VStack, Box, HStack } from '@chakra-ui/react';
+import BtnHome from 'src/elements/buttons/BtnHome';
+import BtnLibrary from 'src/elements/buttons/BtnLibrary';
 
 const Layout: FC = ({ children }) => {
 	return (
-		<VStack minHeight='100vh' width='full' spacing='0' bg='gray.900' color='gray.50' paddingTop='2'>
-			<Flex direction='row' width='100%' justify='space-around' align='center'>
-				<SearchBox />
+		<VStack minHeight='100vh' width='full' spacing='0' bg='gray.900' color='gray.50' padding='5'>
+			<Flex direction='row' width='100%' justify='space-around' align='flex-start'>
+				<Box flex={1} marginRight='2'>
+					<SearchBox />
+				</Box>
 				<HStack>
 					<Link href='/'>
 						<a>
@@ -16,9 +19,9 @@ const Layout: FC = ({ children }) => {
 						</a>
 					</Link>
 					<Link href='/library'>
-						<Button colorScheme='teal' size='md'>
-							Library
-						</Button>
+						<a>
+							<BtnLibrary />
+						</a>
 					</Link>
 				</HStack>
 			</Flex>

@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchArtistData, selectArtist, selectArtistStatus } from './artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from '../library/library-slice';
+import BtnRemoveFromLib from 'src/elements/buttons/BtnRemoveFromLib';
+import BtnAddToLib from 'src/elements/buttons/BtnAddToLib';
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -29,9 +31,11 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	};
 
 	const libraryButton = isInLibrary(id) ? (
-		<button onClick={handleRemoveFromLibrary}>Remove</button>
+		// <button onClick={handleRemoveFromLibrary}>Remove</button>
+		<BtnRemoveFromLib onClick={handleRemoveFromLibrary} />
 	) : (
-		<button onClick={handleAddToLibrary}>Add</button>
+		// <button onClick={handleAddToLibrary}>Add</button>
+		<BtnAddToLib onClick={handleAddToLibrary} />
 	);
 
 	const artistData = (
