@@ -6,10 +6,9 @@ const Library: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>library - beathub</title>
+				<title>Library - beathub</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<h1>Your library</h1>
 			<DisplayLibrary />
 		</>
 	);

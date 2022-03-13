@@ -9,7 +9,7 @@ import {
 import HeadingSecondary from '../../elements/headings/HeadingSecondary';
 import List from '../../elements/text/List';
 import Li from '../../elements/text/Li';
-import AlbumCard from 'src/elements/cards/AlbumCard';
+import AlbumCard from 'src/components/cards/AlbumCard';
 
 type DisplayAlbumsProps = {
 	list: string[];
@@ -27,7 +27,9 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
-				<AlbumCard key={id} name={name} thumbnail={thumbnail} />
+				<Li key={id}>
+					<AlbumCard name={name} thumbnail={thumbnail} />
+				</Li>
 		  ))
 		: null;
 	const displaySimilar =

@@ -7,7 +7,15 @@ import BtnLibrary from 'src/elements/buttons/BtnLibrary';
 
 const Layout: FC = ({ children }) => {
 	return (
-		<VStack minHeight='100vh' width='full' spacing='0' bg='gray.900' color='gray.50' padding='5'>
+		<VStack
+			minHeight='100vh'
+			width='full'
+			spacing='0'
+			bg='gray.900'
+			color='gray.300'
+			padding='5'
+			alignItems='stretch'
+		>
 			<Flex direction='row' width='100%' justify='space-around' align='flex-start'>
 				<Box flex={1} marginRight='2'>
 					<SearchBox />
@@ -25,7 +33,7 @@ const Layout: FC = ({ children }) => {
 					</Link>
 				</HStack>
 			</Flex>
-			<main>{children}</main>
+			<VStack>{children}</VStack>
 			{/* <footer>footer</footer> */}
 		</VStack>
 	);

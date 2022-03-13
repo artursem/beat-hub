@@ -6,8 +6,10 @@ import {
 	selectSimilarStatus,
 	selectArtistStatus,
 } from './artist-slice';
-import ArtistCard from 'src/elements/cards/ArtistCard';
+import ArtistCard from 'src/components/cards/ArtistCard';
 import HeadingSecondary from '../../elements/headings/HeadingSecondary';
+import List from 'src/elements/text/List';
+import Li from 'src/elements/text/Li';
 
 type SimilarArtistsProps = {
 	list: string[];
@@ -24,14 +26,16 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 
 	const similarLi = similar
 		? similar.map(({ id, name, thumbnail }) => (
-				<ArtistCard key={id} id={id} name={name} thumbnail={thumbnail} />
+				<Li key={id}>
+					<ArtistCard id={id} name={name} thumbnail={thumbnail} />
+				</Li>
 		  ))
 		: null;
 	const displaySimilar =
 		similar && notificationArtist === 'idle' ? (
 			<>
 				<HeadingSecondary>Similar artists:</HeadingSecondary>
-				<ul>{similarLi}</ul>
+				<List>{similarLi}</List>
 			</>
 		) : null;
 

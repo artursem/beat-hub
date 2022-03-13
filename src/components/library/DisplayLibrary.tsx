@@ -7,8 +7,10 @@ import {
 	fetchLibraryArtists,
 	setLibrary,
 } from './library-slice';
-
-import LibraryItem from './LibraryItem';
+import ArtistCard from '../cards/ArtistCard';
+import List from 'src/elements/text/List';
+import Li from 'src/elements/text/Li';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -28,12 +30,15 @@ const DisplayCollection = () => {
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (
-				<LibraryItem key={id} id={id} name={name} thumbnail={thumbnail} />
+				<Li key={id}>
+					<ArtistCard id={id} name={name} thumbnail={thumbnail} />
+				</Li>
 		  ))
 		: null;
 	const displayLibrary = library ? (
 		<>
-			<ul>{libraryLi}</ul>
+			<HeadingPrimary>Your Library</HeadingPrimary>
+			<List>{libraryLi}</List>
 		</>
 	) : (
 		<p>Your library is empty. Please add artists you enjoy</p>
