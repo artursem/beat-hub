@@ -5,7 +5,11 @@ interface GenreProps {
 }
 
 const Genre = ({ gen }: GenreProps) => {
-	return <Tag variant='solid'>{gen}</Tag>;
+	return (
+		<Tag variant='solid' marginRight={2} marginBottom={2}>
+			{gen}
+		</Tag>
+	);
 };
 
 export default Genre;

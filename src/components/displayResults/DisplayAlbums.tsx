@@ -6,10 +6,15 @@ import {
 	selectAlbumsStatus,
 	selectArtistStatus,
 } from './artist-slice';
+import HeadingSecondary from '../../elements/headings/HeadingSecondary';
+import List from '../../elements/text/List';
+import Li from '../../elements/text/Li';
+import AlbumCard from 'src/elements/cards/AlbumCard';
 
 type DisplayAlbumsProps = {
 	list: string[];
 };
+
 const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -22,23 +27,14 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
-				<li key={id}>
-					{thumbnail && (
-						<>
-							<img src={thumbnail} alt={name} width='150px' />
-							<br />
-						</>
-					)}
-
-					{name}
-				</li>
+				<AlbumCard key={id} name={name} thumbnail={thumbnail} />
 		  ))
 		: null;
 	const displaySimilar =
 		albums && notificationArtist === 'idle' ? (
 			<>
-				<h3>top albums:</h3>
-				<ul>{albumsLi}</ul>
+				<HeadingSecondary>Top albums:</HeadingSecondary>
+				<List>{albumsLi}</List>
 			</>
 		) : null;
 

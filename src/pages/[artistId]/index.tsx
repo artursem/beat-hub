@@ -5,7 +5,7 @@ import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { selectArtist } from '../../components/displayResults/artist-slice';
 import { setListIsOpen } from '../../components/musicSearch/search-slice';
 import DisplayArtist from '../../components/displayResults/DisplayArtist';
-import SimilarArtists from '../../components/displayResults/SimilarArtists';
+import SimilarArtists from '../../components/displayResults/DisplaySimilarArtists';
 import DisplayAlbums from '../../components/displayResults/DisplayAlbums';
 
 const Artist = () => {
