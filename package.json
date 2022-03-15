@@ -19,7 +19,8 @@
     "react-click-outside-hook": "^1.1.1",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "usehooks-ts": "^2.4.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.0.0",

@@ -1,5 +1,6 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../store/hooks';
+import { useOnClickOutside } from 'usehooks-ts';
 import {
 	fetchSearch,
 	selectSearchResult,
@@ -19,6 +20,12 @@ const SearchBox: FC = () => {
 	const notification = useAppSelector(selectSearchStatus);
 	const showResultList = useAppSelector(selectListStatus);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
+	const ref = useRef(null);
+
+	const handleClickOutside = () => {
+		dispatch(setListIsOpen(false));
+	};
+	useOnClickOutside(ref, handleClickOutside);
 
 	useEffect(() => {
 		if (debouncedSearchTerm) {
@@ -45,7 +52,7 @@ const SearchBox: FC = () => {
 	}
 
 	return (
-		<div>
+		<div ref={ref}>
 			<Input
 				placeholder='Find artist...'
 				color='gray.100'

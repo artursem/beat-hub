@@ -7,10 +7,11 @@ const ListBox: FC = ({ children }) => {
 			marginY='4'
 			display={'flex'}
 			flexDir={'column'}
-			width='92vw'
+			width='93vw'
 			flex={1}
 			position='absolute'
 			m='auto'
+			zIndex={2}
 		>
 			{children}
 		</ListChakra>
