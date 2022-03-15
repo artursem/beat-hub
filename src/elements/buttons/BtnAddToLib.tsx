@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Button } from '@chakra-ui/react';
 import IconAdd from '../icons/IconAdd';
 

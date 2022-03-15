@@ -11,6 +11,12 @@ interface AlbumCardProps {
 }
 
 const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
+	const short = (str: string) => {
+		if (str.length > 30) {
+			return str.slice(0, 30) + '...';
+		}
+		return str;
+	};
 	return (
 		<Box
 			display='flex'
@@ -40,7 +46,7 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 			<Center as='div' flex={2} padding={2} marginY={3}>
 				{artistId ? (
 					<NextLink href={`/${artistId}`} passHref>
-						<Link>{`${name} by ${artist}`}</Link>
+						<Link>{`${short(name)} by ${artist}`}</Link>
 					</NextLink>
 				) : (
 					<Box> {name}</Box>

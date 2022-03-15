@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import SearchBox from '../musicSearch/SearchBox';
-import { Flex, VStack, Box, HStack } from '@chakra-ui/react';
+import { Flex, VStack, Box, HStack } from '@chakra-ui/react'; // import?
+import { useBreakpointValue } from '@chakra-ui/react';
 import BtnHome from 'src/elements/buttons/BtnHome';
 import BtnLibrary from 'src/elements/buttons/BtnLibrary';
+import BtnHomeSmall from 'src/elements/buttons/BtnHomeSmall';
+import BtnLibrarySmall from 'src/elements/buttons/BtnLibrarySmall';
 
 const Layout: FC = ({ children }) => {
+	const variant = useBreakpointValue({ base: true, lg: false });
+
 	return (
 		<VStack
 			minHeight='100vh'
@@ -22,14 +27,10 @@ const Layout: FC = ({ children }) => {
 				</Box>
 				<HStack>
 					<Link href='/'>
-						<a>
-							<BtnHome />
-						</a>
+						<a>{variant ? <BtnHomeSmall /> : <BtnHome />}</a>
 					</Link>
 					<Link href='/library'>
-						<a>
-							<BtnLibrary />
-						</a>
+						<a>{variant ? <BtnLibrarySmall /> : <BtnLibrary />}</a>
 					</Link>
 				</HStack>
 			</Flex>

@@ -20,6 +20,12 @@
 			"types/*": ["src/models/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/elements/buttons/BtnAddToLibSmall",
+		"src/elements/buttons/BtnAddToLibSmall"
+	],
 	"exclude": ["node_modules"]
 }

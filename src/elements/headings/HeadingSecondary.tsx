@@ -3,7 +3,7 @@ import { Heading } from '@chakra-ui/react';
 
 const HeadingSecondary: FC = (props) => {
 	return (
-		<Heading as='h3' size='md' marginTop={10} marginBottom={3} textAlign='left' width='100%'>
+		<Heading as='h3' size='md' pt={5} pb={2} textAlign='left' width='100%'>
 			{props.children}
 		</Heading>
 	);
