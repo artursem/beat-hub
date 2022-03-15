@@ -10,6 +10,7 @@ import {
 import OptionItem from './OptionItem';
 
 import { Input } from '@chakra-ui/react';
+import DisplayList from './DisplayList';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -35,8 +36,9 @@ const SearchBox: FC = () => {
 	});
 
 	let displayList;
+	if (!showResultList) displayList = null;
 	if (showResultList && notification === 'idle') {
-		displayList = <ul>{showArtist}</ul>;
+		displayList = <DisplayList />;
 	}
 	if (notification !== 'idle') {
 		displayList = <p>{notification} search list</p>;
@@ -47,10 +49,10 @@ const SearchBox: FC = () => {
 			<Input
 				placeholder='Find artist...'
 				color='gray.100'
+				variant='flushed'
 				type='search'
 				value={searchTerm}
 				onChange={handleChange}
-				list='artists'
 			/>
 			{displayList}
 		</div>
