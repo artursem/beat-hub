@@ -9,9 +9,10 @@ import {
 	selectListStatus,
 } from './search-slice';
 import OptionItem from './OptionItem';
-
-import { Input } from '@chakra-ui/react';
 import DisplayList from './DisplayList';
+import SearchInput from 'src/elements/Input/SearchInput';
+import SpinnerSmall from 'src/elements/animations/SpinnerSmall';
+import { InputRightElement } from '@chakra-ui/react';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -53,13 +54,10 @@ const SearchBox: FC = () => {
 
 	return (
 		<div ref={ref}>
-			<Input
-				placeholder='Find artist...'
-				color='gray.100'
-				variant='flushed'
-				type='search'
-				value={searchTerm}
+			<SearchInput
+				inputValue={searchTerm}
 				onChange={handleChange}
+				loading={notification === 'loading'}
 			/>
 			{displayList}
 		</div>
