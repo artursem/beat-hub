@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchTopData, selectTop, selectTopStatus } from './top-slice';
 import List from 'src/elements/text/List';
 import Li from 'src/elements/text/Li';
 import ArtistCard from '../cards/ArtistCard';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
-
+import WrapperV from 'src/elements/layout/WrapperV';
 import ListArtists from '../../models/listArtists';
 
 const TopArtists = () => {
@@ -25,10 +24,10 @@ const TopArtists = () => {
 	));
 	if (notification === 'idle') {
 		return (
-			<>
+			<WrapperV>
 				<HeadingPrimary>Top Artists</HeadingPrimary>
 				<List>{displayTopArtists}</List>
-			</>
+			</WrapperV>
 		);
 	} else {
 		return <p>{notification} top artists</p>;

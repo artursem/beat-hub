@@ -1,4 +1,3 @@
-import { IconButton } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 import IconAdd from '../icons/IconAdd';
 
@@ -17,14 +16,6 @@ const BtnAddToLibSmall = (props: BtnAddToLibSmallProps) => {
 		>
 			Add to Library
 		</Button>
-		// <IconButton
-		// 	aria-label='Add to Library'
-		// 	onClick={props.onClick}
-		// 	icon={<IconAdd />}
-		// 	colorScheme='teal'
-		// 	size='sm'
-		// 	variant='solid'
-		// />
 	);
 };
 

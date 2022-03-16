@@ -42,7 +42,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			flexDir={{ base: 'row', lg: 'column' }}
 			justifyContent={{ base: 'flex-start', lg: 'center' }}
 			width={{ base: '100%', lg: '152px' }}
-			height={{ base: '102px', lg: '300px' }}
+			height={{ base: '102px', lg: '250px' }}
 			alignItems='center'
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}

@@ -7,8 +7,10 @@ const List: FC = ({ children }) => {
 			marginY='4'
 			display={'flex'}
 			flexDir={{ base: 'column', lg: 'row' }}
+			justifyContent='center'
 			width='100%'
-			flex={1}
+			flex={2}
+			// border='solid 1px pink'
 		>
 			{children}
 		</ListChakra>

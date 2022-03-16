@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import IconCheck from '../icons/IconCheck';
 
 interface BtnRemoveFromLibSmallProps {
@@ -7,14 +7,15 @@ interface BtnRemoveFromLibSmallProps {
 
 const BtnRemoveFromLibSmall = (props: BtnRemoveFromLibSmallProps) => {
 	return (
-		<IconButton
-			aria-label='Add to Library'
+		<Button
 			onClick={props.onClick}
-			icon={<IconCheck />}
+			leftIcon={<IconCheck />}
 			colorScheme='teal'
-			size='sm'
+			size='xs'
 			variant='outline'
-		/>
+		>
+			In your Library
+		</Button>
 	);
 };
 
