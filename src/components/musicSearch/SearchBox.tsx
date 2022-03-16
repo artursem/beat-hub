@@ -1,23 +1,13 @@
 import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../store/hooks';
 import { useOnClickOutside } from 'usehooks-ts';
-import {
-	fetchSearch,
-	selectSearchResult,
-	selectSearchStatus,
-	setListIsOpen,
-	selectListStatus,
-} from './search-slice';
-import OptionItem from './OptionItem';
-import DisplayList from './DisplayList';
+import { fetchSearch, selectSearchStatus, setListIsOpen, selectListStatus } from './search-slice';
 import SearchInput from 'src/elements/Input/SearchInput';
-import SpinnerSmall from 'src/elements/animations/SpinnerSmall';
-import { InputRightElement } from '@chakra-ui/react';
+import DisplayList from './DisplayList';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const dispatch = useAppDispatch();
-	const searchList = useAppSelector(selectSearchResult);
 	const notification = useAppSelector(selectSearchStatus);
 	const showResultList = useAppSelector(selectListStatus);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
@@ -39,17 +29,13 @@ const SearchBox: FC = () => {
 		setSearchTerm(event.target.value);
 	};
 
-	const showArtist = searchList.map(({ name, id, thumbnail }) => {
-		return <OptionItem key={id} id={id} name={name} thumbnail={thumbnail} />;
-	});
-
 	let displayList;
 	if (!showResultList) displayList = null;
 	if (showResultList && notification === 'idle') {
 		displayList = <DisplayList />;
 	}
-	if (notification !== 'idle') {
-		displayList = <p>{notification} search list</p>;
+	if (notification === 'failed') {
+		displayList = <p>search failed</p>;
 	}
 
 	return (

@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import { Box, Center, Link } from '@chakra-ui/react';
+// import Box from 'src/elements/text/Box';
 import ImgAlbum from '../../elements/images/ImgAlbum';
 
 interface AlbumCardProps {
@@ -49,7 +50,7 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 						<Link>{`${short(name)} by ${artist}`}</Link>
 					</NextLink>
 				) : (
-					<Box> {name}</Box>
+					<Box> {short(name)}</Box>
 				)}
 			</Center>
 		</Box>

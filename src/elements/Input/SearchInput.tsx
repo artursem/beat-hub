@@ -5,7 +5,6 @@ import {
 	InputRightElement,
 	StylesProvider,
 	useMultiStyleConfig,
-	useStyles,
 } from '@chakra-ui/react';
 
 import SpinnerSmall from '../animations/SpinnerSmall';

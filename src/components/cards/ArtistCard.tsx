@@ -42,7 +42,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			flexDir={{ base: 'row', lg: 'column' }}
 			justifyContent={{ base: 'flex-start', lg: 'center' }}
 			width={{ base: '100%', lg: '152px' }}
-			height={{ base: '102px', lg: '200px' }}
+			height={{ base: '102px', lg: '300px' }}
 			alignItems='center'
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
@@ -50,18 +50,21 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			marginY={3}
 			marginX={{ base: 0, lg: 3 }}
 			flexWrap={'wrap'}
+			overflow={'hidden'}
 		>
 			<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
 				<NextLink href={`/${id}`} passHref>
 					<Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link>
 				</NextLink>
 			</Box>
-			<Center flex={1} isTruncated overflow={'hidden'}>
+			<Center as='p' flex={1} isTruncated>
 				<NextLink href={`/${id}`} passHref>
 					<Link>{name}</Link>
 				</NextLink>
 			</Center>
-			<Box marginRight={{ base: 2, lg: 0 }}>{libraryButton}</Box>
+			<Box mr={{ base: 2, lg: 0 }} mb={{ base: 0, lg: 2 }}>
+				{libraryButton}
+			</Box>
 		</Box>
 	);
 };

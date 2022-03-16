@@ -1,4 +1,5 @@
 import { IconButton } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import IconAdd from '../icons/IconAdd';
 
 interface BtnAddToLibSmallProps {
@@ -7,14 +8,23 @@ interface BtnAddToLibSmallProps {
 
 const BtnAddToLibSmall = (props: BtnAddToLibSmallProps) => {
 	return (
-		<IconButton
-			aria-label='Add to Library'
+		<Button
 			onClick={props.onClick}
-			icon={<IconAdd />}
+			leftIcon={<IconAdd />}
 			colorScheme='teal'
-			size='sm'
+			size='xs'
 			variant='solid'
-		/>
+		>
+			Add to Library
+		</Button>
+		// <IconButton
+		// 	aria-label='Add to Library'
+		// 	onClick={props.onClick}
+		// 	icon={<IconAdd />}
+		// 	colorScheme='teal'
+		// 	size='sm'
+		// 	variant='solid'
+		// />
 	);
 };
 

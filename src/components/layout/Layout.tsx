@@ -19,7 +19,7 @@ const Layout: FC = ({ children }) => {
 			bg='gray.900'
 			color='gray.300'
 			padding='5'
-			alignItems='stretch'
+			alignItems='center'
 		>
 			<Flex direction='row' width='100%' justify='space-around' align='flex-start'>
 				<Box flex={1} marginRight='2'>
@@ -34,7 +34,9 @@ const Layout: FC = ({ children }) => {
 					</Link>
 				</HStack>
 			</Flex>
-			<VStack>{children}</VStack>
+			<VStack width={{ base: '100%', lg: '100%' }} alignItems='center'>
+				{children}
+			</VStack>
 			{/* <footer>footer</footer> */}
 		</VStack>
 	);

@@ -7,6 +7,9 @@ import { setListIsOpen } from '../../components/musicSearch/search-slice';
 import DisplayArtist from '../../components/displayResults/DisplayArtist';
 import SimilarArtists from '../../components/displayResults/DisplaySimilarArtists';
 import DisplayAlbums from '../../components/displayResults/DisplayAlbums';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+// import Stack from 'src/elements/layout/Stack';
+import { Stack } from '@chakra-ui/react';
 
 const Artist = () => {
 	const router = useRouter();
@@ -27,9 +30,14 @@ const Artist = () => {
 				<title>{name} - beathub</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<DisplayArtist artistId={artistId} />
-			{albums && <DisplayAlbums list={albums} />}
-			{similar && <SimilarArtists list={similar} />}
+			<HeadingPrimary>{name}</HeadingPrimary>
+			<Stack direction={{ base: 'column', lg: 'row' }}>
+				<DisplayArtist artistId={artistId} />
+				<Stack direction='column'>
+					{albums && <DisplayAlbums list={albums} />}
+					{similar && <SimilarArtists list={similar} />}
+				</Stack>
+			</Stack>
 		</>
 	);
 };

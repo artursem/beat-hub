@@ -7,6 +7,7 @@ import BtnRemoveFromLib from 'src/elements/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/elements/buttons/BtnAddToLib';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 import ImgArtist from 'src/elements/images/ImgArtist';
+import Stack from 'src/elements/layout/Stack';
 import Box from 'src/elements/text/Box';
 import Bio from 'src/elements/text/Bio';
 
@@ -42,15 +43,15 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	);
 
 	const artistData = (
-		<>
-			<HeadingPrimary>{name}</HeadingPrimary>
+		<Stack direction='column'>
+			{/* <HeadingPrimary>{name}</HeadingPrimary> */}
 			<Box>
 				{image && <ImgArtist src={image} alt={id} />}
 				<Box>{libraryButton}</Box>
 				{genres && <DisplayGenres genres={genres} />}
 			</Box>
 			<Bio content={bio} />
-		</>
+		</Stack>
 	);
 
 	return notification === 'idle' ? artistData : <p>{notification} artist</p>;
