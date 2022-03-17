@@ -41,9 +41,9 @@ const Artist = () => {
 					<HeadingPrimary>{name}</HeadingPrimary>
 				</Skeleton>
 				<Stack
-					direction={{ base: 'column', lg: 'row' }}
-					justifyContent={{ base: 'flex-start', lg: 'space-around' }}
-					alignItems={{ base: 'center', lg: 'flex-start' }}
+					direction={{ base: 'column', '2xl': 'row' }}
+					justifyContent={{ base: 'flex-start', '2xl': 'space-around' }}
+					alignItems={{ base: 'center', '2xl': 'flex-start' }}
 					width='100%'
 				>
 					<Stack flex={1} direction='column' justifyContent={'flex-start'} alignItems={'stretch'}>

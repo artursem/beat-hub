@@ -35,14 +35,3 @@ const TopAlbums = () => {
 };
 
 export default TopAlbums;
-
-// if (notification === 'idle') {
-// 	return (
-// 		<WrapperV>
-// 			<HeadingPrimary>Top Albums</HeadingPrimary>
-// 			<List>{displayTopAlbums}</List>
-// 		</WrapperV>
-// 	);
-// } else {
-// 	return <p>{notification} top albums</p>;
-// }

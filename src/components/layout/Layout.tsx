@@ -34,7 +34,7 @@ const Layout: FC = ({ children }) => {
 					</Link>
 				</HStack>
 			</Flex>
-			<VStack width={{ base: '100%', lg: '100%' }} alignItems='center'>
+			<VStack width={{ base: '100%', '2xl': '100%' }} alignItems='center'>
 				{children}
 			</VStack>
 			{/* <footer>footer</footer> */}

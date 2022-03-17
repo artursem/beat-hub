@@ -13,8 +13,10 @@ export default async function fetchArtist(id: string): Promise<FoundArtist> {
 		throw new Error('Error fetching images from db');
 	}
 	const imageData = await imageResponse.json();
-
-	const image = imageData.meta.returnedCount === 0 ? null : imageData.images[3].url;
+	let image = imageData.meta.returnedCount === 0 ? null : imageData.images[0].url;
+	if (imageData.meta.returnedCount > 3) {
+		image = imageData.images[3].url;
+	}
 	const thumbnail = imageData.meta.returnedCount === 0 ? null : imageData.images[1].url;
 
 	const genreHref = data.artists[0].links.genres.href;
@@ -58,5 +60,6 @@ export default async function fetchArtist(id: string): Promise<FoundArtist> {
 		contemporaries,
 		albumsId,
 	};
+
 	return foundArtist;
 }

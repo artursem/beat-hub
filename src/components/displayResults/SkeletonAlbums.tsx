@@ -5,10 +5,10 @@ import List from 'src/elements/text/List';
 const SkeletonAlbums = () => {
 	const skeleton = (
 		<Skeleton
-			width={{ base: '100%', lg: '150px' }}
-			height={{ base: '152px', lg: '300px' }}
+			width={{ base: '100%', '2xl': '150px' }}
+			height={{ base: '152px', '2xl': '300px' }}
 			marginY={3}
-			marginX={{ base: 0, lg: 3 }}
+			marginX={{ base: 0, '2xl': 3 }}
 		/>
 	);
 	return (

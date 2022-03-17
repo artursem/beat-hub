@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
 import store from '../store/store';
 import Layout from '../components/layout/Layout';
+import theme from 'src/styles/theme';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	return (

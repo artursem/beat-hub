@@ -39,16 +39,16 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	return (
 		<Box
 			display='flex'
-			flexDir={{ base: 'row', lg: 'column' }}
-			justifyContent={{ base: 'flex-start', lg: 'center' }}
-			width={{ base: '100%', lg: '152px' }}
-			height={{ base: '102px', lg: '250px' }}
+			flexDir={{ base: 'row', '2xl': 'column' }}
+			justifyContent={{ base: 'flex-start', '2xl': 'center' }}
+			width={{ base: '100%', '2xl': '152px' }}
+			height={{ base: '102px', '2xl': '250px' }}
 			alignItems='center'
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
 			borderWidth={1}
 			marginY={3}
-			marginX={{ base: 0, lg: 3 }}
+			marginX={{ base: 0, '2xl': 3 }}
 			flexWrap={'wrap'}
 			overflow={'hidden'}
 		>
@@ -62,7 +62,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 					<Link>{name}</Link>
 				</NextLink>
 			</Center>
-			<Box mr={{ base: 2, lg: 0 }} mb={{ base: 0, lg: 2 }}>
+			<Box mr={{ base: 2, '2xl': 0 }} mb={{ base: 0, '2xl': 2 }}>
 				{libraryButton}
 			</Box>
 		</Box>
