@@ -5,11 +5,12 @@ import { addArtist, removeArtist, selectLibraryList } from '../library/library-s
 import DisplayGenres from './DisplayGenres';
 import BtnRemoveFromLib from 'src/elements/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/elements/buttons/BtnAddToLib';
-import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 import ImgArtist from 'src/elements/images/ImgArtist';
-import Stack from 'src/elements/layout/Stack';
 import Box from 'src/elements/text/Box';
 import Bio from 'src/elements/text/Bio';
+import SkeletonArtist from './SkeletonArtist';
+// import Stack from 'src/elements/layout/Stack';
+import { Stack } from '@chakra-ui/react'; // import
 
 type DisplayArtistProps = {
 	artistId: string;
@@ -22,7 +23,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	}, [dispatch, artistId]);
 
 	const notification = useAppSelector(selectArtistStatus);
-	const { id, name, bio, genres, image } = useAppSelector(selectArtist);
+	const { id, bio, genres, image } = useAppSelector(selectArtist);
 	const library = useAppSelector(selectLibraryList);
 
 	const isInLibrary = (id: string) => {
@@ -42,19 +43,27 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 		<BtnAddToLib onClick={handleAddToLibrary} />
 	);
 
-	const artistData = (
-		<Stack direction='column'>
-			{/* <HeadingPrimary>{name}</HeadingPrimary> */}
-			<Box>
-				{image && <ImgArtist src={image} alt={id} />}
-				<Box>{libraryButton}</Box>
-				{genres && <DisplayGenres genres={genres} />}
-			</Box>
-			<Bio content={bio} />
-		</Stack>
-	);
+	let artistData = <SkeletonArtist />;
+	if (notification === 'idle') {
+		artistData = (
+			<Stack direction='column'>
+				<Box>
+					{image && <ImgArtist src={image} alt={id} />}
+					<Box>{libraryButton}</Box>
+					{genres && <DisplayGenres genres={genres} />}
+				</Box>
+				<Bio content={bio} />
+			</Stack>
+		);
+	}
+	if (notification === 'loading') {
+		artistData = <SkeletonArtist />;
+	}
+	if (notification === 'failed') {
+		artistData = <p>Error loading artist</p>;
+	}
 
-	return notification === 'idle' ? artistData : <p>{notification} artist</p>;
+	return artistData;
 };
 
 export default DisplayArtist;

@@ -9,7 +9,6 @@ const WrapperV: FC = (props) => {
 				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
-				// border: '1px solid green',
 			}}
 		>
 			{props.children}

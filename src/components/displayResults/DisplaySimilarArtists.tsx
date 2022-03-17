@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
 	fetchSimilarData,
+	selectArtistStatus,
 	selectSimilar,
 	selectSimilarStatus,
-	selectArtistStatus,
 } from './artist-slice';
 import ArtistCard from 'src/components/cards/ArtistCard';
 import HeadingSecondary from '../../elements/headings/HeadingSecondary';
 import List from 'src/elements/text/List';
 import Li from 'src/elements/text/Li';
+import SkeletonSimilar from './SkeletonSimilar';
 
 type SimilarArtistsProps = {
 	list: string[];
@@ -31,15 +32,23 @@ const SimilarArtists = ({ list }: SimilarArtistsProps) => {
 				</Li>
 		  ))
 		: null;
-	const displaySimilar =
-		similar && notificationArtist === 'idle' ? (
-			<>
-				<HeadingSecondary>Similar artists:</HeadingSecondary>
-				<List>{similarLi}</List>
-			</>
-		) : null;
 
-	return notification === 'idle' ? displaySimilar : <p>{notification} similar artist</p>;
+	let displaySimilar = <SkeletonSimilar />;
+	if (similar && notification === 'idle') {
+		displaySimilar = <List>{similarLi}</List>;
+	}
+	if (notificationArtist === 'loading' || notification === 'loading') {
+		displaySimilar = <SkeletonSimilar />;
+	}
+	if (notification === 'failed') {
+		displaySimilar = <p>Error loading similar artists</p>;
+	}
+	return (
+		<>
+			<HeadingSecondary>Similar artists:</HeadingSecondary>
+			{displaySimilar}
+		</>
+	);
 };
 
 export default SimilarArtists;

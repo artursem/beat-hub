@@ -7,6 +7,7 @@ import Li from 'src/elements/text/Li';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 import AlbumCard from '../cards/AlbumCard';
 import WrapperV from 'src/elements/layout/WrapperV';
+import { Skeleton } from '@chakra-ui/react';
 
 const TopAlbums = () => {
 	const dispatch = useAppDispatch();
@@ -22,16 +23,26 @@ const TopAlbums = () => {
 			<AlbumCard id={id} name={name} thumbnail={thumbnail} artist={artist} artistId={artistId} />
 		</Li>
 	));
-	if (notification === 'idle') {
-		return (
-			<WrapperV>
+
+	return (
+		<WrapperV>
+			<Skeleton isLoaded={notification === 'idle'}>
 				<HeadingPrimary>Top Albums</HeadingPrimary>
 				<List>{displayTopAlbums}</List>
-			</WrapperV>
-		);
-	} else {
-		return <p>{notification} top albums</p>;
-	}
+			</Skeleton>
+		</WrapperV>
+	);
 };
 
 export default TopAlbums;
+
+// if (notification === 'idle') {
+// 	return (
+// 		<WrapperV>
+// 			<HeadingPrimary>Top Albums</HeadingPrimary>
+// 			<List>{displayTopAlbums}</List>
+// 		</WrapperV>
+// 	);
+// } else {
+// 	return <p>{notification} top albums</p>;
+// }

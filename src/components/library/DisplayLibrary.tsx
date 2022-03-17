@@ -36,6 +36,7 @@ const DisplayCollection = () => {
 				</Li>
 		  ))
 		: null;
+
 	const displayLibrary =
 		library.length > 0 ? (
 			<>
