@@ -10,6 +10,7 @@ import DisplayAlbums from '../../components/displayResults/DisplayAlbums';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 // import Stack from 'src/elements/layout/Stack';
 import { Stack, Skeleton } from '@chakra-ui/react';
+import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
 
 const Artist = () => {
 	const router = useRouter();
@@ -25,38 +26,46 @@ const Artist = () => {
 		dispatch(setListIsOpen(false));
 	}, [artistId]);
 
-	return (
-		<>
-			<Head>
-				<title>{name} - beathub</title>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-			<Skeleton width='80%' isLoaded={notification === 'idle'}>
-				<HeadingPrimary>{name}</HeadingPrimary>
-			</Skeleton>
-			<Stack
-				direction={{ base: 'column', lg: 'row' }}
-				justifyContent={{ base: 'flex-start', lg: 'space-around' }}
-				alignItems={{ base: 'center', lg: 'flex-start' }}
-				width='100%'
-			>
-				<Stack flex={1} direction='column' justifyContent={'flex-start'} alignItems={'stretch'}>
-					<DisplayArtist artistId={artistId} />
-				</Stack>
-
+	let artistBlock;
+	if (notification === 'failed') {
+		// set all to []
+		artistBlock = <HeadingSecondary>error loading artist</HeadingSecondary>;
+	} else {
+		artistBlock = (
+			<>
+				<Head>
+					<title>{name} - beathub</title>
+					<link rel='icon' href='/favicon.ico' />
+				</Head>
+				<Skeleton width='60%' isLoaded={notification === 'idle'}>
+					<HeadingPrimary>{name}</HeadingPrimary>
+				</Skeleton>
 				<Stack
-					direction='column'
-					justifyContent={'flex-start'}
-					alignItems={'stretch'}
-					flex={1}
+					direction={{ base: 'column', lg: 'row' }}
+					justifyContent={{ base: 'flex-start', lg: 'space-around' }}
+					alignItems={{ base: 'center', lg: 'flex-start' }}
 					width='100%'
 				>
-					{albums && <DisplayAlbums list={albums} />}
-					{similar && <SimilarArtists list={similar} />}
+					<Stack flex={1} direction='column' justifyContent={'flex-start'} alignItems={'stretch'}>
+						<DisplayArtist artistId={artistId} />
+					</Stack>
+
+					<Stack
+						direction='column'
+						justifyContent={'flex-start'}
+						alignItems={'stretch'}
+						flex={1}
+						width='100%'
+					>
+						{albums && <DisplayAlbums list={albums} />}
+						{similar && <SimilarArtists list={similar} />}
+					</Stack>
 				</Stack>
-			</Stack>
-		</>
-	);
+			</>
+		);
+	}
+
+	return <>{artistBlock}</>;
 };
 
 export default Artist;
