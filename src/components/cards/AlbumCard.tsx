@@ -24,10 +24,10 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 	return (
 		<Box
 			display='flex'
-			flexDir={{ base: 'row', '2xl': 'column' }}
-			justifyContent={'flex-start'}
-			width={{ base: '100%', '2xl': '150px' }}
-			height={{ base: '152px', '2xl': '300px' }}
+			flexDir={{ base: 'column', md: 'row', '2xl': 'column' }}
+			justifyContent={{ base: 'center', md: 'flex-start', '2xl': 'center' }}
+			width={{ base: '152px', md: '100%', '2xl': '152px' }}
+			height={{ base: '300px', md: '152px', '2xl': '300px' }}
 			alignItems='center'
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}

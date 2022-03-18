@@ -8,6 +8,7 @@ const List: FC = ({ children }) => {
 			display={'flex'}
 			flexDir={{ base: 'column', '2xl': 'row' }}
 			justifyContent='center'
+			alignItems={{ base: 'center', md: 'stretch', '2xl': 'center' }}
 			width='100%'
 			flex={2}
 			// border='solid 1px pink'

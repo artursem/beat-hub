@@ -15,7 +15,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const isInLibrary = (id: string) => {
 		return library.indexOf(id) >= 0;
 	};
-	const variant = useBreakpointValue({ base: true, lg: false });
+	const variant = useBreakpointValue({ base: false, md: true, lg: false });
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
@@ -39,18 +39,19 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	return (
 		<Box
 			display='flex'
-			flexDir={{ base: 'row', '2xl': 'column' }}
-			justifyContent={{ base: 'flex-start', '2xl': 'center' }}
-			width={{ base: '100%', '2xl': '152px' }}
-			height={{ base: '102px', '2xl': '250px' }}
+			flexDir={{ base: 'column', md: 'row', '2xl': 'column' }}
+			justifyContent={{ base: 'center', md: 'flex-start', '2xl': 'center' }}
+			width={{ base: '152px', md: '100%', '2xl': '152px' }}
+			height={{ base: '200px', md: '102px', '2xl': '250px' }}
 			alignItems='center'
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
 			borderWidth={1}
 			marginY={3}
-			marginX={{ base: 0, '2xl': 3 }}
+			marginX={{ base: 1, md: 0, '2xl': 3 }}
 			flexWrap={'wrap'}
 			overflow={'hidden'}
+			// border='1px solid green'
 		>
 			<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
 				<NextLink href={`/${id}`} passHref>
@@ -62,7 +63,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 					<Link>{name}</Link>
 				</NextLink>
 			</Center>
-			<Box mr={{ base: 2, '2xl': 0 }} mb={{ base: 0, '2xl': 2 }}>
+			<Box mr={{ base: 0, md: 2, '2xl': 0 }} mb={{ base: 2, md: 0, '2xl': 2 }}>
 				{libraryButton}
 			</Box>
 		</Box>
