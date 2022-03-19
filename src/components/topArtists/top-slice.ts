@@ -20,7 +20,11 @@ export const fetchTopData = createAsyncThunk('topArtists/fetchTopData', async ()
 export const topArtistsSlice = createSlice({
 	name: 'topArtists',
 	initialState,
-	reducers: {},
+	reducers: {
+		setTopArtists: (state, action) => {
+			state.topArtists = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchTopData.pending, (state) => {
@@ -33,6 +37,7 @@ export const topArtistsSlice = createSlice({
 	},
 });
 
+export const topArtistsActions = topArtistsSlice.actions;
 export const selectTop = (state: RootState) => state.topArtists.topArtists;
 export const selectTopStatus = (state: RootState) => state.topArtists.status;
 export default topArtistsSlice;

@@ -21,7 +21,11 @@ export const fetchTopAlbumsData = createAsyncThunk('topAlbums/fetchTopData', asy
 export const topAlbumsSlice = createSlice({
 	name: 'topAlbums',
 	initialState,
-	reducers: {},
+	reducers: {
+		setTopAlbums: (state, action) => {
+			state.topAlbums = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchTopAlbumsData.pending, (state) => {
@@ -34,6 +38,7 @@ export const topAlbumsSlice = createSlice({
 	},
 });
 
+export const topAlbumsActions = topAlbumsSlice.actions;
 export const selectTopAlbums = (state: RootState) => state.topAlbums.topAlbums;
 export const selectTopAlbumsStatus = (state: RootState) => state.topAlbums.status;
 export default topAlbumsSlice;
