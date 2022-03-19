@@ -33,8 +33,7 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
 			borderWidth={1}
 			marginY={3}
-			marginX={{ base: 0, '2xl': 3 }}
-			flexWrap={'wrap'}
+			marginX={{ base: 1, md: 0, '2xl': 3 }}
 		>
 			<Box margin={0} flex={1}>
 				{artistId ? (

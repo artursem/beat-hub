@@ -6,12 +6,13 @@ const List: FC = ({ children }) => {
 		<ListChakra
 			marginY='4'
 			display={'flex'}
-			flexDir={{ base: 'column', '2xl': 'row' }}
+			flexDir={{ base: 'row', md: 'column', '2xl': 'row' }}
 			justifyContent='center'
 			alignItems={{ base: 'center', md: 'stretch', '2xl': 'center' }}
 			width='100%'
 			flex={2}
-			// border='solid 1px pink'
+			flexWrap={'wrap'}
+			border='solid 1px pink'
 		>
 			{children}
 		</ListChakra>

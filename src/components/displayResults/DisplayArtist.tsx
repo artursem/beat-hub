@@ -46,7 +46,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	let artistData = <SkeletonArtist />;
 	if (notification === 'idle') {
 		artistData = (
-			<Stack direction='column'>
+			<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
 				<Box>
 					{image && <ImgArtist src={image} alt={id} />}
 					<Box>{libraryButton}</Box>

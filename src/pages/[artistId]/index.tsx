@@ -4,13 +4,8 @@ import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { selectArtist, selectArtistStatus } from '../../components/displayResults/artist-slice';
 import { setListIsOpen } from '../../components/musicSearch/search-slice';
-import DisplayArtist from '../../components/displayResults/DisplayArtist';
-import SimilarArtists from '../../components/displayResults/DisplaySimilarArtists';
-import DisplayAlbums from '../../components/displayResults/DisplayAlbums';
-import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
-// import Stack from 'src/elements/layout/Stack';
-import { Stack, Skeleton } from '@chakra-ui/react';
 import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
+import ArtistBlock from 'src/components/cards/ArtistBlock';
 
 const Artist = () => {
 	const router = useRouter();
@@ -18,8 +13,6 @@ const Artist = () => {
 	const artist = useAppSelector(selectArtist);
 	const notification = useAppSelector(selectArtistStatus);
 	const name = artist.name;
-	const similar = artist.contemporaries;
-	const albums = artist.albumsId;
 
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -31,41 +24,18 @@ const Artist = () => {
 		// set all to []
 		artistBlock = <HeadingSecondary>error loading artist</HeadingSecondary>;
 	} else {
-		artistBlock = (
-			<>
-				<Head>
-					<title>{name} - beathub</title>
-					<link rel='icon' href='/favicon.ico' />
-				</Head>
-				<Skeleton width='60%' isLoaded={notification === 'idle'}>
-					<HeadingPrimary>{name}</HeadingPrimary>
-				</Skeleton>
-				<Stack
-					direction={{ base: 'column', '2xl': 'row' }}
-					justifyContent={{ base: 'flex-start', '2xl': 'space-around' }}
-					alignItems={{ base: 'center', '2xl': 'flex-start' }}
-					width='100%'
-				>
-					<Stack flex={1} direction='column' justifyContent={'flex-start'} alignItems={'stretch'}>
-						<DisplayArtist artistId={artistId} />
-					</Stack>
-
-					<Stack
-						direction='column'
-						justifyContent={'flex-start'}
-						alignItems={'stretch'}
-						flex={1}
-						width='100%'
-					>
-						{albums && <DisplayAlbums list={albums} />}
-						{similar && <SimilarArtists list={similar} />}
-					</Stack>
-				</Stack>
-			</>
-		);
+		artistBlock = <ArtistBlock artistId={artistId} />;
 	}
 
-	return <>{artistBlock}</>;
+	return (
+		<>
+			<Head>
+				<title>{name} - beathub</title>
+				<link rel='icon' href='/favicon.ico' />
+			</Head>
+			{artistBlock}
+		</>
+	);
 };
 
 export default Artist;
