@@ -7,8 +7,11 @@ import {
 	fetchLibraryArtists,
 	setLibrary,
 } from './library-slice';
-
-import LibraryItem from './LibraryItem';
+import ArtistCard from '../cards/ArtistCard';
+import List from 'src/elements/text/List';
+import Li from 'src/elements/text/Li';
+import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
+import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -28,16 +31,21 @@ const DisplayCollection = () => {
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (
-				<LibraryItem key={id} id={id} name={name} thumbnail={thumbnail} />
+				<Li key={id}>
+					<ArtistCard id={id} name={name} thumbnail={thumbnail} />
+				</Li>
 		  ))
 		: null;
-	const displayLibrary = library ? (
-		<>
-			<ul>{libraryLi}</ul>
-		</>
-	) : (
-		<p>Your library is empty. Please add artists you enjoy</p>
-	);
+
+	const displayLibrary =
+		library.length > 0 ? (
+			<>
+				<HeadingPrimary>Your Library</HeadingPrimary>
+				<List>{libraryLi}</List>
+			</>
+		) : (
+			<HeadingSecondary>Your library is empty. Please add artists you enjoy</HeadingSecondary>
+		);
 
 	return notification === 'idle' ? displayLibrary : <p>{notification} library</p>;
 };

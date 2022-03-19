@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-	fetchAlbumsData,
-	selectAlbums,
-	selectAlbumsStatus,
-	selectArtistStatus,
-} from './artist-slice';
+import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from './artist-slice';
+import HeadingSecondary from '../../elements/headings/HeadingSecondary';
+import List from '../../elements/text/List';
+import Li from '../../elements/text/Li';
+import AlbumCard from 'src/components/cards/AlbumCard';
+import SkeletonAlbums from './SkeletonAlbums';
 
 type DisplayAlbumsProps = {
 	list: string[];
 };
+
 const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -17,32 +18,34 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	}, [dispatch, list, fetchAlbumsData]);
 
 	const notification = useAppSelector(selectAlbumsStatus);
-	const notificationArtist = useAppSelector(selectArtistStatus);
+
 	const albums = useAppSelector(selectAlbums);
 
 	const albumsLi = albums
 		? albums.map(({ id, name, thumbnail }) => (
-				<li key={id}>
-					{thumbnail && (
-						<>
-							<img src={thumbnail} alt={name} width='150px' />
-							<br />
-						</>
-					)}
-
-					{name}
-				</li>
+				<Li key={id}>
+					<AlbumCard name={name} thumbnail={thumbnail} />
+				</Li>
 		  ))
 		: null;
-	const displaySimilar =
-		albums && notificationArtist === 'idle' ? (
-			<>
-				<h3>top albums:</h3>
-				<ul>{albumsLi}</ul>
-			</>
-		) : null;
 
-	return notification === 'idle' ? displaySimilar : <p>{notification} top albums</p>;
+	let displayAlbums = <SkeletonAlbums />;
+	if (albums && notification === 'idle') {
+		displayAlbums = <List>{albumsLi}</List>;
+	}
+	if (albums && albums.length === 0 && notification === 'idle') {
+		displayAlbums = <SkeletonAlbums />;
+	}
+	if (notification === 'failed') {
+		displayAlbums = <p>Error loading albums</p>;
+	}
+
+	return (
+		<>
+			<HeadingSecondary>Top albums:</HeadingSecondary>
+			{displayAlbums}
+		</>
+	);
 };
 
 export default DisplayAlbums;
