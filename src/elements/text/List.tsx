@@ -12,7 +12,7 @@ const List: FC = ({ children }) => {
 			width='100%'
 			flex={2}
 			flexWrap={'wrap'}
-			border='solid 1px pink'
+			// border='solid 1px pink'
 		>
 			{children}
 		</ListChakra>

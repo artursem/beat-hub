@@ -50,7 +50,7 @@ const ArtistBlock = ({ artistId }: ArtistBlockProps) => {
 			<Stack
 				direction={{ base: 'column', '2xl': 'row' }}
 				justifyContent={{ base: 'flex-start', '2xl': 'space-around' }}
-				alignItems={{ base: 'center', '2xl': 'flex-start' }}
+				alignItems={{ base: 'stretch', '2xl': 'flex-start' }}
 				width='100%'
 			>
 				<Stack flex={1} direction='column' justifyContent='flex-start' alignItems={'stretch'}>

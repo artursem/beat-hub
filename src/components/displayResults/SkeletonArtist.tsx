@@ -2,8 +2,8 @@ import { Stack, Skeleton, SkeletonText } from '@chakra-ui/react';
 
 const SkeletonArtist = () => {
 	return (
-		<Stack dir='column'>
-			<Skeleton height={600} />
+		<Stack dir='column' alignItems='stretch' minH='700px'>
+			<Skeleton h={600} w='100%' />
 			<SkeletonText mt='2' noOfLines={1} spacing='2' />
 			<SkeletonText mt='2' noOfLines={10} spacing='2' />
 		</Stack>
