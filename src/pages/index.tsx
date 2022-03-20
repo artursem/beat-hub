@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import type { NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { useAppDispatch } from '../store/hooks';
 import fetchTop from '../components/topArtists/fetchTop';
 import fetchTopAlbums from '../components/topAlbums/fetchTopAlbums';
@@ -39,7 +39,7 @@ const IndexPage = ({ topAlbums, topArtists }: IndexPageProps) => {
 
 export default IndexPage;
 
-export async function getServerSideProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const topArtists = await fetchTop();
 	const topAlbums = await fetchTopAlbums();
 	return {
@@ -47,5 +47,6 @@ export async function getServerSideProps() {
 			topArtists,
 			topAlbums,
 		},
+		revalidate: 86400,
 	};
-}
+};
