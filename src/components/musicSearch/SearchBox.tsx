@@ -23,7 +23,7 @@ const SearchBox: FC = () => {
 			dispatch(setListIsOpen(true));
 			dispatch(fetchSearch(searchTerm));
 		}
-	}, [debouncedSearchTerm]);
+	}, [dispatch, searchTerm, debouncedSearchTerm]);
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(event.target.value);

@@ -38,7 +38,7 @@ export const topAlbumsSlice = createSlice({
 	},
 });
 
-export const topAlbumsActions = topAlbumsSlice.actions;
+export const setTopAlbums = topAlbumsSlice.actions.setTopAlbums;
 export const selectTopAlbums = (state: RootState) => state.topAlbums.topAlbums;
 export const selectTopAlbumsStatus = (state: RootState) => state.topAlbums.status;
 export default topAlbumsSlice;

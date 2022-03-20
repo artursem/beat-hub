@@ -17,7 +17,7 @@ const Artist = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(setListIsOpen(false));
-	}, [artistId]);
+	}, [artistId, dispatch]);
 
 	let artistBlock;
 	if (notification === 'failed') {

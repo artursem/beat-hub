@@ -37,7 +37,7 @@ export const topArtistsSlice = createSlice({
 	},
 });
 
-export const topArtistsActions = topArtistsSlice.actions;
+export const setTopArtists = topArtistsSlice.actions.setTopArtists;
 export const selectTop = (state: RootState) => state.topArtists.topArtists;
 export const selectTopStatus = (state: RootState) => state.topArtists.status;
 export default topArtistsSlice;

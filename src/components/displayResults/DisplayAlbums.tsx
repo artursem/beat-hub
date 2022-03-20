@@ -15,7 +15,7 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(fetchAlbumsData(list));
-	}, [dispatch, list, fetchAlbumsData]);
+	}, [dispatch, list]);
 
 	const notification = useAppSelector(selectAlbumsStatus);
 

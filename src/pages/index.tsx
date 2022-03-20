@@ -4,8 +4,8 @@ import Head from 'next/head';
 import { useAppDispatch } from '../store/hooks';
 import fetchTop from '../components/topArtists/fetchTop';
 import fetchTopAlbums from '../components/topAlbums/fetchTopAlbums';
-import { topAlbumsActions } from 'src/components/topAlbums/top-albums-slice';
-import { topArtistsActions } from 'src/components/topArtists/top-slice';
+import { setTopAlbums } from 'src/components/topAlbums/top-albums-slice';
+import { setTopArtists } from 'src/components/topArtists/top-slice';
 import { setListIsOpen } from '../components/musicSearch/search-slice';
 import TopArtists from '../components/topArtists/TopArtists';
 import TopAlbums from '../components/topAlbums/TopAlbums';
@@ -17,13 +17,13 @@ interface IndexPageProps {
 	topAlbums: Albums[];
 }
 
-const IndexPage = (props: IndexPageProps) => {
+const IndexPage = ({ topAlbums, topArtists }: IndexPageProps) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(setListIsOpen(false));
-		dispatch(topArtistsActions.setTopArtists(props.topArtists));
-		dispatch(topAlbumsActions.setTopAlbums(props.topAlbums));
-	}, []);
+		dispatch(setTopArtists(topArtists));
+		dispatch(setTopAlbums(topAlbums));
+	}, [dispatch, topAlbums, topArtists]);
 
 	return (
 		<>
