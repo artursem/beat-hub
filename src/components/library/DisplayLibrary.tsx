@@ -12,6 +12,7 @@ import List from 'src/elements/text/List';
 import Li from 'src/elements/text/Li';
 import HeadingPrimary from 'src/elements/headings/HeadingPrimary';
 import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
+import SkeletonLibrary from './SkeletonLibrary';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -37,17 +38,28 @@ const DisplayCollection = () => {
 		  ))
 		: null;
 
-	const displayLibrary =
-		library.length > 0 ? (
+	let displayLibrary = <SkeletonLibrary length={library.length} />;
+	if (library.length > 0 && notification === 'idle') {
+		displayLibrary = (
 			<>
 				<HeadingPrimary>Your Library</HeadingPrimary>
 				<List>{libraryLi}</List>
 			</>
-		) : (
+		);
+	}
+	if (library.length === 0 && notification === 'idle') {
+		displayLibrary = (
 			<HeadingSecondary>Your library is empty. Please add artists you enjoy</HeadingSecondary>
 		);
+	}
+	if (notification === 'loading') {
+		displayLibrary = <SkeletonLibrary length={library.length} />;
+	}
+	if (notification === 'failed') {
+		displayLibrary = <p>Error loading library</p>;
+	}
 
-	return notification === 'idle' ? displayLibrary : <p>{notification} library</p>;
+	return displayLibrary;
 };
 
 export default DisplayCollection;

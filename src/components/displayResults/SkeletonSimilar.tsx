@@ -18,6 +18,7 @@ const SkeletonSimilar = () => {
 			<Li>{skeleton}</Li>
 			<Li>{skeleton}</Li>
 			<Li>{skeleton}</Li>
+			<Li>{skeleton}</Li>
 		</List>
 	);
 };

@@ -44,7 +44,7 @@ const ArtistBlock = ({ artistId }: ArtistBlockProps) => {
 
 	return (
 		<>
-			<Skeleton width='60%' isLoaded={notification === 'idle'}>
+			<Skeleton width='60%' isLoaded={notification === 'idle'} my={2}>
 				<HeadingPrimary>{name}</HeadingPrimary>
 			</Skeleton>
 			<Stack

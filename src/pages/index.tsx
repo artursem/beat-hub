@@ -47,6 +47,6 @@ export const getStaticProps: GetStaticProps = async () => {
 			topArtists,
 			topAlbums,
 		},
-		revalidate: 86400,
+		revalidate: 3600,
 	};
 };
