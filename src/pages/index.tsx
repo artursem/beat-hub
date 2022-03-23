@@ -43,15 +43,15 @@ export const getStaticProps: GetStaticProps = async () => {
 	const topArtists = await fetchTop();
 	const topAlbums = await fetchTopAlbums();
 
-	if (!topAlbums || !topArtists) {
-		return {
-			redirect: {
-				destination: '/library',
-				permanent: false,
-				// statusCode: 301
-			},
-		};
-	}
+	// if (!topAlbums || !topArtists) {
+	// 	return {
+	// 		redirect: {
+	// 			destination: '/library',
+	// 			permanent: false,
+	// 			// statusCode: 301
+	// 		},
+	// 	};
+	// }
 
 	return {
 		props: {
