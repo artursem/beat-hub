@@ -38,7 +38,7 @@ const DisplayCollection = () => {
 		  ))
 		: null;
 
-	let displayLibrary = <SkeletonLibrary length={library.length} />;
+	let displayLibrary = <SkeletonLibrary />;
 	if (library.length > 0 && notification === 'idle') {
 		displayLibrary = (
 			<>
@@ -53,7 +53,7 @@ const DisplayCollection = () => {
 		);
 	}
 	if (notification === 'loading') {
-		displayLibrary = <SkeletonLibrary length={library.length} />;
+		displayLibrary = <SkeletonLibrary />;
 	}
 	if (notification === 'failed') {
 		displayLibrary = <p>Error loading library</p>;
