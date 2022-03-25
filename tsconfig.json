@@ -14,18 +14,11 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"baseUrl": ".",
-		"paths": {
-			"components/*": ["src/componenets/*"],
-			"types/*": ["src/models/*"]
-		}
+		"baseUrl": "."
+		// "paths": {
+		// 	"components/*": ["src/componenets/*"]
+		// }
 	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"src/elements/buttons/BtnAddToLibSmall",
-		"src/elements/buttons/BtnAddToLibSmall"
-	],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules"]
 }

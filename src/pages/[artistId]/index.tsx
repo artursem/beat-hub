@@ -3,10 +3,10 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { selectArtist, selectArtistStatus } from '../../components/displayResults/artist-slice';
-import { setListIsOpen } from '../../components/musicSearch/search-slice';
-import HeadingSecondary from 'src/elements/headings/HeadingSecondary';
-import ArtistBlock from 'src/components/cards/ArtistBlock';
+import { selectArtist, selectArtistStatus } from '../../store/artist/artist-slice';
+import { setListIsOpen } from 'src/store/search/search-slice';
+import HeadingSecondary from 'src/components/headings/HeadingSecondary';
+import ArtistBlock from 'src/sections/artist/ArtistBlock';
 
 const Artist: NextPage = () => {
 	const router = useRouter();

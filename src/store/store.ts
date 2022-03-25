@@ -1,9 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import artistSlice from '../components/displayResults/artist-slice';
-import librarySlice from '../components/library/library-slice';
-import topArtistsSlice from '../components/topArtists/top-slice';
-import topAlbumsSlice from '../components/topAlbums/top-albums-slice';
-import searchArtistSlice from '../components/musicSearch/search-slice';
+import artistSlice from './artist/artist-slice';
+import librarySlice from 'src/store/library/library-slice';
+import topArtistsSlice from 'src/store/top-artists/top-slice';
+
+import topAlbumsSlice from 'src/store/top-albums/top-albums-slice';
+import searchArtistSlice from 'src/store/search/search-slice';
 
 export function makeStore() {
 	return configureStore({

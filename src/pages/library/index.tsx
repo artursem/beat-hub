@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import DisplayLibrary from '../../components/library/DisplayLibrary';
+import DisplayLibrary from '../../sections/library/DisplayLibrary';
 
 const Library: NextPage = () => {
 	return (
