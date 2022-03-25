@@ -1,4 +1,4 @@
-import { getArtistApi } from '../../services/music-api';
+import { getArtistApi } from 'src/services/music-api';
 
 export default async function fetchSimilar(list: string[]) {
 	const urlList = list.map((id) => getArtistApi(id));

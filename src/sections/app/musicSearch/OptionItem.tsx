@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import ListArtists from '../../../types/listArtists';
+import { ListArtists } from 'src/types/app-types';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
 import Li from 'src/components/text/Li';
 import { Box, Link } from '@chakra-ui/react';

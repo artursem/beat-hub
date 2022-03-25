@@ -1,5 +1,5 @@
-import ListArtists from '../../types/listArtists';
-import { getArtistApi, getTopApi } from '../../services/music-api';
+import { ListArtists } from 'src/types/app-types';
+import { getArtistApi, getTopApi } from 'src/services/music-api';
 
 export default async function fetchTop() {
 	const response = await fetch(getTopApi());

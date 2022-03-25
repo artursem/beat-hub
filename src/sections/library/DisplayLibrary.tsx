@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import {
 	selectLibraryList,
 	selectLibraryStatus,
@@ -7,12 +7,13 @@ import {
 	fetchLibraryArtists,
 	setLibrary,
 } from 'src/store/library/library-slice';
-import ArtistCard from '../cards/ArtistCard';
+import ArtistCard from 'src/sections/app/ArtistCard';
+import SkeletonLibrary from './SkeletonLibrary';
+
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import HeadingSecondary from 'src/components/headings/HeadingSecondary';
-import SkeletonLibrary from './SkeletonLibrary';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();

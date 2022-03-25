@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from '../../store/artist/artist-slice';
-import HeadingSecondary from '../../components/headings/HeadingSecondary';
-import List from '../../components/text/List';
-import Li from '../../components/text/Li';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from 'src/store/artist/artist-slice';
 import AlbumCard from 'src/sections/app/AlbumCard';
 import SkeletonAlbums from './SkeletonAlbums';
+
+import HeadingSecondary from 'src/components/headings/HeadingSecondary';
+import List from 'src/components/text/List';
+import Li from 'src/components/text/Li';
 
 type DisplayAlbumsProps = {
 	list: string[];

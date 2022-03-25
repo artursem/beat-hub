@@ -1,10 +1,11 @@
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from 'src/store/hooks';
+import { ListArtists } from 'src/types/app-types';
 import { selectTop } from 'src/store/top-artists/top-slice';
+import ArtistCard from 'src/sections/app/ArtistCard';
+
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
-import ArtistCard from '../cards/ArtistCard';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
-import ListArtists from '../../types/listArtists';
 
 const TopArtists = () => {
 	const top = useAppSelector(selectTop);

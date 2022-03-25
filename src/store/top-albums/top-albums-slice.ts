@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-import Album from 'src/types/albums';
+import { RootState } from 'src/store/store';
+import { Album } from 'src/types/app-types';
 import fetchTopAlbums from './fetchTopAlbums';
 
 export interface TopAlbumsState {

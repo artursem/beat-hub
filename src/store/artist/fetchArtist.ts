@@ -1,5 +1,5 @@
-import FoundArtist from '../../types/foundArtist';
-import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from '../../services/music-api';
+import { FoundArtist } from 'src/types/app-types';
+import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from 'src/services/music-api';
 
 export default async function fetchArtist(id: string): Promise<FoundArtist> {
 	const response = await fetch(getArtistApi(id));

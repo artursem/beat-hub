@@ -1,4 +1,4 @@
-import { Skeleton, Box } from '@chakra-ui/react';
+import { Skeleton } from '@chakra-ui/react';
 import Li from 'src/components/text/Li';
 import List from 'src/components/text/List';
 

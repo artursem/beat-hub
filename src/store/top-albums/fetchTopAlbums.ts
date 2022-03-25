@@ -1,5 +1,5 @@
-import Album from '../../types/albums';
-import { getTopAlbumsApi, getAlbum } from '../../services/music-api';
+import { Album } from 'src/types/app-types';
+import { getTopAlbumsApi, getAlbum } from 'src/services/music-api';
 
 export default async function fetchTopAlbums() {
 	const response = await fetch(getTopAlbumsApi());

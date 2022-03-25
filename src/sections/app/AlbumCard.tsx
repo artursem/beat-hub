@@ -1,7 +1,8 @@
 import NextLink from 'next/link';
 import { useAppSelector } from 'src/store/hooks';
-import { selectAlbumsStatus } from '../../store/artist/artist-slice';
-import ImgAlbum from '../../components/images/ImgAlbum';
+import { selectAlbumsStatus } from 'src/store/artist/artist-slice';
+
+import ImgAlbum from 'src/components/images/ImgAlbum';
 import { Box, Center, Link } from '@chakra-ui/react';
 
 interface AlbumCardProps {

@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
-import { fetchArtistData } from '../../store/artist/artist-slice';
-import { selectArtist, selectArtistStatus } from '../../store/artist/artist-slice';
+import { fetchArtistData } from 'src/store/artist/artist-slice';
+import { selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
-import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
-import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
-import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbums from './DisplayAlbums';
 import SimilarArtists from './DisplaySimilarArtists';
+
+import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
+import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
+import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import { Skeleton, Stack } from '@chakra-ui/react';
 
 interface ArtistBlockProps {

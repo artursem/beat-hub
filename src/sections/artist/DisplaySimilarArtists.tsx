@@ -1,16 +1,17 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
 	fetchSimilarData,
 	selectArtistStatus,
 	selectSimilar,
 	selectSimilarStatus,
-} from '../../store/artist/artist-slice';
-import ArtistCard from 'src/sections/cards/ArtistCard';
-import HeadingSecondary from '../../components/headings/HeadingSecondary';
+} from 'src/store/artist/artist-slice';
+import SkeletonSimilar from './SkeletonSimilar';
+import ArtistCard from 'src/sections/app/ArtistCard';
+
+import HeadingSecondary from 'src/components/headings/HeadingSecondary';
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
-import SkeletonSimilar from './SkeletonSimilar';
 
 type SimilarArtistsProps = {
 	list: string[];

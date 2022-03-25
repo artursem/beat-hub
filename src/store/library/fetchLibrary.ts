@@ -1,5 +1,5 @@
-import { getArtistApi } from '../../services/music-api';
-import ListArtists from '../../types/listArtists';
+import { getArtistApi } from 'src/services/music-api';
+import { ListArtists } from 'src/types/app-types';
 
 export default async function fetchLibArtists(listId: string[]): Promise<Array<ListArtists>> {
 	const urlList = listId.map((id) => getArtistApi(id));

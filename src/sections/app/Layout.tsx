@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { VStack } from '@chakra-ui/react'; // import?
 import Navbar from './Navbar';
+
+import { VStack } from '@chakra-ui/react'; // import?
 
 const Layout: FC = ({ children }) => {
 	return (

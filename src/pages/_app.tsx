@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
-import store from '../store/store';
-import Layout from '../sections/app/Layout';
+import store from 'src/store/store';
+import Layout from 'src/sections/app/Layout';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	return (

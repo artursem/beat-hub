@@ -1,5 +1,5 @@
-import ListInline from '../../components/text/ListInline';
-import Genre from '../../components/text/Genre';
+import ListInline from 'src/components/text/ListInline';
+import Genre from 'src/components/text/Genre';
 import LiInline from 'src/components/text/LiInline';
 
 interface DisplayGenresProps {

@@ -1,20 +1,19 @@
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useAppDispatch } from '../store/hooks';
-import fetchTop from '../store/top-artists/fetchTop';
-import fetchTopAlbums from '../store/top-albums/fetchTopAlbums';
+import { useAppDispatch } from 'src/store/hooks';
+import fetchTop from 'src/store/top-artists/fetchTop';
+import fetchTopAlbums from 'src/store/top-albums/fetchTopAlbums';
 import { setTopAlbums } from 'src/store/top-albums/top-albums-slice';
 import { setTopArtists } from 'src/store/top-artists/top-slice';
 import { setListIsOpen } from 'src/store/search/search-slice';
-import TopArtists from '../sections/home/TopArtists';
-import TopAlbums from '../sections/home/TopAlbums';
-import ListArtists from 'src/types/listArtists';
-import Albums from 'src/types/albums';
+import TopArtists from 'src/sections/home/TopArtists';
+import TopAlbums from 'src/sections/home/TopAlbums';
+import { Album, ListArtists } from 'src/types/app-types';
 
 interface IndexPageProps {
 	topArtists: ListArtists[];
-	topAlbums: Albums[];
+	topAlbums: Album[];
 }
 
 const IndexPage = ({ topAlbums, topArtists }: IndexPageProps) => {

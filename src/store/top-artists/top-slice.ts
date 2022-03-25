@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../../store/store';
-import ListArtists from '../../types/listArtists';
-import fetchTop from '../../store/top-artists/fetchTop';
+import { RootState } from 'src/store/store';
+import { ListArtists } from 'src/types/app-types';
+import fetchTop from 'src/store/top-artists/fetchTop';
+
 export interface TopArtistsState {
 	topArtists: Array<ListArtists>;
 	status: 'idle' | 'loading' | 'error';

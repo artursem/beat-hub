@@ -1,5 +1,5 @@
-import ListArtists from '../../types/listArtists';
-import { searchArtistApi, getArtistApi } from '../../services/music-api';
+import { ListArtists } from 'src/types/app-types';
+import { searchArtistApi, getArtistApi } from 'src/services/music-api';
 
 export default async function fetchSearchList(searchTerm: string) {
 	try {

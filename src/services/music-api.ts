@@ -1,7 +1,5 @@
-const apiKey = 'MzQyZGE0YzktZDBlZC00MTk2LWIzNjctOTBlNjQ0OTcwNTA3';
-// const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 const address = 'https://api.napster.com/v2.2/';
-// MOVE TO .ENV !!!!!!!!!!!!!!!!
 
 export const searchArtistApi = (artist: string) => {
 	return `${address}search?query=${artist}&type=artist&per_type_limit=5&apikey=${apiKey}`;

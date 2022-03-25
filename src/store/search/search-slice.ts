@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { RootState } from '../../store/store';
-import ListArtists from '../../types/listArtists';
-
+import type { RootState } from 'src/store/store';
+import { ListArtists } from 'src/types/app-types';
 import fetchSearchList from './fetchSearchList';
 
 export interface searchState {

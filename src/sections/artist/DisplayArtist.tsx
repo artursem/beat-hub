@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchArtistData, selectArtist, selectArtistStatus } from '../../store/artist/artist-slice';
-import { addArtist, removeArtist, selectLibraryList } from '../library/library-slice';
+import { useAppDispatch, useAppSelector } from 'src/store/hooks';
+import { fetchArtistData, selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
+import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
 import DisplayGenres from './DisplayGenres';
+import SkeletonArtist from './SkeletonArtist';
+
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgArtist from 'src/components/images/ImgArtist';
 import Box from 'src/components/text/Box';
 import Bio from 'src/components/text/Bio';
-import SkeletonArtist from './SkeletonArtist';
-// import Stack from 'src/elements/layout/Stack';
 import { Stack } from '@chakra-ui/react'; // import
 
 type DisplayArtistProps = {

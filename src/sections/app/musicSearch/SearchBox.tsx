@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
-import { useAppDispatch, useAppSelector, useDebounce } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector, useDebounce } from 'src/store/hooks';
 import { useOnClickOutside } from 'usehooks-ts';
 import {
 	fetchSearch,

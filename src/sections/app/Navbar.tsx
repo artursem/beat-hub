@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Flex, Box, HStack, useBreakpointValue } from '@chakra-ui/react';
 import SearchBox from './musicSearch/SearchBox';
+
 import BtnLibrarySmall from 'src/components/buttons/BtnLibrarySmall';
 import BtnLibrary from 'src/components/buttons/BtnLibrary';
 import BtnHomeSmall from 'src/components/buttons/BtnHomeSmall';
