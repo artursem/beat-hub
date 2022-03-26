@@ -22,5 +22,3 @@ export type ListArtists = {
 	name: string;
 	thumbnail?: string | null;
 };
-
-export default ListArtists;
