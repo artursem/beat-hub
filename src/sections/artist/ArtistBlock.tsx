@@ -10,7 +10,7 @@ import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import { Stack } from '@chakra-ui/react'; // import !@!!!!!!!!!!!!!!!!!!!!!!
 
 const ArtistBlock = () => {
-	const { name, albumsId, contemporaries } = useAppSelector(selectArtist);
+	const { name } = useAppSelector(selectArtist);
 
 	return (
 		<>

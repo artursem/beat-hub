@@ -3,32 +3,30 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { useAppDispatch } from 'src/store/hooks';
-import { setDisplayArtist } from 'src/store/artist/artist-slice';
+import { setInitialArtist } from 'src/store/artist/artist-slice';
 import { setListIsOpen } from 'src/store/search/search-slice';
 import ArtistBlock from 'src/sections/artist/ArtistBlock';
-import fetchArtist from 'src/store/artist/fetchArtist';
+import fetchInitialArtist from 'src/store/artist/fetchInitialArtist';
 
-import { Album, FoundArtist, ListArtists } from 'src/types/app-types';
+import { Album, InitialArtist, ListArtists } from 'src/types/app-types';
 
 type ArtistProps = {
-	foundArtist: FoundArtist;
-	albums: Album;
-	similar: ListArtists;
+	initialArtist: InitialArtist;
 };
 
 const Artist: NextPage<ArtistProps> = (props) => {
-	const { foundArtist } = props;
-
+	const { initialArtist } = props;
 	const dispatch = useAppDispatch();
+
 	useEffect(() => {
 		dispatch(setListIsOpen(false));
-		dispatch(setDisplayArtist(foundArtist));
-	}, [foundArtist, dispatch]);
+		dispatch(setInitialArtist(initialArtist));
+	}, [initialArtist, dispatch]);
 
 	return (
 		<>
 			<Head>
-				<title>{foundArtist.name} - beathub</title>
+				<title>{initialArtist.name} - beathub</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<ArtistBlock />
@@ -49,10 +47,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	}
 	try {
 		const id = context.params.artistId;
-		const foundArtist = await fetchArtist(id);
+		const initialArtist = await fetchInitialArtist(id);
 		return {
 			props: {
-				foundArtist,
+				initialArtist,
 			},
 		};
 	} catch (error) {

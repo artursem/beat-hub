@@ -13,7 +13,7 @@ import { Stack } from '@chakra-ui/react'; // import!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const DisplayArtist = () => {
 	const dispatch = useAppDispatch();
-	const { id, bio, genres, image } = useAppSelector(selectArtist);
+	const { id, bio } = useAppSelector(selectArtist);
 	const library = useAppSelector(selectLibraryList);
 
 	const isInLibrary = (id: string) => {
@@ -35,9 +35,8 @@ const DisplayArtist = () => {
 
 	return (
 		<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
-			{image && <ImgArtist src={image} alt={id} />}
 			<Box>{libraryButton}</Box>
-			{genres && <DisplayGenres genres={genres} />}
+			<DisplayGenres />
 			<Bio content={bio} />
 		</Stack>
 	);

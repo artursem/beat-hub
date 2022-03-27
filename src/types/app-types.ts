@@ -17,6 +17,14 @@ export type FoundArtist = {
 	albumsId: string[] | null;
 };
 
+export type InitialArtist = {
+	id: string;
+	name: string;
+	bio: string;
+	genresLink: string | null;
+	contemposLink: string | null;
+};
+
 export type ListArtists = {
 	id: string;
 	name: string;

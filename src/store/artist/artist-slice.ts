@@ -1,14 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 
-import { Album, ListArtists, FoundArtist } from 'src/types/app-types';
+import { Album, ListArtists, FoundArtist, InitialArtist } from 'src/types/app-types';
 
+import fetchInitialArtist from './fetchInitialArtist';
 import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';
 import fetchSimilar from './fetchSimilar';
 
 export interface ArtistState {
-	displayArtist: FoundArtist;
+	// displayArtist: FoundArtist;
+	initialArtist: InitialArtist;
+	image: string | null;
+	genres: string[] | null;
 	similarDetails: Array<ListArtists> | null;
 	albumsDetails: Array<Album> | null;
 	status: 'idle' | 'loading' | 'failed';
@@ -17,16 +21,15 @@ export interface ArtistState {
 }
 
 const initialState: ArtistState = {
-	displayArtist: {
+	initialArtist: {
 		id: '',
 		name: '',
-		albumsId: [],
 		bio: '',
-		contemporaries: [],
-		genres: [],
-		image: '',
-		thumbnail: '',
+		contemposLink: null,
+		genresLink: null,
 	},
+	image: null,
+	genres: null,
 	similarDetails: [],
 	albumsDetails: [],
 	status: 'idle',
@@ -34,17 +37,28 @@ const initialState: ArtistState = {
 	statusSimilar: 'idle',
 };
 
-export const fetchArtistData = createAsyncThunk(
-	'artist/fetchArtistData',
+export const fetchInitialData = createAsyncThunk(
+	'artist/fetchInitialData',
 	async (id: string, { rejectWithValue }) => {
 		try {
-			const response = await fetchArtist(id);
+			const response = await fetchInitialArtist(id);
 			return response;
 		} catch (err) {
-			return rejectWithValue('failed artist fetching');
+			return rejectWithValue('failed init artist fetching');
 		}
 	}
 );
+// export const fetchArtistData = createAsyncThunk(
+// 	'artist/fetchArtistData',
+// 	async (id: string, { rejectWithValue }) => {
+// 		try {
+// 			const response = await fetchArtist(id);
+// 			return response;
+// 		} catch (err) {
+// 			return rejectWithValue('failed artist fetching');
+// 		}
+// 	}
+// );
 
 export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (list: string[]) => {
 	const response = await fetchAlbums(list);
@@ -63,8 +77,11 @@ export const artistSlice = createSlice({
 	name: 'artist',
 	initialState,
 	reducers: {
-		setDisplayArtist: (state, action) => {
-			state.displayArtist = action.payload;
+		setInitialArtist: (state, action) => {
+			state.initialArtist = action.payload;
+		},
+		setGenres: (state, action) => {
+			state.genres = action.payload;
 		},
 		setSimilarDetails: (state, action) => {
 			state.similarDetails = action.payload;
@@ -75,16 +92,16 @@ export const artistSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchArtistData.pending, (state) => {
+			.addCase(fetchInitialData.pending, (state) => {
 				state.status = 'loading';
 				state.albumsDetails = [];
 				state.similarDetails = [];
 			})
-			.addCase(fetchArtistData.fulfilled, (state, action) => {
+			.addCase(fetchInitialData.fulfilled, (state, action) => {
 				state.status = 'idle';
-				state.displayArtist = action.payload;
+				state.initialArtist = action.payload;
 			})
-			.addCase(fetchArtistData.rejected, (state) => {
+			.addCase(fetchInitialData.rejected, (state) => {
 				state.status = 'failed';
 			})
 			.addCase(fetchAlbumsData.pending, (state) => {
@@ -105,9 +122,13 @@ export const artistSlice = createSlice({
 });
 
 export const artistActions = artistSlice.actions;
-export const setDisplayArtist = (payload: FoundArtist) => artistActions.setDisplayArtist(payload);
-export const selectArtist = (state: RootState) => state.artist.displayArtist;
+export const setInitialArtist = (payload: InitialArtist) => artistActions.setInitialArtist(payload);
+export const selectArtist = (state: RootState) => state.artist.initialArtist;
 export const selectArtistStatus = (state: RootState) => state.artist.status;
+
+export const setGenres = (payload: string[]) => artistActions.setGenres(payload);
+export const selectGenres = (state: RootState) => state.artist.genres;
+
 export const selectAlbums = (state: RootState) => state.artist.albumsDetails;
 export const selectAlbumsStatus = (state: RootState) => state.artist.statusAlbums;
 export const selectSimilar = (state: RootState) => state.artist.similarDetails;
