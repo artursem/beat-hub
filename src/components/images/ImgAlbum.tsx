@@ -1,4 +1,4 @@
-import { Image } from '@chakra-ui/react';
+import Image from 'next/image';
 
 interface ImgAlbumProps {
 	src: string;
@@ -6,9 +6,7 @@ interface ImgAlbumProps {
 }
 
 const ImgAlbum = ({ src, alt }: ImgAlbumProps) => {
-	return <Image src={src} alt={alt} maxH={150} objectFit='cover' />;
+	return <Image src={src} alt={alt} width={150} height={150} />;
 };
 
 export default ImgAlbum;
-
-// 356 x 237

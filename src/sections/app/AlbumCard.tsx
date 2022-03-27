@@ -47,7 +47,17 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 					<ImgAlbum src={thumbnail} alt={name} />
 				)}
 			</Box>
-			<Center as='div' flex={2} padding={2} marginY={3}>
+			<Center
+				as='div'
+				flex={2}
+				padding={2}
+				marginY={3}
+				style={{
+					textAlign: 'center',
+					whiteSpace: 'normal',
+					wordWrap: 'break-word',
+				}}
+			>
 				{artistId ? (
 					<NextLink href={`/artist/${artistId}`} passHref>
 						<Link>{`${short(name)} by ${artist}`}</Link>

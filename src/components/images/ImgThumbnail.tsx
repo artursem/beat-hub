@@ -1,4 +1,4 @@
-import { Image } from '@chakra-ui/react';
+import Image from 'next/image';
 
 interface ImgThumbnailProps {
 	src: string;
@@ -6,9 +6,7 @@ interface ImgThumbnailProps {
 }
 
 const ImgThumbnail = ({ src, alt }: ImgThumbnailProps) => {
-	return <Image src={src} alt={alt} maxH={100} objectFit='cover' />;
+	return <Image src={src} alt={alt} width={150} height={100} />;
 };
 
 export default ImgThumbnail;
-
-// 356 x 237

@@ -52,14 +52,22 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			marginX={{ base: 1, md: 0, '2xl': 3 }}
 			flexWrap={'wrap'}
 			overflow={'hidden'}
-			// border='1px solid green'
 		>
 			<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
 				<NextLink href={`/artist/${id}`} passHref>
 					<Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link>
 				</NextLink>
 			</Box>
-			<Center as='p' flex={1} isTruncated>
+			<Center
+				as='p'
+				flex={1}
+				isTruncated
+				style={{
+					textAlign: 'center',
+					whiteSpace: 'normal',
+					wordWrap: 'break-word',
+				}}
+			>
 				<NextLink href={`/artist/${id}`} passHref>
 					<Link>{name}</Link>
 				</NextLink>

@@ -35,11 +35,9 @@ const DisplayArtist = () => {
 
 	return (
 		<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
-			<Box>
-				{image && <ImgArtist src={image} alt={id} />}
-				<Box>{libraryButton}</Box>
-				{genres && <DisplayGenres genres={genres} />}
-			</Box>
+			{image && <ImgArtist src={image} alt={id} />}
+			<Box>{libraryButton}</Box>
+			{genres && <DisplayGenres genres={genres} />}
 			<Bio content={bio} />
 		</Stack>
 	);

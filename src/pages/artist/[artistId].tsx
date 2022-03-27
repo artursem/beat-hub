@@ -41,13 +41,23 @@ export default Artist;
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	if (!context || !context.params || typeof context.params.artistId !== 'string') {
 		return {
-			notFound: true,
-			// redirect
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
 		};
 	}
 	const id = context.params.artistId;
 	const foundArtist = await fetchArtist(id);
 
+	if (foundArtist === 'Not found') {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		};
+	}
 	return {
 		props: {
 			foundArtist,
