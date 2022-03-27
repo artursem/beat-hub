@@ -49,7 +49,7 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 			</Box>
 			<Center as='div' flex={2} padding={2} marginY={3}>
 				{artistId ? (
-					<NextLink href={`/${artistId}`} passHref>
+					<NextLink href={`/artist/${artistId}`} passHref>
 						<Link>{`${short(name)} by ${artist}`}</Link>
 					</NextLink>
 				) : (

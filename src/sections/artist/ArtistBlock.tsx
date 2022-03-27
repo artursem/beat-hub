@@ -1,15 +1,13 @@
-import { useEffect, FC } from 'react';
-import { useAppSelector, useAppDispatch } from 'src/store/hooks';
-import { fetchArtistData } from 'src/store/artist/artist-slice';
-import { selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
+import { useAppSelector } from 'src/store/hooks';
+import { selectArtist } from 'src/store/artist/artist-slice';
 
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbums from './DisplayAlbums';
 import SimilarArtists from './DisplaySimilarArtists';
-import { FoundArtist } from 'src/types/app-types';
 
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
-import { Skeleton, Stack } from '@chakra-ui/react';
+
+import { Stack } from '@chakra-ui/react'; // import !@!!!!!!!!!!!!!!!!!!!!!!
 
 const ArtistBlock = () => {
 	const { name, albumsId, contemporaries } = useAppSelector(selectArtist);

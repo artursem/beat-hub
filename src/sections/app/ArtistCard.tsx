@@ -55,12 +55,12 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			// border='1px solid green'
 		>
 			<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
-				<NextLink href={`/${id}`} passHref>
+				<NextLink href={`/artist/${id}`} passHref>
 					<Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link>
 				</NextLink>
 			</Box>
 			<Center as='p' flex={1} isTruncated>
-				<NextLink href={`/${id}`} passHref>
+				<NextLink href={`/artist/${id}`} passHref>
 					<Link>{name}</Link>
 				</NextLink>
 			</Center>

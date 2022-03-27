@@ -7,7 +7,7 @@ import { Box, Link } from '@chakra-ui/react';
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 	return (
 		<Li>
-			<NextLink href={`/${id}`} passHref>
+			<NextLink href={`/artist/${id}`} passHref>
 				<Link>
 					<Box
 						display='flex'

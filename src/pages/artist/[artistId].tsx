@@ -25,21 +25,6 @@ const Artist: NextPage<ArtistProps> = (props) => {
 		dispatch(setDisplayArtist(foundArtist));
 	}, [foundArtist, dispatch]);
 
-	// let artistBlock = (
-	// 	<>
-	// 		<h1>{props.foundArtist.name}</h1>
-	// 		<p>{props.foundArtist.bio}</p>
-	// 	</>
-	// );
-
-	// let artistBlock;
-	// if (notification === 'failed') {
-	// 	// set all to []
-	// 	artistBlock = <HeadingSecondary>error loading artist</HeadingSecondary>;
-	// } else {
-	// 	artistBlock = <ArtistBlock artistId={artistId} />;
-	// }
-
 	return (
 		<>
 			<Head>
@@ -62,10 +47,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	}
 	const id = context.params.artistId;
 	const foundArtist = await fetchArtist(id);
-	// const albums = foundArtist.albumsId ? await fetchAlbums(foundArtist.albumsId) : null;
-	// const similar = foundArtist.contemporaries
-	// 	? await fetchSimilar(foundArtist.contemporaries)
-	// 	: null;
 
 	return {
 		props: {
