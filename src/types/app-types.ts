@@ -30,3 +30,8 @@ export type ListArtists = {
 	name: string;
 	thumbnail?: string | null;
 };
+
+export type SearchArtist = {
+	id: string;
+	name: string;
+};

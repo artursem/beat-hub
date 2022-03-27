@@ -24,7 +24,7 @@ const SearchBox: FC = () => {
 	useOnClickOutside(ref, handleClickOutside);
 
 	useEffect(() => {
-		if (debouncedSearchTerm) {
+		if (debouncedSearchTerm && searchTerm.length > 0) {
 			dispatch(setListIsOpen(true));
 			dispatch(fetchSearch(searchTerm));
 		}
@@ -36,7 +36,7 @@ const SearchBox: FC = () => {
 
 	let displayList;
 	if (!showResultList) displayList = null;
-	if (showResultList && notification === 'idle') {
+	if (showResultList && searchTerm.length > 0 && notification === 'idle') {
 		displayList = <DisplayList />;
 	}
 	if (notification === 'failed') {
