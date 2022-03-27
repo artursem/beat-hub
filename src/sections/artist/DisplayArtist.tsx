@@ -1,28 +1,18 @@
-import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { fetchArtistData, selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
+import { selectArtist } from 'src/store/artist/artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
 import DisplayGenres from './DisplayGenres';
-import SkeletonArtist from './SkeletonArtist';
 
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgArtist from 'src/components/images/ImgArtist';
 import Box from 'src/components/text/Box';
 import Bio from 'src/components/text/Bio';
-import { Stack } from '@chakra-ui/react'; // import
 
-type DisplayArtistProps = {
-	artistId: string;
-};
+import { Stack } from '@chakra-ui/react'; // import!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
+const DisplayArtist = () => {
 	const dispatch = useAppDispatch();
-	useEffect(() => {
-		dispatch(fetchArtistData(artistId));
-	}, [dispatch, artistId]);
-
-	const notification = useAppSelector(selectArtistStatus);
 	const { id, bio, genres, image } = useAppSelector(selectArtist);
 	const library = useAppSelector(selectLibraryList);
 
@@ -31,7 +21,7 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 	};
 
 	const handleAddToLibrary = () => {
-		dispatch(addArtist(artistId));
+		dispatch(addArtist(id));
 	};
 	const handleRemoveFromLibrary = () => {
 		dispatch(removeArtist(id));
@@ -43,27 +33,16 @@ const DisplayArtist = ({ artistId }: DisplayArtistProps) => {
 		<BtnAddToLib onClick={handleAddToLibrary} />
 	);
 
-	let artistData = <SkeletonArtist />;
-	if (notification === 'idle') {
-		artistData = (
-			<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
-				<Box>
-					{image && <ImgArtist src={image} alt={id} />}
-					<Box>{libraryButton}</Box>
-					{genres && <DisplayGenres genres={genres} />}
-				</Box>
-				<Bio content={bio} />
-			</Stack>
-		);
-	}
-	if (notification === 'loading') {
-		artistData = <SkeletonArtist />;
-	}
-	if (notification === 'failed') {
-		artistData = <p>Error loading artist</p>;
-	}
-
-	return artistData;
+	return (
+		<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
+			<Box>
+				{image && <ImgArtist src={image} alt={id} />}
+				<Box>{libraryButton}</Box>
+				{genres && <DisplayGenres genres={genres} />}
+			</Box>
+			<Bio content={bio} />
+		</Stack>
+	);
 };
 
 export default DisplayArtist;

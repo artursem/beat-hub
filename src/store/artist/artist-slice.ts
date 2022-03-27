@@ -105,6 +105,7 @@ export const artistSlice = createSlice({
 });
 
 export const artistActions = artistSlice.actions;
+export const setDisplayArtist = (payload: FoundArtist) => artistActions.setDisplayArtist(payload);
 export const selectArtist = (state: RootState) => state.artist.displayArtist;
 export const selectArtistStatus = (state: RootState) => state.artist.status;
 export const selectAlbums = (state: RootState) => state.artist.albumsDetails;

@@ -1,53 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { fetchArtistData } from 'src/store/artist/artist-slice';
 import { selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
-import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
+
 import DisplayArtist from './DisplayArtist';
 import DisplayAlbums from './DisplayAlbums';
 import SimilarArtists from './DisplaySimilarArtists';
+import { FoundArtist } from 'src/types/app-types';
 
-import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
-import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import { Skeleton, Stack } from '@chakra-ui/react';
 
-interface ArtistBlockProps {
-	artistId: string;
-}
-
-const ArtistBlock = ({ artistId }: ArtistBlockProps) => {
-	const dispatch = useAppDispatch();
-	const { id, name, albumsId, contemporaries } = useAppSelector(selectArtist);
-	useEffect(() => {
-		dispatch(fetchArtistData(artistId));
-	}, [dispatch, artistId]);
-
-	const notification = useAppSelector(selectArtistStatus);
-	const library = useAppSelector(selectLibraryList);
-
-	const isInLibrary = (id: string) => {
-		return library.indexOf(id) >= 0;
-	};
-
-	const handleAddToLibrary = () => {
-		dispatch(addArtist(artistId));
-	};
-	const handleRemoveFromLibrary = () => {
-		dispatch(removeArtist(id));
-	};
-
-	const libraryButton = isInLibrary(id) ? (
-		<BtnRemoveFromLib onClick={handleRemoveFromLibrary} />
-	) : (
-		<BtnAddToLib onClick={handleAddToLibrary} />
-	);
+const ArtistBlock = () => {
+	const { name, albumsId, contemporaries } = useAppSelector(selectArtist);
 
 	return (
 		<>
-			<Skeleton width='60%' isLoaded={notification === 'idle'} my={2}>
-				<HeadingPrimary>{name}</HeadingPrimary>
-			</Skeleton>
+			<HeadingPrimary>{name}</HeadingPrimary>
 			<Stack
 				direction={{ base: 'column', '2xl': 'row' }}
 				justifyContent={{ base: 'flex-start', '2xl': 'space-around' }}
@@ -55,7 +24,7 @@ const ArtistBlock = ({ artistId }: ArtistBlockProps) => {
 				width='100%'
 			>
 				<Stack flex={1} direction='column' justifyContent='flex-start' alignItems={'stretch'}>
-					<DisplayArtist artistId={artistId} />
+					<DisplayArtist />
 				</Stack>
 
 				<Stack
