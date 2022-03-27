@@ -32,8 +32,8 @@ const ArtistBlock = () => {
 					flex={1}
 					width='100%'
 				>
-					{albumsId && <DisplayAlbums list={albumsId} />}
-					{contemporaries && <SimilarArtists list={contemporaries} />}
+					{/* {albumsId && <DisplayAlbums list={albumsId} />}
+					{contemporaries && <SimilarArtists list={contemporaries} />} */}
 				</Stack>
 			</Stack>
 		</>

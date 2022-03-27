@@ -7,6 +7,7 @@ import fetchInitialArtist from './fetchInitialArtist';
 import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';
 import fetchSimilar from './fetchSimilar';
+import fetchGenres from './fetchGenres';
 
 export interface ArtistState {
 	// displayArtist: FoundArtist;
@@ -16,6 +17,8 @@ export interface ArtistState {
 	similarDetails: Array<ListArtists> | null;
 	albumsDetails: Array<Album> | null;
 	status: 'idle' | 'loading' | 'failed';
+	statusGenres: 'idle' | 'loading' | 'failed';
+	statusImage: 'idle' | 'loading' | 'failed';
 	statusAlbums: 'idle' | 'loading' | 'failed';
 	statusSimilar: 'idle' | 'loading' | 'failed';
 }
@@ -33,6 +36,8 @@ const initialState: ArtistState = {
 	similarDetails: [],
 	albumsDetails: [],
 	status: 'idle',
+	statusGenres: 'idle',
+	statusImage: 'idle',
 	statusAlbums: 'idle',
 	statusSimilar: 'idle',
 };
@@ -60,6 +65,11 @@ export const fetchInitialData = createAsyncThunk(
 // 	}
 // );
 
+export const fetchGenresData = createAsyncThunk('artist/fetchGenresData', async (link: string) => {
+	const response = await fetchGenres(link);
+	return response;
+});
+
 export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (list: string[]) => {
 	const response = await fetchAlbums(list);
 	return response;
@@ -83,6 +93,9 @@ export const artistSlice = createSlice({
 		setGenres: (state, action) => {
 			state.genres = action.payload;
 		},
+		setImage: (state, action) => {
+			state.image = action.payload;
+		},
 		setSimilarDetails: (state, action) => {
 			state.similarDetails = action.payload;
 		},
@@ -104,6 +117,15 @@ export const artistSlice = createSlice({
 			.addCase(fetchInitialData.rejected, (state) => {
 				state.status = 'failed';
 			})
+
+			.addCase(fetchGenresData.pending, (state) => {
+				state.statusGenres = 'loading';
+			})
+			.addCase(fetchGenresData.fulfilled, (state, action) => {
+				state.statusGenres = 'idle';
+				state.genres = action.payload;
+			})
+
 			.addCase(fetchAlbumsData.pending, (state) => {
 				state.statusAlbums = 'loading';
 			})

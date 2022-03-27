@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { selectArtist, selectGenres } from 'src/store/artist/artist-slice';
+import {
+	fetchGenresData,
+	selectArtist,
+	selectGenres,
+	setGenres,
+} from 'src/store/artist/artist-slice';
 
 import ListInline from 'src/components/text/ListInline';
 import Genre from 'src/components/text/Genre';
 import LiInline from 'src/components/text/LiInline';
-import fetchGenres from 'src/store/artist/fetchGenres';
 
 const DisplayGenres = () => {
 	const dispatch = useAppDispatch();
@@ -14,9 +18,9 @@ const DisplayGenres = () => {
 
 	useEffect(() => {
 		if (genresLink) {
-			fetchGenres(genresLink);
+			dispatch(fetchGenresData(genresLink));
 		}
-	}, [genresLink]);
+	}, [dispatch, genresLink]);
 
 	return (
 		<ListInline>
