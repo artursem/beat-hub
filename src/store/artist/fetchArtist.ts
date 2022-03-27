@@ -64,6 +64,6 @@ export default async function fetchArtist(id: string) {
 
 		return foundArtist;
 	} catch (error: any) {
-		return 'Not found';
+		throw new Error('Artist not found');
 	}
 }

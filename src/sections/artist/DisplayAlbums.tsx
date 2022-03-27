@@ -48,5 +48,4 @@ const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
 		</>
 	);
 };
-
 export default DisplayAlbums;

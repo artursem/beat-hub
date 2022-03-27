@@ -47,10 +47,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			},
 		};
 	}
-	const id = context.params.artistId;
-	const foundArtist = await fetchArtist(id);
-
-	if (foundArtist === 'Not found') {
+	try {
+		const id = context.params.artistId;
+		const foundArtist = await fetchArtist(id);
+		return {
+			props: {
+				foundArtist,
+			},
+		};
+	} catch (error) {
 		return {
 			redirect: {
 				destination: '/',
@@ -58,9 +63,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			},
 		};
 	}
-	return {
-		props: {
-			foundArtist,
-		},
-	};
 };
