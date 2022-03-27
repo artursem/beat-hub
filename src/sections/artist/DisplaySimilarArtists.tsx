@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import {
 	fetchSimilarData,
+	selectArtist,
 	selectArtistStatus,
 	selectSimilar,
 	selectSimilarStatus,
@@ -13,18 +14,21 @@ import HeadingSecondary from 'src/components/headings/HeadingSecondary';
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
 
-type SimilarArtistsProps = {
-	list: string[];
-};
-const SimilarArtists = ({ list }: SimilarArtistsProps) => {
+const SimilarArtists = () => {
+	const { id, contemposLink } = useAppSelector(selectArtist);
+
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchSimilarData(list));
-	}, [dispatch, list]);
+		dispatch(fetchSimilarData(id));
+	}, [dispatch, id]);
 
 	const notification = useAppSelector(selectSimilarStatus);
 	const notificationArtist = useAppSelector(selectArtistStatus);
 	const similar = useAppSelector(selectSimilar);
+
+	if (!contemposLink) {
+		return null;
+	}
 
 	const similarLi = similar
 		? similar.map(({ id, name, thumbnail }) => (

@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import { fetchAlbumsData, selectAlbums, selectAlbumsStatus } from 'src/store/artist/artist-slice';
+import {
+	fetchAlbumsData,
+	selectAlbums,
+	selectAlbumsStatus,
+	selectArtist,
+} from 'src/store/artist/artist-slice';
 import AlbumCard from 'src/sections/app/AlbumCard';
 import SkeletonAlbums from './SkeletonAlbums';
 
@@ -8,15 +13,12 @@ import HeadingSecondary from 'src/components/headings/HeadingSecondary';
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
 
-type DisplayAlbumsProps = {
-	list: string[];
-};
-
-const DisplayAlbums = ({ list }: DisplayAlbumsProps) => {
+const DisplayAlbums = () => {
+	const { id } = useAppSelector(selectArtist);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		dispatch(fetchAlbumsData(list));
-	}, [dispatch, list]);
+		dispatch(fetchAlbumsData(id));
+	}, [dispatch, id]);
 
 	const notification = useAppSelector(selectAlbumsStatus);
 

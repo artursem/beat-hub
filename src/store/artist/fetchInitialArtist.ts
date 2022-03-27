@@ -16,7 +16,7 @@ export default async function fetchInitialArtist(id: string) {
 
 		let contemposLink = null;
 		if (data.artists[0].links.contemporaries) {
-			const contemposLink = data.artists[0].links.contemporaries.href;
+			contemposLink = data.artists[0].links.contemporaries.href;
 		}
 
 		const bio = data.artists[0].bios ? data.artists[0].bios[0].bio : 'No bio available';

@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 
-import { Album, ListArtists, FoundArtist, InitialArtist } from 'src/types/app-types';
+import { Album, ListArtists, InitialArtist } from 'src/types/app-types';
 
 import fetchInitialArtist from './fetchInitialArtist';
-import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';
 import fetchSimilar from './fetchSimilar';
 import fetchGenres from './fetchGenres';
 import fetchImage from './fetchImage';
+import fetchAlbumList from './fetchAlbumList';
+import fetchSimilarList from './fetchSimilarList';
 
 export interface ArtistState {
-	// displayArtist: FoundArtist;
 	initialArtist: InitialArtist;
 	image: string | null;
 	genres: string[] | null;
@@ -65,18 +65,17 @@ export const fetchImageData = createAsyncThunk('artist/fetchImageData', async (i
 	return response;
 });
 
-export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (list: string[]) => {
-	const response = await fetchAlbums(list);
-	return response;
+export const fetchAlbumsData = createAsyncThunk('artist/fetchAlbumData', async (id: string) => {
+	const list = await fetchAlbumList(id);
+	const albumsData = await fetchAlbums(list);
+	return albumsData;
 });
 
-export const fetchSimilarData = createAsyncThunk(
-	'artist/fetchSimilarData',
-	async (list: string[]) => {
-		const response = await fetchSimilar(list);
-		return response;
-	}
-);
+export const fetchSimilarData = createAsyncThunk('artist/fetchSimilarData', async (id: string) => {
+	const list = await fetchSimilarList(id);
+	const similarData = await fetchSimilar(list);
+	return similarData;
+});
 
 export const artistSlice = createSlice({
 	name: 'artist',
