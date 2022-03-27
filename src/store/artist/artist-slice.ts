@@ -8,6 +8,7 @@ import fetchArtist from './fetchArtist';
 import fetchAlbums from './fetchAlbums';
 import fetchSimilar from './fetchSimilar';
 import fetchGenres from './fetchGenres';
+import fetchImage from './fetchImage';
 
 export interface ArtistState {
 	// displayArtist: FoundArtist;
@@ -53,20 +54,14 @@ export const fetchInitialData = createAsyncThunk(
 		}
 	}
 );
-// export const fetchArtistData = createAsyncThunk(
-// 	'artist/fetchArtistData',
-// 	async (id: string, { rejectWithValue }) => {
-// 		try {
-// 			const response = await fetchArtist(id);
-// 			return response;
-// 		} catch (err) {
-// 			return rejectWithValue('failed artist fetching');
-// 		}
-// 	}
-// );
 
 export const fetchGenresData = createAsyncThunk('artist/fetchGenresData', async (link: string) => {
 	const response = await fetchGenres(link);
+	return response;
+});
+
+export const fetchImageData = createAsyncThunk('artist/fetchImageData', async (id: string) => {
+	const response = await fetchImage(id);
 	return response;
 });
 
@@ -90,12 +85,6 @@ export const artistSlice = createSlice({
 		setInitialArtist: (state, action) => {
 			state.initialArtist = action.payload;
 		},
-		setGenres: (state, action) => {
-			state.genres = action.payload;
-		},
-		setImage: (state, action) => {
-			state.image = action.payload;
-		},
 		setSimilarDetails: (state, action) => {
 			state.similarDetails = action.payload;
 		},
@@ -117,7 +106,6 @@ export const artistSlice = createSlice({
 			.addCase(fetchInitialData.rejected, (state) => {
 				state.status = 'failed';
 			})
-
 			.addCase(fetchGenresData.pending, (state) => {
 				state.statusGenres = 'loading';
 			})
@@ -125,7 +113,13 @@ export const artistSlice = createSlice({
 				state.statusGenres = 'idle';
 				state.genres = action.payload;
 			})
-
+			.addCase(fetchImageData.pending, (state) => {
+				state.statusImage = 'loading';
+			})
+			.addCase(fetchImageData.fulfilled, (state, action) => {
+				state.statusImage = 'idle';
+				state.image = action.payload;
+			})
 			.addCase(fetchAlbumsData.pending, (state) => {
 				state.statusAlbums = 'loading';
 			})
@@ -147,10 +141,8 @@ export const artistActions = artistSlice.actions;
 export const setInitialArtist = (payload: InitialArtist) => artistActions.setInitialArtist(payload);
 export const selectArtist = (state: RootState) => state.artist.initialArtist;
 export const selectArtistStatus = (state: RootState) => state.artist.status;
-
-export const setGenres = (payload: string[]) => artistActions.setGenres(payload);
 export const selectGenres = (state: RootState) => state.artist.genres;
-
+export const selectImage = (state: RootState) => state.artist.image;
 export const selectAlbums = (state: RootState) => state.artist.albumsDetails;
 export const selectAlbumsStatus = (state: RootState) => state.artist.statusAlbums;
 export const selectSimilar = (state: RootState) => state.artist.similarDetails;

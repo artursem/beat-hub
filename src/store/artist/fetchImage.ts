@@ -1,7 +1,6 @@
-import { FoundArtist } from 'src/types/app-types';
-import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from 'src/services/music-api';
+import { getArtistApi } from 'src/services/music-api';
 
-export default async function fetchImages(id: string) {
+export default async function fetchImage(id: string) {
 	try {
 		const imageResponse = await fetch(getArtistApi(id, 'images'));
 		if (!imageResponse.ok) {

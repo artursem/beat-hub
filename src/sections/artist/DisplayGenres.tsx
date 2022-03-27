@@ -1,11 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
-import {
-	fetchGenresData,
-	selectArtist,
-	selectGenres,
-	setGenres,
-} from 'src/store/artist/artist-slice';
+import { fetchGenresData, selectArtist, selectGenres } from 'src/store/artist/artist-slice';
 
 import ListInline from 'src/components/text/ListInline';
 import Genre from 'src/components/text/Genre';

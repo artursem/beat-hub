@@ -10,6 +10,7 @@ import Box from 'src/components/text/Box';
 import Bio from 'src/components/text/Bio';
 
 import { Stack } from '@chakra-ui/react'; // import!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import DisplayImage from './DisplayImage';
 
 const DisplayArtist = () => {
 	const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ const DisplayArtist = () => {
 
 	return (
 		<Stack direction='column' alignItems={{ base: 'center', '2xl': 'flex-start' }}>
+			<DisplayImage />
 			<Box>{libraryButton}</Box>
 			<DisplayGenres />
 			<Bio content={bio} />
