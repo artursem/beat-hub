@@ -97,6 +97,12 @@ export const artistSlice = createSlice({
 				state.status = 'loading';
 				state.albumsDetails = [];
 				state.similarDetails = [];
+				state.image = null;
+				state.genres = null;
+				state.statusGenres = 'loading';
+				state.statusImage = 'loading';
+				state.statusAlbums = 'loading';
+				state.statusSimilar = 'loading';
 			})
 			.addCase(fetchInitialData.fulfilled, (state, action) => {
 				state.status = 'idle';
