@@ -1,5 +1,5 @@
-import { FoundArtist } from 'src/types/app-types';
-import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from 'src/services/music-api';
+import { getGenericApi } from 'src/services/music-api';
+import { apiGenre } from 'src/types/api-types';
 
 export default async function fetchGenres(link: string) {
 	try {
@@ -8,7 +8,7 @@ export default async function fetchGenres(link: string) {
 			throw new Error('Error fetching genres from db');
 		}
 		const genreData = await genreResponse.json();
-		const genres = genreData.genres.map((g: any) => g.name).slice(0, 5) || null;
+		const genres = genreData.genres.map((g: apiGenre) => g.name).slice(0, 5) || null;
 
 		return genres;
 	} catch (error: any) {

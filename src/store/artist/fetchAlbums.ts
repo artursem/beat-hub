@@ -1,3 +1,4 @@
+import { apiAlbumResponse } from 'src/types/api-types';
 import { getAlbum } from '../../services/music-api';
 
 export default async function fetchAlbums(list: string[]) {
@@ -13,7 +14,7 @@ export default async function fetchAlbums(list: string[]) {
 		img.meta.returnedCount === 0 ? null : img.images[0].url
 	);
 
-	const albums = albumData.map((album: any, idx: number) => {
+	const albums = albumData.map((album: apiAlbumResponse, idx: number) => {
 		return {
 			id: album.albums[0].id,
 			name: album.albums[0].name,

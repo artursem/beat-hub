@@ -32,6 +32,10 @@ const DisplayAlbums = () => {
 		  ))
 		: null;
 
+	// if (!albums) {
+	// 	return null;
+	// }
+
 	let displayAlbums = <SkeletonAlbums />;
 	if (albums && notification === 'idle') {
 		displayAlbums = <List>{albumsLi}</List>;

@@ -1,5 +1,6 @@
 import { FoundArtist } from 'src/types/app-types';
 import { getArtistApi, getGenericApi, getTopAlbumsByArtist } from 'src/services/music-api';
+import { apiAlbum, apiArtist } from 'src/types/api-types';
 
 export default async function fetchArtist(id: string) {
 	try {
@@ -36,7 +37,7 @@ export default async function fetchArtist(id: string) {
 				throw new Error('Error fetching contempos from db');
 			}
 			const contempoData = await contempoResponse.json();
-			contemporaries = contempoData.artists.map((artist: any) => artist.id).slice(0, 6);
+			contemporaries = contempoData.artists.map((artist: apiArtist) => artist.id).slice(0, 6);
 		}
 
 		const bio = data.artists[0].bios ? data.artists[0].bios[0].bio : 'No bio available';
@@ -48,7 +49,7 @@ export default async function fetchArtist(id: string) {
 		}
 		const albumsData = await albumsResponse.json();
 		if (albumsData.meta.totalCount > 0) {
-			albumsId = albumsData.albums.map((album: any) => album.id);
+			albumsId = albumsData.albums.map((album: apiAlbum) => album.id);
 		}
 
 		const foundArtist: FoundArtist = {
