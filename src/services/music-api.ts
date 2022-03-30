@@ -17,7 +17,7 @@ export const getGenericApi = (link: string) => {
 };
 
 export const getTopAlbumsByArtist = (id: string) => {
-	return `${address}artists/${id}/albums/top?limit=6&apikey=${apiKey}`;
+	return `${address}artists/${id}/albums/top?limit=5&apikey=${apiKey}`;
 };
 
 export const getAlbum = (id: string, more?: string) => {

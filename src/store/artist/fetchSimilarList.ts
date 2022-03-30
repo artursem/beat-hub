@@ -10,7 +10,7 @@ export default async function fetchSimilarList(id: string) {
 		const contempoData = await contempoResponse.json();
 		const similarList: string[] = contempoData.artists
 			.map((artist: apiArtist) => artist.id)
-			.slice(0, 6);
+			.slice(0, 5);
 
 		return similarList;
 	} catch (error: any) {
