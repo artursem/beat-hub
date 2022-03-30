@@ -27,16 +27,16 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 			display='flex'
 			flexDir={{ base: 'column', md: 'row', '2xl': 'column' }}
 			justifyContent={{ base: 'center', md: 'flex-start', '2xl': 'center' }}
-			width={{ base: '152px', md: '100%', '2xl': '152px' }}
-			height={{ base: '300px', md: '152px', '2xl': '300px' }}
 			alignItems='center'
+			width={{ base: 152, md: '100%', '2xl': 152 }}
+			height={{ base: 300, md: '152px', '2xl': 300 }}
 			borderColor='gray.700'
 			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
 			borderWidth={1}
 			marginY={3}
 			marginX={{ base: 1, md: 0, '2xl': 3 }}
 		>
-			<Box margin={0} flex={1}>
+			<Box h={152} flex={1}>
 				{artistId ? (
 					<NextLink href={`/${artistId}`} passHref>
 						<Link>
