@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 import {
 	InputGroup,
 	Input as InputChakra,
@@ -12,21 +12,22 @@ import SpinnerSmall from '../animations/SpinnerSmall';
 interface InputProps {
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 	inputValue: string;
+	placeholder: string;
 	loading: boolean;
 }
 
-const SearchInput = (props: InputProps) => {
+const SearchInput: FC<InputProps> = (props) => {
 	const styles = useMultiStyleConfig('InputWithIcon', {});
 
 	return (
 		<InputGroup>
 			<StylesProvider value={styles}>
 				<InputChakra
-					placeholder='Find artist...'
 					color='gray.100'
 					variant='flushed'
 					type='text'
 					value={props.inputValue}
+					{...props}
 					onChange={props.onChange}
 				/>
 				{props.loading === true && <InputRightElement height='100%' children={<SpinnerSmall />} />}

@@ -1,7 +1,10 @@
 import NextLink from 'next/link';
 
 import ImgAlbum from 'src/components/images/ImgAlbum';
-import { Box, Center, Link } from '@chakra-ui/react';
+import Box from 'src/components/layout/Box';
+import Center from 'src/components/layout/Center';
+
+import { Link } from '@chakra-ui/react'; // IMPORT!
 
 interface AlbumCardProps {
 	id?: string;

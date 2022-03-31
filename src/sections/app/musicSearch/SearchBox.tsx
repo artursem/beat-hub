@@ -7,8 +7,9 @@ import {
 	setListIsOpen,
 	selectListStatus,
 } from 'src/store/search/search-slice';
-import SearchInput from 'src/components/Input/SearchInput';
 import DisplayList from './DisplayList';
+
+import SearchInput from 'src/components/Input/SearchInput';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -47,6 +48,7 @@ const SearchBox: FC = () => {
 		<div ref={ref}>
 			<SearchInput
 				inputValue={searchTerm}
+				placeholder='Find artist...'
 				onChange={handleChange}
 				loading={notification === 'loading'}
 			/>

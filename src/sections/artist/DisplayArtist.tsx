@@ -2,15 +2,13 @@ import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { selectArtist } from 'src/store/artist/artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
 import DisplayGenres from './DisplayGenres';
+import DisplayImage from './DisplayImage';
 
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
-import ImgArtist from 'src/components/images/ImgArtist';
-import Box from 'src/components/text/Box';
+import Box from 'src/components/layout/Box';
 import Bio from 'src/components/text/Bio';
-
-import { Stack } from '@chakra-ui/react'; // import!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-import DisplayImage from './DisplayImage';
+import Stack from 'src/components/layout/Stack';
 
 const DisplayArtist = () => {
 	const dispatch = useAppDispatch();

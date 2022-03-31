@@ -1,12 +1,14 @@
-import { useBreakpointValue, Box, Center, Link } from '@chakra-ui/react';
+import { useBreakpointValue, Link } from '@chakra-ui/react'; // IMPORT!
 import NextLink from 'next/link';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
+import { ListArtists } from 'src/types/app-types';
 
+import Box from 'src/components/layout/Box';
+import Center from 'src/components/layout/Center';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
-import { ListArtists } from 'src/types/app-types';
 import BtnRemoveFromLibSmall from 'src/components/buttons/BtnRemoveFromLibSmall';
 import BtnAddToLibSmall from 'src/components/buttons/BtnAddToLibSmall';
 

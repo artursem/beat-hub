@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import Navbar from './Navbar';
-
-import { VStack } from '@chakra-ui/react'; // import?
+import Stack from 'src/components/layout/Stack';
 
 const Layout: FC = ({ children }) => {
 	return (
-		<VStack
+		<Stack
+			direction='column'
 			minHeight='100vh'
 			width='full'
 			spacing='0'
@@ -15,11 +15,11 @@ const Layout: FC = ({ children }) => {
 			alignItems='center'
 		>
 			<Navbar />
-			<VStack width={{ base: '100%', '2xl': '100%' }} alignItems='center'>
+			<Stack dir='column' width={{ base: '100%', '2xl': '100%' }} alignItems='center'>
 				{children}
-			</VStack>
+			</Stack>
 			{/* <footer>footer</footer> */}
-		</VStack>
+		</Stack>
 	);
 };
 

@@ -1,12 +1,10 @@
 import NextLink from 'next/link';
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from 'src/store/hooks';
-
 import { ListArtists } from 'src/types/app-types';
-
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
 import Li from 'src/components/text/Li';
-import { Box, Link } from '@chakra-ui/react';
+import Box from 'src/components/layout/Box';
+
+import { Link } from '@chakra-ui/react'; // IMPORT!
 
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 	return (
