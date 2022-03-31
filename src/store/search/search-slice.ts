@@ -52,6 +52,8 @@ export const searchArtistSlice = createSlice({
 		builder
 			.addCase(fetchSearch.pending, (state) => {
 				state.status = 'loading';
+				state.statusImages = 'loading';
+				state.searchImages = [];
 			})
 			.addCase(fetchSearch.rejected, (state) => {
 				state.status = 'failed';

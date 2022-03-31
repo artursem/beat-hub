@@ -14,6 +14,6 @@ export default async function fetchSimilarList(id: string) {
 
 		return similarList;
 	} catch (error: any) {
-		throw new Error('Artist not found');
+		throw new Error('Similar artists not found');
 	}
 }

@@ -12,6 +12,6 @@ export default async function fetchGenres(link: string) {
 
 		return genres;
 	} catch (error: any) {
-		throw new Error('Artist not found');
+		throw new Error('Genres not found');
 	}
 }
