@@ -1,6 +1,4 @@
 import NextLink from 'next/link';
-import { useAppSelector } from 'src/store/hooks';
-import { selectAlbumsStatus } from 'src/store/artist/artist-slice';
 
 import ImgAlbum from 'src/components/images/ImgAlbum';
 import { Box, Center, Link } from '@chakra-ui/react';
@@ -14,8 +12,6 @@ interface AlbumCardProps {
 }
 
 const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
-	const notification = useAppSelector(selectAlbumsStatus);
-
 	const short = (str: string) => {
 		if (str.length > 30) {
 			return str.slice(0, 30) + '...';
