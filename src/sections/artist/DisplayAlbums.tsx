@@ -32,16 +32,12 @@ const DisplayAlbums = () => {
 		  ))
 		: null;
 
-	// if (!albums) {
-	// 	return null;
-	// }
-
-	let displayAlbums = <SkeletonAlbums />;
+	let displayAlbums = <SkeletonAlbums length={albums?.length || 5} />;
 	if (albums && notification === 'idle') {
 		displayAlbums = <List>{albumsLi}</List>;
 	}
 	if (albums && albums.length === 0 && notification === 'idle') {
-		displayAlbums = <SkeletonAlbums />;
+		displayAlbums = <SkeletonAlbums length={albums?.length || 5} />;
 	}
 	if (notification === 'failed') {
 		displayAlbums = <p>Error loading albums</p>;

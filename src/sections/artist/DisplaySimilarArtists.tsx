@@ -38,12 +38,12 @@ const SimilarArtists = () => {
 		  ))
 		: null;
 
-	let displaySimilar = <SkeletonSimilar />;
+	let displaySimilar = <SkeletonSimilar length={similar?.length || 5} />;
 	if (similar && notification === 'idle') {
 		displaySimilar = <List>{similarLi}</List>;
 	}
 	if (notificationArtist === 'loading' || notification === 'loading') {
-		displaySimilar = <SkeletonSimilar />;
+		displaySimilar = <SkeletonSimilar length={similar?.length || 5} />;
 	}
 	if (notification === 'failed') {
 		displaySimilar = <p>Error loading similar artists</p>;

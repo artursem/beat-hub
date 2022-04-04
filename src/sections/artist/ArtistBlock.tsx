@@ -6,8 +6,7 @@ import DisplayAlbums from './DisplayAlbums';
 import SimilarArtists from './DisplaySimilarArtists';
 
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
-
-import { Stack } from '@chakra-ui/react'; // import !@!!!!!!!!!!!!!!!!!!!!!!
+import Stack from 'src/components/layout/Stack';
 
 const ArtistBlock = () => {
 	const { name } = useAppSelector(selectArtist);

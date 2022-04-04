@@ -95,6 +95,7 @@ export const artistSlice = createSlice({
 		builder
 			.addCase(fetchInitialData.pending, (state) => {
 				state.status = 'loading';
+				// state.initialArtist =
 				state.albumsDetails = [];
 				state.similarDetails = [];
 				state.image = null;

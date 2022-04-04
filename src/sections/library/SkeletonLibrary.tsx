@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Li from 'src/components/text/Li';
 import List from 'src/components/text/List';
-import { Skeleton } from '@chakra-ui/react';
+import Skeleton from 'src/components/layout/Skeleton';
 
 interface SkeletonLibraryProps {
 	length: number;
