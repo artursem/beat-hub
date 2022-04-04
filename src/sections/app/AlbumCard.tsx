@@ -65,6 +65,12 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 					<Box> {short(name)}</Box>
 				)}
 			</Center>
+			<Box
+				w={{ base: 0, md: 140, '2xl': 0 }}
+				h={0}
+				backgroundColor='gray.200'
+				flex={{ base: 0, md: 1, '2xl': 0 }}
+			></Box>
 		</Box>
 	);
 };

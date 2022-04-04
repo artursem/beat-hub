@@ -1,4 +1,3 @@
-// import { Stack, Skeleton, SkeletonText } from '@chakra-ui/react';
 import Stack from 'src/components/layout/Stack';
 import Skeleton from 'src/components/layout/Skeleton';
 import SkeletonText from 'src/components/layout/SkeletonText';

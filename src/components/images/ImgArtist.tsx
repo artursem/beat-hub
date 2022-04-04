@@ -1,6 +1,5 @@
 import Image from 'next/image';
-// import { Image } from '@chakra-ui/react';
-import { AspectRatio } from '@chakra-ui/react';
+import AspectRatio from 'src/components/images/AspectRatio';
 
 interface ImgArtistProps {
 	src: string;
@@ -21,5 +20,3 @@ const ImgArtist = ({ src, alt }: ImgArtistProps) => {
 };
 
 export default ImgArtist;
-
-// 356 x 237
