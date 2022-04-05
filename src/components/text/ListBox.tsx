@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { List as ListChakra } from '@chakra-ui/react';
+import { List as ListChakra, ListProps } from '@chakra-ui/react';
 
-const ListBox: FC = ({ children }) => {
+const ListBox: FC<ListProps> = ({ children }) => {
 	return (
 		<ListChakra
 			marginY='4'
