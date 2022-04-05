@@ -1,8 +1,9 @@
-import { Button } from '@chakra-ui/react';
+import Button from './Button';
 import IconCheck from '../icons/IconCheck';
 
 interface BtnRemoveFromLibProps {
 	onClick: () => void;
+	small?: boolean;
 }
 
 const BtnRemoveFromLib = (props: BtnRemoveFromLibProps) => {
@@ -11,7 +12,7 @@ const BtnRemoveFromLib = (props: BtnRemoveFromLibProps) => {
 			onClick={props.onClick}
 			leftIcon={<IconCheck />}
 			colorScheme='teal'
-			size='sm'
+			size={props.small ? 'xs' : 'sm'}
 			variant='outline'
 		>
 			In your Library

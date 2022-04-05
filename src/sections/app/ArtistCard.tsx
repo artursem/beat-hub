@@ -9,8 +9,6 @@ import Center from 'src/components/layout/Center';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
-import BtnRemoveFromLibSmall from 'src/components/buttons/BtnRemoveFromLibSmall';
-import BtnAddToLibSmall from 'src/components/buttons/BtnAddToLibSmall';
 
 const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const library = useAppSelector(selectLibraryList);
@@ -18,7 +16,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const isInLibrary = (id: string) => {
 		return library.indexOf(id) >= 0;
 	};
-	const variant = useBreakpointValue({ base: false, md: true, lg: false });
+	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
@@ -28,15 +26,9 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	};
 
 	const libraryButton = isInLibrary(id) ? (
-		variant ? (
-			<BtnRemoveFromLib onClick={handleRemoveFromLibrary} />
-		) : (
-			<BtnRemoveFromLibSmall onClick={handleRemoveFromLibrary} />
-		)
-	) : variant ? (
-		<BtnAddToLib onClick={handleAddToLibrary} />
+		<BtnRemoveFromLib onClick={handleRemoveFromLibrary} small={small} />
 	) : (
-		<BtnAddToLibSmall onClick={handleAddToLibrary} />
+		<BtnAddToLib onClick={handleAddToLibrary} small={small} />
 	);
 
 	return (

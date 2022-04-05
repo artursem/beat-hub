@@ -8,7 +8,7 @@ const HeadingSecondary: FC = (props) => {
 			size='md'
 			pt={5}
 			pb={2}
-			textAlign={{ base: 'left', lg: 'center' }}
+			textAlign={{ base: 'left', md: 'center' }}
 			width='100%'
 		>
 			{props.children}

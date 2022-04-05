@@ -8,7 +8,7 @@ const Layout: FC = ({ children }) => {
 		<>
 			<Stack
 				direction='column'
-				minHeight='100vh'
+				minHeight='calc(100vh - 50px)'
 				width='full'
 				spacing='0'
 				bg='gray.900'
