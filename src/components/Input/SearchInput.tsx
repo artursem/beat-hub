@@ -11,7 +11,7 @@ import SpinnerSmall from '../animations/SpinnerSmall';
 
 interface InputProps {
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	inputValue: string;
+	inputVal: string;
 	placeholder: string;
 	loading: boolean;
 }
@@ -26,11 +26,15 @@ const SearchInput: FC<InputProps> = (props) => {
 					color='gray.100'
 					variant='flushed'
 					type='text'
-					value={props.inputValue}
+					value={props.inputVal}
 					{...props}
 					onChange={props.onChange}
 				/>
-				{props.loading === true && <InputRightElement height='100%' children={<SpinnerSmall />} />}
+				{props.loading === true && (
+					<InputRightElement height='100%'>
+						<SpinnerSmall />
+					</InputRightElement>
+				)}
 			</StylesProvider>
 		</InputGroup>
 	);

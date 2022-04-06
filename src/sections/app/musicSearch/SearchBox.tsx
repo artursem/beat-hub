@@ -47,7 +47,7 @@ const SearchBox: FC = () => {
 	return (
 		<div ref={ref}>
 			<SearchInput
-				inputValue={searchTerm}
+				inputVal={searchTerm}
 				placeholder='Find artist...'
 				onChange={handleChange}
 				loading={notification === 'loading'}
