@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FocusEvent, FC } from 'react';
 import {
 	InputGroup,
 	Input as InputChakra,
@@ -11,6 +11,7 @@ import SpinnerSmall from '../animations/SpinnerSmall';
 
 interface InputProps {
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	onFocus: (event: FocusEvent<HTMLInputElement>) => void;
 	inputVal: string;
 	placeholder: string;
 	loading: boolean;
@@ -29,6 +30,7 @@ const SearchInput: FC<InputProps> = (props) => {
 					value={props.inputVal}
 					{...props}
 					onChange={props.onChange}
+					onFocus={props.onFocus}
 				/>
 				{props.loading === true && (
 					<InputRightElement height='100%'>

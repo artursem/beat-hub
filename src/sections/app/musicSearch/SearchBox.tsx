@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
+import { ChangeEvent, FocusEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from 'src/store/hooks';
 import { useOnClickOutside } from 'usehooks-ts';
 import {
@@ -35,6 +35,12 @@ const SearchBox: FC = () => {
 		setSearchTerm(event.target.value);
 	};
 
+	const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+		if (debouncedSearchTerm.length > 0) {
+			dispatch(setListIsOpen(true));
+		}
+	};
+
 	let displayList;
 	if (!showResultList) displayList = null;
 	if (showResultList && searchTerm.length > 0 && notification === 'idle') {
@@ -50,6 +56,7 @@ const SearchBox: FC = () => {
 				inputVal={searchTerm}
 				placeholder='Find artist...'
 				onChange={handleChange}
+				onFocus={handleFocus}
 				loading={notification === 'loading'}
 			/>
 			{displayList}
