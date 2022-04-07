@@ -49,7 +49,8 @@ const SearchBox: FC = () => {
 	if (notification === 'failed') {
 		displayList = <p>search failed</p>;
 	}
-
+	const isLoading = !!(notification === 'loading');
+	console.log(isLoading);
 	return (
 		<div ref={ref}>
 			<SearchInput
@@ -57,7 +58,7 @@ const SearchBox: FC = () => {
 				placeholder='Find artist...'
 				onChange={handleChange}
 				onFocus={handleFocus}
-				loading={notification === 'loading'}
+				loading={notification === 'loading' ? 'true' : 'false'} // WTF Warning: Received `false` for a non-boolean attribute `loading`.
 			/>
 			{displayList}
 		</div>

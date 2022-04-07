@@ -14,7 +14,7 @@ interface InputProps {
 	onFocus: (event: FocusEvent<HTMLInputElement>) => void;
 	inputval: string;
 	placeholder: string;
-	loading: boolean;
+	loading: string; // WTF?
 }
 
 const SearchInput: FC<InputProps> = (props) => {
@@ -32,7 +32,7 @@ const SearchInput: FC<InputProps> = (props) => {
 					onChange={props.onChange}
 					onFocus={props.onFocus}
 				/>
-				{props.loading === true && (
+				{props.loading === 'true' && (
 					<InputRightElement height='100%'>
 						<SpinnerSmall />
 					</InputRightElement>
