@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 import { ListArtists } from 'src/types/app-types';
 import fetchLibArtists from './fetchLibrary';
+import fetchLibItem from './fetchLibraryItem';
 
 export interface libraryState {
 	listId: string[];

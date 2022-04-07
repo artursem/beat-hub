@@ -12,7 +12,7 @@ import SpinnerSmall from '../animations/SpinnerSmall';
 interface InputProps {
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 	onFocus: (event: FocusEvent<HTMLInputElement>) => void;
-	inputVal: string;
+	inputval: string;
 	placeholder: string;
 	loading: boolean;
 }
@@ -27,7 +27,7 @@ const SearchInput: FC<InputProps> = (props) => {
 					color='gray.100'
 					variant='flushed'
 					type='text'
-					value={props.inputVal}
+					value={props.inputval}
 					{...props}
 					onChange={props.onChange}
 					onFocus={props.onFocus}

@@ -22,6 +22,11 @@ const DisplayCollection = () => {
 		dispatch(setLibrary());
 	}, [dispatch]);
 
+	// const libIds = useAppSelector(selectLibraryList);
+	// useEffect(() => {
+	// 	libIds.forEach((id) => dispatch(fetchLibraryItem(id)));
+	// }, [dispatch, libIds]);
+
 	const library = useAppSelector(selectLibraryList);
 	useEffect(() => {
 		if (!library) return;

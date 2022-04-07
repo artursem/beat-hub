@@ -53,7 +53,7 @@ const SearchBox: FC = () => {
 	return (
 		<div ref={ref}>
 			<SearchInput
-				inputVal={searchTerm}
+				inputval={searchTerm}
 				placeholder='Find artist...'
 				onChange={handleChange}
 				onFocus={handleFocus}
