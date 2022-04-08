@@ -35,7 +35,7 @@ const SearchBox: FC = () => {
 		setSearchTerm(event.target.value);
 	};
 
-	const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
+	const handleFocus = () => {
 		if (debouncedSearchTerm.length > 0) {
 			dispatch(setListIsOpen(true));
 		}
