@@ -4,37 +4,29 @@ import {
 	selectLibraryList,
 	selectLibraryStatus,
 	selectLibraryArtists,
-	fetchLibraryArtists,
+	fetchLibraryItem,
 	setLibrary,
 } from 'src/store/library/library-slice';
 import ArtistCard from 'src/sections/app/ArtistCard';
-import SkeletonLibrary from './SkeletonLibrary';
-
 import List from 'src/components/text/List';
 import Li from 'src/components/text/Li';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import HeadingSecondary from 'src/components/headings/HeadingSecondary';
+import SpinnerSmall from 'src/components/animations/SpinnerSmall';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
+	const library = useAppSelector(selectLibraryList);
+	const notification = useAppSelector(selectLibraryStatus);
+	const libraryArtists = useAppSelector(selectLibraryArtists);
 
 	useEffect(() => {
 		dispatch(setLibrary());
 	}, [dispatch]);
 
-	// const libIds = useAppSelector(selectLibraryList);
-	// useEffect(() => {
-	// 	libIds.forEach((id) => dispatch(fetchLibraryItem(id)));
-	// }, [dispatch, libIds]);
-
-	const library = useAppSelector(selectLibraryList);
 	useEffect(() => {
-		if (!library) return;
-		dispatch(fetchLibraryArtists(library));
+		dispatch(fetchLibraryItem(library));
 	}, [dispatch, library]);
-
-	const notification = useAppSelector(selectLibraryStatus);
-	const libraryArtists = useAppSelector(selectLibraryArtists);
 
 	const libraryLi = libraryArtists
 		? libraryArtists.map(({ id, name, thumbnail }) => (
@@ -44,23 +36,20 @@ const DisplayCollection = () => {
 		  ))
 		: null;
 
-	let displayLibrary = <SkeletonLibrary length={library.length} />;
-	if (library.length > 0 && notification === 'idle') {
-		displayLibrary = (
-			<>
-				<HeadingPrimary>Your Library</HeadingPrimary>
-				<List>{libraryLi}</List>
-			</>
-		);
-	}
+	let displayLibrary = (
+		<>
+			<HeadingPrimary>Your Library</HeadingPrimary>
+			<List>{libraryLi}</List>
+			{notification === 'loading' && <SpinnerSmall />}
+		</>
+	);
+
 	if (library.length === 0 && notification === 'idle') {
 		displayLibrary = (
 			<HeadingSecondary>Your library is empty. Please add artists you enjoy</HeadingSecondary>
 		);
 	}
-	if (notification === 'loading') {
-		displayLibrary = <SkeletonLibrary length={library.length} />;
-	}
+
 	if (notification === 'failed') {
 		displayLibrary = <p>Error loading library</p>;
 	}

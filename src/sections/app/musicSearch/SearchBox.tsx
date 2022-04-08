@@ -50,7 +50,6 @@ const SearchBox: FC = () => {
 		displayList = <p>search failed</p>;
 	}
 	const isLoading = !!(notification === 'loading');
-	console.log(isLoading);
 	return (
 		<div ref={ref}>
 			<SearchInput

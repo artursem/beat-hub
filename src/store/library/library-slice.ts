@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 import { ListArtists } from 'src/types/app-types';
-import fetchLibArtists from './fetchLibrary';
 import fetchLibItem from './fetchLibraryItem';
 
 export interface libraryState {
@@ -16,13 +15,10 @@ const initialState: libraryState = {
 	status: 'idle',
 };
 
-export const fetchLibraryArtists = createAsyncThunk(
-	'library/fetchArtists',
-	async (list: string[]) => {
-		const response = await fetchLibArtists(list);
-		return response;
-	}
-);
+export const fetchLibraryItem = createAsyncThunk('library/fetchItem', async (list: string[]) => {
+	const response = await Promise.all(list.map((id) => fetchLibItem(id)));
+	return response;
+});
 
 export const librarySlice = createSlice({
 	name: 'library',
@@ -50,10 +46,10 @@ export const librarySlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchLibraryArtists.pending, (state) => {
+			.addCase(fetchLibraryItem.pending, (state) => {
 				state.status = 'loading';
 			})
-			.addCase(fetchLibraryArtists.fulfilled, (state, action) => {
+			.addCase(fetchLibraryItem.fulfilled, (state, action) => {
 				state.status = 'idle';
 				state.artists = action.payload;
 			});
