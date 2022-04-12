@@ -1,4 +1,4 @@
-import { ChangeEvent, FocusEvent, FC, useEffect, useState, useRef } from 'react';
+import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from 'src/store/hooks';
 import { useOnClickOutside } from 'usehooks-ts';
 import {

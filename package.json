@@ -6,6 +6,7 @@
 		"start": "next start",
 		"type-check": "tsc",
 		"test": "jest",
+		"clear_jest": "jest --clearCache",
 		"lint": "next lint"
 	},
 	"dependencies": {
