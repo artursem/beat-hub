@@ -3,10 +3,20 @@ import { ListArtists } from 'src/types/app-types';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
 import Li from 'src/components/text/Li';
 import Box from 'src/components/layout/Box';
+import { useColorModeValue } from '@chakra-ui/react';
 
 import { Link } from '@chakra-ui/react'; // IMPORT!
 
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
+	const borderColor = useColorModeValue('gray.700', 'gray.300');
+	const bgColor = useColorModeValue('gray.800', 'gray.200');
+	const hoverBgColor = useColorModeValue('gray.700', 'gray.300');
+	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
+	const gradient = useColorModeValue(
+		'linear(to-bl, gray.700, gray.800)',
+		'linear(to-bl, gray.200, gray.400)'
+	);
+
 	return (
 		<Li>
 			<NextLink href={`/artist/${id}`} passHref>
@@ -16,12 +26,12 @@ const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 						flexDir='row'
 						justifyContent='flex-start'
 						alignItems='center'
-						borderColor='gray.700'
-						bgColor='gray.900'
-						_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
+						borderColor={borderColor}
+						bgColor={bgColor}
+						_hover={{ bgColor: hoverBgColor, color: hoverTextColor }}
 						borderWidth={1}
 					>
-						<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
+						<Box width={152} height={100} bgGradient={gradient}>
 							{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}
 						</Box>
 						<Box ml={2} flex={1}>

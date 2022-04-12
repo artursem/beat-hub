@@ -28,7 +28,6 @@ const SearchInput: FC<InputProps> = (props) => {
 		<InputGroup>
 			<StylesProvider value={styles}>
 				<InputChakra
-					// color='gray.100'
 					color={inputColor}
 					backgroundColor={inputBgColor}
 					_placeholder={{ color: inputPlaceholderColor }}

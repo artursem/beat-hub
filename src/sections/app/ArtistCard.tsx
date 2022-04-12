@@ -17,9 +17,14 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 		return library.indexOf(id) >= 0;
 	};
 	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
+
 	const borderColor = useColorModeValue('gray.700', 'gray.300');
 	const hoverBgColor = useColorModeValue('gray.700', 'gray.200');
 	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
+	const gradient = useColorModeValue(
+		'linear(to-bl, gray.700, gray.800)',
+		'linear(to-bl, gray.200, gray.400)'
+	);
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
@@ -50,7 +55,7 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			flexWrap={'wrap'}
 			overflow={'hidden'}
 		>
-			<Box width={152} height={100} bgGradient='linear(to-bl, gray.700, gray.800)'>
+			<Box width={152} height={100} bgGradient={gradient}>
 				<NextLink href={`/artist/${id}`} passHref>
 					<Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link>
 				</NextLink>
