@@ -5,13 +5,15 @@ import IconDark from '../icons/IconDark';
 
 interface BtnThemeSmallProps {
 	colorMode: 'light' | 'dark';
+	onClick: () => void;
 }
 
-const BtnThemeSmall: FC<BtnThemeSmallProps> = ({ colorMode }) => {
+const BtnThemeSmall: FC<BtnThemeSmallProps> = ({ colorMode, onClick }) => {
 	return (
 		<IconButton
-			aria-label={colorMode === 'light' ? 'Dark Mode' : 'Light Mode'}
-			icon={colorMode === 'light' ? <IconDark /> : <IconLight />}
+			onClick={onClick}
+			aria-label={colorMode !== 'light' ? 'Dark Mode' : 'Light Mode'}
+			icon={colorMode !== 'light' ? <IconDark /> : <IconLight />}
 			colorScheme='teal'
 			size='md'
 			variant='solid'

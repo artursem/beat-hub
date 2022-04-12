@@ -1,9 +1,12 @@
 import { FC } from 'react';
+import { useColorModeValue } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Stack from 'src/components/layout/Stack';
 import Footer from './Footer';
 
 const Layout: FC = ({ children }) => {
+	const bgColor = useColorModeValue('gray.800', 'gray.100');
+	const textColor = useColorModeValue('gray.300', 'gray.800');
 	return (
 		<>
 			<Stack
@@ -11,8 +14,8 @@ const Layout: FC = ({ children }) => {
 				minHeight='calc(100vh - 50px)'
 				width='full'
 				spacing='0'
-				bg='gray.900'
-				color='gray.300'
+				bg={bgColor}
+				color={textColor}
 				padding='5'
 				alignItems='center'
 			>

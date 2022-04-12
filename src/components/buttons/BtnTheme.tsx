@@ -5,17 +5,19 @@ import IconDark from '../icons/IconDark';
 
 interface BtnThemeProps {
 	colorMode: 'light' | 'dark';
+	onClick: () => void;
 }
 
-const BtnTheme: FC<BtnThemeProps> = ({ colorMode }) => {
+const BtnTheme: FC<BtnThemeProps> = ({ colorMode, onClick }) => {
 	return (
 		<Button
-			leftIcon={colorMode === 'light' ? <IconDark /> : <IconLight />}
+			onClick={onClick}
+			leftIcon={colorMode !== 'light' ? <IconDark /> : <IconLight />}
 			colorScheme='teal'
 			size='md'
 			variant='solid'
 		>
-			{colorMode === 'light' ? 'Dark' : 'Light'}
+			{colorMode !== 'light' ? 'Dark' : 'Light'}
 		</Button>
 	);
 };
