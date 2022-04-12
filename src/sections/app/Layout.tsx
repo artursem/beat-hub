@@ -5,8 +5,9 @@ import Stack from 'src/components/layout/Stack';
 import Footer from './Footer';
 
 const Layout: FC = ({ children }) => {
-	const bgColor = useColorModeValue('gray.800', 'gray.100');
+	const bgColor = useColorModeValue('gray.800', 'gray.50');
 	const textColor = useColorModeValue('gray.300', 'gray.800');
+
 	return (
 		<>
 			<Stack

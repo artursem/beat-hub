@@ -1,4 +1,4 @@
-import { useBreakpointValue, Link } from '@chakra-ui/react'; // IMPORT!
+import { useBreakpointValue, Link, useColorModeValue } from '@chakra-ui/react'; // IMPORT!
 import NextLink from 'next/link';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
@@ -17,6 +17,9 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 		return library.indexOf(id) >= 0;
 	};
 	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
+	const borderColor = useColorModeValue('gray.700', 'gray.300');
+	const hoverBgColor = useColorModeValue('gray.700', 'gray.200');
+	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
@@ -39,8 +42,8 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 			width={{ base: '152px', md: '100%', '2xl': '152px' }}
 			height={{ base: '200px', md: '102px', '2xl': '250px' }}
 			alignItems='center'
-			borderColor='gray.700'
-			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
+			borderColor={borderColor}
+			_hover={{ bgColor: hoverBgColor, color: hoverTextColor }}
 			borderWidth={1}
 			marginY={3}
 			marginX={{ base: 1, md: 0, '2xl': 3 }}

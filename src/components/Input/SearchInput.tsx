@@ -5,6 +5,7 @@ import {
 	InputRightElement,
 	StylesProvider,
 	useMultiStyleConfig,
+	useColorModeValue,
 } from '@chakra-ui/react';
 
 import SpinnerSmall from '../animations/SpinnerSmall';
@@ -19,12 +20,20 @@ interface InputProps {
 
 const SearchInput: FC<InputProps> = (props) => {
 	const styles = useMultiStyleConfig('InputWithIcon', {});
+	const inputColor = useColorModeValue('gray.100', 'gray.900');
+	const inputBgColor = useColorModeValue('gray.800', 'gray.50');
+	const inputPlaceholderColor = useColorModeValue('gray.100', 'gray.900');
 
 	return (
 		<InputGroup>
 			<StylesProvider value={styles}>
 				<InputChakra
-					color='gray.100'
+					// color='gray.100'
+					color={inputColor}
+					backgroundColor={inputBgColor}
+					_placeholder={{ color: inputPlaceholderColor }}
+					borderColor={inputColor}
+					colorScheme='teal'
 					variant='flushed'
 					type='text'
 					value={props.inputval}

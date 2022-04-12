@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-
+import { useColorModeValue } from '@chakra-ui/react';
 import ImgAlbum from 'src/components/images/ImgAlbum';
 import Box from 'src/components/layout/Box';
 import Center from 'src/components/layout/Center';
@@ -15,6 +15,10 @@ interface AlbumCardProps {
 }
 
 const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
+	const borderColor = useColorModeValue('gray.700', 'gray.300');
+	const hoverBgColor = useColorModeValue('gray.700', 'gray.200');
+	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
+
 	const short = (str: string) => {
 		if (str.length > 30) {
 			return str.slice(0, 30) + '...';
@@ -29,8 +33,8 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 			alignItems='center'
 			width={{ base: 152, md: '100%', '2xl': 152 }}
 			height={{ base: 300, md: '152px', '2xl': 300 }}
-			borderColor='gray.700'
-			_hover={{ bgColor: 'gray.700', color: 'gray.50' }}
+			borderColor={borderColor}
+			_hover={{ bgColor: hoverBgColor, color: hoverTextColor }}
 			borderWidth={1}
 			marginY={3}
 			marginX={{ base: 1, md: 0, '2xl': 3 }}
