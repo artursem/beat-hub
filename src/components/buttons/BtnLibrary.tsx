@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import Button from './Button';
 import IconLibrary from '../icons/IconLibrary';
 
 const BtnLibrary = () => {

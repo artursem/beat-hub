@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import Button from './Button';
 import IconCheck from '../icons/IconCheck';
 
 interface BtnRemoveFromLibSmallProps {

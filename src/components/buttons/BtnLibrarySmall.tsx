@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/react';
+import IconButton from './IconButton';
 import IconLibrary from '../icons/IconLibrary';
 
 const BtnLibrarySmall = () => {

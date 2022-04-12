@@ -1,5 +1,5 @@
 import { createBreakpoints } from '@chakra-ui/theme-tools';
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 import type { ComponentStyleConfig } from '@chakra-ui/theme';
 
 const InputWithIcon: ComponentStyleConfig = {
@@ -33,7 +33,13 @@ const InputWithIcon: ComponentStyleConfig = {
 	defaultProps: {},
 };
 
+const config: ThemeConfig = {
+	initialColorMode: 'dark',
+	useSystemColorMode: true,
+};
+
 export const theme = extendTheme({
+	config: config,
 	components: {
 		InputWithIcon,
 	},
