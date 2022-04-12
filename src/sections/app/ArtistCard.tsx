@@ -9,7 +9,7 @@ import Center from 'src/components/layout/Center';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
-import { DARK, LIGHT } from 'src/styles/colors';
+import { color } from 'src/styles/colors';
 
 const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const library = useAppSelector(selectLibraryList);
@@ -19,10 +19,10 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	};
 	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
 
-	const borderColor = useColorModeValue(DARK.border, LIGHT.border);
-	const hoverBgColor = useColorModeValue(DARK.hoverBg, LIGHT.hoverBg);
-	const hoverTextColor = useColorModeValue(DARK.hoverText, LIGHT.hoverText);
-	const gradient = useColorModeValue(DARK.gradient, LIGHT.gradient);
+	const borderColor = useColorModeValue(...color.border);
+	const hoverBgColor = useColorModeValue(...color.hoverBg);
+	const hoverTextColor = useColorModeValue(...color.hoverText);
+	const gradient = useColorModeValue(...color.gradient);
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));

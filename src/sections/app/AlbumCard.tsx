@@ -3,7 +3,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 import ImgAlbum from 'src/components/images/ImgAlbum';
 import Box from 'src/components/layout/Box';
 import Center from 'src/components/layout/Center';
-import { DARK, LIGHT } from 'src/styles/colors';
+import { color } from 'src/styles/colors';
 import { Link } from '@chakra-ui/react'; // IMPORT!
 
 interface AlbumCardProps {
@@ -15,9 +15,9 @@ interface AlbumCardProps {
 }
 
 const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
-	const borderColor = useColorModeValue(DARK.border, LIGHT.border);
-	const hoverBgColor = useColorModeValue(DARK.hoverBg, LIGHT.hoverBg);
-	const hoverTextColor = useColorModeValue(DARK.hoverText, LIGHT.hoverText);
+	const borderColor = useColorModeValue(...color.border);
+	const hoverBgColor = useColorModeValue(...color.hoverBg);
+	const hoverTextColor = useColorModeValue(...color.hoverText);
 
 	const short = (str: string) => {
 		if (str.length > 30) {

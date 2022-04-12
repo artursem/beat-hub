@@ -3,7 +3,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Stack from 'src/components/layout/Stack';
 import Footer from './Footer';
-import { DARK, LIGHT, color } from 'src/styles/colors';
+import { color } from 'src/styles/colors';
 
 const Layout: FC = ({ children }) => {
 	const bgColor = useColorModeValue(...color.bg);
