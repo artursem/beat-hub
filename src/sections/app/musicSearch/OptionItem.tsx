@@ -4,18 +4,15 @@ import ImgThumbnail from 'src/components/images/ImgThumbnail';
 import Li from 'src/components/text/Li';
 import Box from 'src/components/layout/Box';
 import { useColorModeValue } from '@chakra-ui/react';
-
+import { DARK, LIGHT } from 'src/styles/colors';
 import { Link } from '@chakra-ui/react'; // IMPORT!
 
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
-	const borderColor = useColorModeValue('gray.700', 'gray.300');
-	const bgColor = useColorModeValue('gray.800', 'gray.200');
-	const hoverBgColor = useColorModeValue('gray.700', 'gray.300');
-	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
-	const gradient = useColorModeValue(
-		'linear(to-bl, gray.700, gray.800)',
-		'linear(to-bl, gray.200, gray.400)'
-	);
+	const borderColor = useColorModeValue(DARK.border, LIGHT.border);
+	const bgColor = useColorModeValue(DARK.bg, LIGHT.bg);
+	const hoverBgColor = useColorModeValue(DARK.hoverBg, LIGHT.hoverBg);
+	const hoverTextColor = useColorModeValue(DARK.hoverText, LIGHT.hoverText);
+	const gradient = useColorModeValue(DARK.gradient, LIGHT.gradient);
 
 	return (
 		<Li>

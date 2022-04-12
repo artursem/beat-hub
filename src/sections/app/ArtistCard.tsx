@@ -9,6 +9,7 @@ import Center from 'src/components/layout/Center';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
+import { DARK, LIGHT } from 'src/styles/colors';
 
 const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const library = useAppSelector(selectLibraryList);
@@ -18,13 +19,10 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	};
 	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
 
-	const borderColor = useColorModeValue('gray.700', 'gray.300');
-	const hoverBgColor = useColorModeValue('gray.700', 'gray.200');
-	const hoverTextColor = useColorModeValue('gray.200', 'gray.800');
-	const gradient = useColorModeValue(
-		'linear(to-bl, gray.700, gray.800)',
-		'linear(to-bl, gray.200, gray.400)'
-	);
+	const borderColor = useColorModeValue(DARK.border, LIGHT.border);
+	const hoverBgColor = useColorModeValue(DARK.hoverBg, LIGHT.hoverBg);
+	const hoverTextColor = useColorModeValue(DARK.hoverText, LIGHT.hoverText);
+	const gradient = useColorModeValue(DARK.gradient, LIGHT.gradient);
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
