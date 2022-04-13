@@ -1,5 +1,4 @@
 import Image from 'next/image';
-// import brokenRecord from '../../public/404.png';
 import brokenRecord from '../../public/404_2.png';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import Center from 'src/components/layout/Center';
