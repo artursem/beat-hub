@@ -35,7 +35,7 @@ const InputWithIcon: ComponentStyleConfig = {
 
 const config: ThemeConfig = {
 	initialColorMode: 'dark',
-	useSystemColorMode: true,
+	useSystemColorMode: false,
 };
 
 export const theme = extendTheme({

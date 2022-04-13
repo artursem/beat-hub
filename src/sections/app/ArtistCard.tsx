@@ -17,7 +17,14 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const isInLibrary = (id: string) => {
 		return library.indexOf(id) >= 0;
 	};
-	const small = useBreakpointValue({ sm: true, md: false, lg: false, xl: false, '2xl': true });
+	const small = useBreakpointValue({
+		base: true,
+		sm: true,
+		md: false,
+		lg: false,
+		xl: false,
+		'2xl': true,
+	});
 
 	const borderColor = useColorModeValue(...color.border);
 	const hoverBgColor = useColorModeValue(...color.hoverBg);
