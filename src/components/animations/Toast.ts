@@ -1,19 +1,10 @@
 import { UseToastOptions } from '@chakra-ui/react';
 
-export const addArtistToast = (name: string): UseToastOptions => {
+export const artistToast = (name: string, add: boolean): UseToastOptions => {
 	return {
-		description: `${name} has been added to your collection`,
-		status: 'info',
-		duration: 3000,
-		isClosable: true,
-	};
-};
-
-export const removeArtistToast = (name: string): UseToastOptions => {
-	return {
-		description: `${name} has been removed from your collection`,
-		status: 'info',
-		duration: 3000,
+		description: `${name} has been ${add ? 'added to' : 'removed from'} your collection`,
+		status: add ? 'success' : 'error',
+		duration: 2000,
 		isClosable: true,
 	};
 };

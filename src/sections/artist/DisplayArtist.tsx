@@ -1,11 +1,10 @@
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
-import { useToast } from '@chakra-ui/react';
-import { addArtistToast, removeArtistToast } from 'src/components/animations/Toast';
 import DisplayGenres from './DisplayGenres';
 import DisplayImage from './DisplayImage';
-
+import { useToast } from '@chakra-ui/react';
+import { artistToast } from 'src/components/animations/Toast';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import Box from 'src/components/layout/Box';
@@ -27,11 +26,11 @@ const DisplayArtist = () => {
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
-		toast(addArtistToast(name));
+		toast(artistToast(name, true));
 	};
 	const handleRemoveFromLibrary = () => {
 		dispatch(removeArtist(id));
-		toast(removeArtistToast(name));
+		toast(artistToast(name, false));
 	};
 
 	const libraryButton = isInLibrary(id) ? (

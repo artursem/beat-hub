@@ -18,7 +18,6 @@ const SearchBox: FC = () => {
 	const showResultList = useAppSelector(selectListStatus);
 	const debouncedSearchTerm: string = useDebounce<string>(searchTerm, 500);
 	const ref = useRef(null);
-
 	const handleClickOutside = () => {
 		dispatch(setListIsOpen(false));
 	};

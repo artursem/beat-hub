@@ -3,7 +3,8 @@ import NextLink from 'next/link';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
 import { ListArtists } from 'src/types/app-types';
-
+import { useToast } from '@chakra-ui/react';
+import { artistToast } from 'src/components/animations/Toast';
 import Box from 'src/components/layout/Box';
 import Center from 'src/components/layout/Center';
 import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
@@ -25,17 +26,19 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 		xl: false,
 		'2xl': true,
 	});
-
 	const borderColor = useColorModeValue(...color.border);
 	const hoverBgColor = useColorModeValue(...color.hoverBg);
 	const hoverTextColor = useColorModeValue(...color.hoverText);
 	const gradient = useColorModeValue(...color.gradient);
 
+	const toast = useToast();
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
+		toast(artistToast(name, true));
 	};
 	const handleRemoveFromLibrary = () => {
 		dispatch(removeArtist(id));
+		toast(artistToast(name, false));
 	};
 
 	const libraryButton = isInLibrary(id) ? (
