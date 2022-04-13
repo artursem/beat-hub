@@ -14,7 +14,7 @@ const SkeletonAlbums: FC<SkeletonAlbumsProps> = ({ length }) => {
 			<Li key={i}>
 				<Skeleton
 					width={{ base: 152, md: '100%', '2xl': 152 }}
-					height={{ base: 250, md: '102px', '2xl': 250 }}
+					height={{ base: 250, md: 152, '2xl': 250 }}
 					marginY={3}
 					marginX={{ base: 3, md: 2, '2xl': 3 }}
 				/>
