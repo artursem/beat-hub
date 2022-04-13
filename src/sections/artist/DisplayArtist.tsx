@@ -1,6 +1,8 @@
 import { useAppDispatch, useAppSelector } from 'src/store/hooks';
 import { selectArtist, selectArtistStatus } from 'src/store/artist/artist-slice';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';
+import { useToast } from '@chakra-ui/react';
+import { addArtistToast, removeArtistToast } from 'src/components/animations/Toast';
 import DisplayGenres from './DisplayGenres';
 import DisplayImage from './DisplayImage';
 
@@ -14,9 +16,10 @@ import HeadingSecondary from 'src/components/headings/HeadingSecondary';
 
 const DisplayArtist = () => {
 	const dispatch = useAppDispatch();
-	const { id, bio } = useAppSelector(selectArtist);
+	const { id, bio, name } = useAppSelector(selectArtist);
 	const library = useAppSelector(selectLibraryList);
 	const notification = useAppSelector(selectArtistStatus);
+	const toast = useToast();
 
 	const isInLibrary = (id: string) => {
 		return library.indexOf(id) >= 0;
@@ -24,9 +27,11 @@ const DisplayArtist = () => {
 
 	const handleAddToLibrary = () => {
 		dispatch(addArtist(id));
+		toast(addArtistToast(name));
 	};
 	const handleRemoveFromLibrary = () => {
 		dispatch(removeArtist(id));
+		toast(removeArtistToast(name));
 	};
 
 	const libraryButton = isInLibrary(id) ? (
