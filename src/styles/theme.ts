@@ -34,7 +34,7 @@ const InputWithIcon: ComponentStyleConfig = {
 };
 
 const config: ThemeConfig = {
-	initialColorMode: 'dark',
+	initialColorMode: 'light',
 	useSystemColorMode: false,
 };
 
