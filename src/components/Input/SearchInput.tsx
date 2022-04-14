@@ -15,7 +15,7 @@ interface InputProps {
 	onFocus: (event: FocusEvent<HTMLInputElement>) => void;
 	inputval: string;
 	placeholder: string;
-	loading: string; // WTF?
+	loading: string;
 }
 
 const SearchInput: FC<InputProps> = (props) => {

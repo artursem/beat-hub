@@ -53,14 +53,6 @@ export interface apiArtist {
 	};
 }
 
-// export interface apiArtistResponse {
-// 	artists: apiArtist[];
-// 	meta: {
-// 		totalCount: number | null;
-// 		returnedCount: number;
-// 	};
-// }
-
 export interface apiAlbum {
 	type: string;
 	id: string;

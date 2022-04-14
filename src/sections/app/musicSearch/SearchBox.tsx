@@ -56,7 +56,7 @@ const SearchBox: FC = () => {
 				placeholder='Find artist...'
 				onChange={handleChange}
 				onFocus={handleFocus}
-				loading={notification === 'loading' ? 'true' : 'false'} // WTF Warning: Received `false` for a non-boolean attribute `loading`.
+				loading={notification === 'loading' ? 'true' : 'false'} // Warning: Received `false` for a non-boolean attribute `loading`.
 			/>
 			{displayList}
 		</div>

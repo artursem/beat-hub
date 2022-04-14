@@ -5,7 +5,7 @@ import Li from 'src/components/text/Li';
 import Box from 'src/components/layout/Box';
 import { useColorModeValue } from '@chakra-ui/react';
 import { color } from 'src/styles/colors';
-import { Link } from '@chakra-ui/react'; // IMPORT!
+import { Link } from '@chakra-ui/react';
 
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 	const borderColor = useColorModeValue(...color.border);

@@ -1,4 +1,3 @@
-// import { Skeleton } from '@chakra-ui/react';
 import { FC } from 'react';
 import Li from 'src/components/text/Li';
 import List from 'src/components/text/List';

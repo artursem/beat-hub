@@ -1,7 +1,7 @@
 import { getArtistApi } from 'src/services/music-api';
 import { ListArtists } from 'src/types/app-types';
 
-export default async function fetchLibArtists(listId: string[]): Promise<Array<ListArtists>> {
+export default async function fetchLibArtists(listId: string[]): Promise<ListArtists[]> {
 	try {
 		const urlList = listId.map((id) => getArtistApi(id));
 		const artistResponse = await Promise.all(urlList.map((url) => fetch(url)));

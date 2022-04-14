@@ -18,7 +18,7 @@ export default async function fetchTop() {
 			img.meta.returnedCount === 0 ? null : img.images[0].url
 		);
 
-		const topArtists: Array<ListArtists> = data.artists.map((artist: ListArtists, idx: number) => ({
+		const topArtists: ListArtists[] = data.artists.map((artist: ListArtists, idx: number) => ({
 			id: artist.id,
 			name: artist.name,
 			thumbnail: imageList[idx],

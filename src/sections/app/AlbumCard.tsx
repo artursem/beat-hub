@@ -4,7 +4,7 @@ import ImgAlbum from 'src/components/images/ImgAlbum';
 import Box from 'src/components/layout/Box';
 import Center from 'src/components/layout/Center';
 import { color } from 'src/styles/colors';
-import { Link } from '@chakra-ui/react'; // IMPORT!
+import { Link } from '@chakra-ui/react';
 
 interface AlbumCardProps {
 	id?: string;
@@ -29,7 +29,6 @@ const AlbumCard = ({ artist, artistId, name, thumbnail }: AlbumCardProps) => {
 		<Box
 			display='flex'
 			flexDir={{ base: 'column', md: 'row', '2xl': 'column' }}
-			// justifyContent={{ base: 'center', md: 'flex-start', '2xl': 'center' }}
 			justifyContent={'center'}
 			alignItems='center'
 			width={{ base: 152, md: '100%', '2xl': 152 }}

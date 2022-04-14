@@ -1,4 +1,4 @@
-import { useBreakpointValue, Link, useColorModeValue } from '@chakra-ui/react'; // IMPORT!
+import { useBreakpointValue, Link, useColorModeValue } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useAppSelector, useAppDispatch } from 'src/store/hooks';
 import { addArtist, removeArtist, selectLibraryList } from 'src/store/library/library-slice';

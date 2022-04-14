@@ -16,8 +16,8 @@ export interface ArtistState {
 	initialArtist: InitialArtist;
 	image: string | null;
 	genres: string[] | null;
-	similarDetails: Array<ListArtists> | null;
-	albumsDetails: Array<Album> | null;
+	similarDetails: ListArtists[] | null;
+	albumsDetails: Album[] | null;
 	status: Status;
 	statusGenres: Status;
 	statusImage: Status;
