@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 
-import { Album, ListArtists, InitialArtist } from 'src/types/app-types';
+import { Album, ListArtists, InitialArtist, Status } from 'src/types/app-types';
 
 import fetchInitialArtist from './fetchInitialArtist';
 import fetchAlbums from './fetchAlbums';
@@ -10,6 +10,7 @@ import fetchGenres from './fetchGenres';
 import fetchImage from './fetchImage';
 import fetchAlbumList from './fetchAlbumList';
 import fetchSimilarList from './fetchSimilarList';
+import { Stat } from '@chakra-ui/react';
 
 export interface ArtistState {
 	initialArtist: InitialArtist;
@@ -17,11 +18,11 @@ export interface ArtistState {
 	genres: string[] | null;
 	similarDetails: Array<ListArtists> | null;
 	albumsDetails: Array<Album> | null;
-	status: 'idle' | 'loading' | 'failed';
-	statusGenres: 'idle' | 'loading' | 'failed';
-	statusImage: 'idle' | 'loading' | 'failed';
-	statusAlbums: 'idle' | 'loading' | 'failed';
-	statusSimilar: 'idle' | 'loading' | 'failed';
+	status: Status;
+	statusGenres: Status;
+	statusImage: Status;
+	statusAlbums: Status;
+	statusSimilar: Status;
 }
 
 const initialState: ArtistState = {
@@ -36,11 +37,11 @@ const initialState: ArtistState = {
 	genres: null,
 	similarDetails: [],
 	albumsDetails: [],
-	status: 'idle',
-	statusGenres: 'idle',
-	statusImage: 'idle',
-	statusAlbums: 'idle',
-	statusSimilar: 'idle',
+	status: Status.idle,
+	statusGenres: Status.idle,
+	statusImage: Status.idle,
+	statusAlbums: Status.idle,
+	statusSimilar: Status.idle,
 };
 
 export const fetchInitialData = createAsyncThunk(
@@ -94,49 +95,49 @@ export const artistSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchInitialData.pending, (state) => {
-				state.status = 'loading';
+				state.status = Status.loading;
 				state.albumsDetails = [];
 				state.similarDetails = [];
 				state.image = null;
 				state.genres = null;
-				state.statusGenres = 'loading';
-				state.statusImage = 'loading';
-				state.statusAlbums = 'loading';
-				state.statusSimilar = 'loading';
+				state.statusGenres = Status.loading;
+				state.statusImage = Status.loading;
+				state.statusAlbums = Status.loading;
+				state.statusSimilar = Status.loading;
 			})
 			.addCase(fetchInitialData.fulfilled, (state, action) => {
-				state.status = 'idle';
+				state.status = Status.idle;
 				state.initialArtist = action.payload;
 			})
 			.addCase(fetchInitialData.rejected, (state) => {
-				state.status = 'failed';
+				state.status = Status.failed;
 			})
 			.addCase(fetchGenresData.pending, (state) => {
-				state.statusGenres = 'loading';
+				state.statusGenres = Status.loading;
 			})
 			.addCase(fetchGenresData.fulfilled, (state, action) => {
-				state.statusGenres = 'idle';
+				state.statusGenres = Status.idle;
 				state.genres = action.payload;
 			})
 			.addCase(fetchImageData.pending, (state) => {
-				state.statusImage = 'loading';
+				state.statusImage = Status.loading;
 			})
 			.addCase(fetchImageData.fulfilled, (state, action) => {
-				state.statusImage = 'idle';
+				state.statusImage = Status.idle;
 				state.image = action.payload;
 			})
 			.addCase(fetchAlbumsData.pending, (state) => {
-				state.statusAlbums = 'loading';
+				state.statusAlbums = Status.loading;
 			})
 			.addCase(fetchAlbumsData.fulfilled, (state, action) => {
-				state.statusAlbums = 'idle';
+				state.statusAlbums = Status.idle;
 				state.albumsDetails = action.payload;
 			})
 			.addCase(fetchSimilarData.pending, (state) => {
-				state.statusSimilar = 'loading';
+				state.statusSimilar = Status.loading;
 			})
 			.addCase(fetchSimilarData.fulfilled, (state, action) => {
-				state.statusSimilar = 'idle';
+				state.statusSimilar = Status.idle;
 				state.similarDetails = action.payload;
 			});
 	},

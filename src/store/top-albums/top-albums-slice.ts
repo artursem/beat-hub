@@ -1,16 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from 'src/store/store';
-import { Album } from 'src/types/app-types';
+import { Album, Status } from 'src/types/app-types';
 import fetchTopAlbums from './fetchTopAlbums';
 
 export interface TopAlbumsState {
-	topAlbums: Array<Album>;
-	status: 'idle' | 'loading' | 'error';
+	topAlbums: Album[];
+	status: Status;
 }
 
 const initialState: TopAlbumsState = {
 	topAlbums: [],
-	status: 'idle',
+	status: Status.idle,
 };
 
 export const fetchTopAlbumsData = createAsyncThunk('topAlbums/fetchTopData', async () => {
@@ -29,10 +29,10 @@ export const topAlbumsSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchTopAlbumsData.pending, (state) => {
-				state.status = 'loading';
+				state.status = Status.loading;
 			})
 			.addCase(fetchTopAlbumsData.fulfilled, (state, action) => {
-				state.status = 'idle';
+				state.status = Status.idle;
 				state.topAlbums = action.payload;
 			});
 	},

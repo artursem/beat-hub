@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
-import { ListArtists } from 'src/types/app-types';
+import { ListArtists, Status } from 'src/types/app-types';
 import fetchLibItem from './fetchLibraryItem';
 
 export interface libraryState {
 	listId: string[];
-	artists: Array<ListArtists> | null;
-	status: 'idle' | 'loading' | 'failed';
+	artists: ListArtists[] | null;
+	status: Status;
 }
 
 const initialState: libraryState = {
 	listId: [],
 	artists: null,
-	status: 'idle',
+	status: Status.idle,
 };
 
 export const fetchLibraryItem = createAsyncThunk('library/fetchItem', async (list: string[]) => {
@@ -47,10 +47,10 @@ export const librarySlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchLibraryItem.pending, (state) => {
-				state.status = 'loading';
+				state.status = Status.loading;
 			})
 			.addCase(fetchLibraryItem.fulfilled, (state, action) => {
-				state.status = 'idle';
+				state.status = Status.idle;
 				state.artists = action.payload;
 			});
 	},

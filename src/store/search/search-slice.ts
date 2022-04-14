@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
-import { SearchArtist } from 'src/types/app-types';
+import { SearchArtist, Status } from 'src/types/app-types';
 import fetchSearchList from './fetchSearchList';
 import fetchThumbnails from './fetchThumbnails';
 
@@ -8,16 +8,16 @@ export interface searchState {
 	searchResult: SearchArtist[];
 	searchImages: string[];
 	showList: boolean;
-	status: 'idle' | 'loading' | 'failed';
-	statusImages: 'idle' | 'loading' | 'failed';
+	status: Status;
+	statusImages: Status;
 }
 
 const initialState: searchState = {
 	searchResult: [],
 	searchImages: [],
 	showList: false,
-	status: 'idle',
-	statusImages: 'idle',
+	status: Status.idle,
+	statusImages: Status.idle,
 };
 
 export const fetchSearch = createAsyncThunk(
@@ -51,22 +51,22 @@ export const searchArtistSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchSearch.pending, (state) => {
-				state.status = 'loading';
-				state.statusImages = 'loading';
+				state.status = Status.loading;
+				state.statusImages = Status.loading;
 				state.searchImages = [];
 			})
 			.addCase(fetchSearch.rejected, (state) => {
-				state.status = 'failed';
+				state.status = Status.failed;
 			})
 			.addCase(fetchSearch.fulfilled, (state, action) => {
-				state.status = 'idle';
+				state.status = Status.idle;
 				state.searchResult = action.payload;
 			})
 			.addCase(fetchSearchImages.pending, (state) => {
-				state.statusImages = 'loading';
+				state.statusImages = Status.loading;
 			})
 			.addCase(fetchSearchImages.fulfilled, (state, action) => {
-				state.statusImages = 'idle';
+				state.statusImages = Status.idle;
 				state.searchImages = action.payload;
 			});
 	},

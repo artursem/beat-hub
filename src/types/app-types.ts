@@ -35,3 +35,9 @@ export type SearchArtist = {
 	id: string;
 	name: string;
 };
+
+export enum Status {
+	loading = 'loading',
+	idle = 'idle',
+	failed = 'failed',
+}
