@@ -1,5 +1,6 @@
-import { searchArtistApi } from 'src/services/music-api';
-import { apiSearch } from 'src/types/api-types';
+import { searchArtistApi, getArtistApi } from 'src/services/music-api';
+import { ListArtists } from 'src/types/app-types';
+import { apiArtist } from 'src/types/api-types';
 
 export default async function fetchDataThumbnails(searchTerm: string) {
 	try {
@@ -9,18 +10,23 @@ export default async function fetchDataThumbnails(searchTerm: string) {
 		}
 		const data = await response.json();
 
-		const imageLinks = data.search.data.artists.map((artist: apiSearch) => artist.links.images);
-		const imageResponse = await Promise.all(imageLinks);
+		const idList = data.search.data.artists.map((artist: apiArtist) => artist.id);
+		const urlList = idList.map((id: string) => getArtistApi(id, 'images'));
+		const imageResponse = await Promise.all(urlList.map((url: string) => fetch(url)));
 		const imageData = await Promise.all(imageResponse.map((res) => res.json()));
-		const imageList: string[] = imageData.map((img) =>
+		const imageList = imageData.map((img) =>
 			img.meta.returnedCount === 0 ? null : img.images[1].url
 		);
 
-		const results = data.search.data.artists.map((artist: apiSearch, idx: number) => {
-			return { id: artist.id, name: artist.name, thumbnail: imageList[idx] };
-		});
+		const listArtists: ListArtists[] = data.search.data.artists.map(
+			(artist: ListArtists, idx: number) => ({
+				id: artist.id,
+				name: artist.name,
+				thumbnail: imageList[idx] || null,
+			})
+		);
 
-		return results;
+		return listArtists;
 	} catch (error: any) {
 		return error.message;
 	}
