@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
-import { SearchArtist, Status } from 'src/types/app-types';
+import { ListArtists, Status } from 'src/types/app-types';
 import fetchSearchList from './fetchSearchList';
 import fetchThumbnails from './fetchThumbnails';
+import fetchDataThumbnails from './fetchSearchThumbnail';
 
 export interface searchState {
-	searchResult: SearchArtist[];
-	searchImages: string[];
+	searchResult: ListArtists[];
+	// searchImages: string[];
 	showList: boolean;
 	status: Status;
 	statusImages: Status;
@@ -14,7 +15,7 @@ export interface searchState {
 
 const initialState: searchState = {
 	searchResult: [],
-	searchImages: [],
+	// searchImages: [],
 	showList: false,
 	status: Status.idle,
 	statusImages: Status.idle,
@@ -40,6 +41,14 @@ export const fetchSearchImages = createAsyncThunk(
 	}
 );
 
+export const fetchDataAndThumbnails = createAsyncThunk(
+	'search/fetchDataAdnThumbnails',
+	async (searchTerm: string) => {
+		const response = fetchDataThumbnails(searchTerm);
+		return response;
+	}
+);
+
 export const searchArtistSlice = createSlice({
 	name: 'search',
 	initialState,
@@ -53,7 +62,7 @@ export const searchArtistSlice = createSlice({
 			.addCase(fetchSearch.pending, (state) => {
 				state.status = Status.loading;
 				state.statusImages = Status.loading;
-				state.searchImages = [];
+				// state.searchImages = [];
 			})
 			.addCase(fetchSearch.rejected, (state) => {
 				state.status = Status.failed;
@@ -67,7 +76,14 @@ export const searchArtistSlice = createSlice({
 			})
 			.addCase(fetchSearchImages.fulfilled, (state, action) => {
 				state.statusImages = Status.idle;
-				state.searchImages = action.payload;
+				// state.searchImages = action.payload;
+			})
+			.addCase(fetchDataAndThumbnails.pending, (state) => {
+				state.status = Status.loading;
+			})
+			.addCase(fetchDataAndThumbnails.fulfilled, (state, action) => {
+				state.status = Status.idle;
+				state.searchResult = action.payload;
 			});
 	},
 });
@@ -75,7 +91,7 @@ export const searchArtistSlice = createSlice({
 export const { setListIsOpen } = searchArtistSlice.actions;
 export const selectSearchResult = (state: RootState) => state.search.searchResult;
 export const selectSearchStatus = (state: RootState) => state.search.status;
-export const selectSearchImages = (state: RootState) => state.search.searchImages;
+// export const selectSearchImages = (state: RootState) => state.search.searchImages;
 export const selectSearchImagesStatus = (state: RootState) => state.search.statusImages;
 export const selectListStatus = (state: RootState) => state.search.showList;
 export default searchArtistSlice;

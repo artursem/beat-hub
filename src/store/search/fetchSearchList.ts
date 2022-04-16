@@ -1,4 +1,5 @@
 import { searchArtistApi } from 'src/services/music-api';
+import { apiSearch } from 'src/types/api-types';
 
 export default async function fetchSearchList(searchTerm: string) {
 	try {
@@ -7,9 +8,8 @@ export default async function fetchSearchList(searchTerm: string) {
 			throw new Error('Error fetching data from db');
 		}
 		const data = await response.json();
-		const idList: string[] = data.search.data.artists.map((artist: any) => artist.id);
 
-		const results = data.search.data.artists.map((artist: any) => {
+		const results = data.search.data.artists.map((artist: apiSearch) => {
 			return { id: artist.id, name: artist.name };
 		});
 

@@ -140,3 +140,65 @@ export interface apiGenre {
 		};
 	};
 }
+
+export interface apiSearch {
+	type: string;
+	id: string;
+	href: string;
+	name: string;
+	shortcut: string;
+	amg: string;
+	blurbs: string[];
+	bios: [
+		{
+			title: string;
+			author: string;
+			publishDate: string;
+			bio: string;
+		}
+	];
+	albumGroups: {
+		others: string[];
+		singlesAndEPs: string[];
+		main: string[];
+		compilations: string[];
+	};
+	links: {
+		albums: {
+			href: string;
+		};
+		images: {
+			href: string;
+		};
+		posts: {
+			href: string;
+		};
+		topTracks: {
+			href: string;
+		};
+		genres: {
+			ids: string[];
+			href: string;
+		};
+		stations: {
+			ids: string[];
+			href: string;
+		};
+		contemporaries: {
+			ids: string[];
+			href: string;
+		};
+		followers: {
+			ids: string[];
+			href: string;
+		};
+		influences: {
+			ids: string[];
+			href: string;
+		};
+		relatedProjects: {
+			ids: string[];
+			href: string;
+		};
+	};
+}
