@@ -6,6 +6,7 @@ import Box from 'src/components/layout/Box';
 import { useColorModeValue } from '@chakra-ui/react';
 import { color } from 'src/styles/colors';
 import { Link } from '@chakra-ui/react';
+import ImgThumbnailBlank from 'src/components/images/ImgThumbnailBlank';
 
 const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 	const borderColor = useColorModeValue(...color.border);
@@ -29,7 +30,11 @@ const OptionList = ({ id, name, thumbnail }: ListArtists) => {
 						borderWidth={1}
 					>
 						<Box width={152} height={100} bgGradient={gradient}>
-							{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}
+							{thumbnail ? (
+								<ImgThumbnail src={thumbnail} alt={name} />
+							) : (
+								<ImgThumbnailBlank alt={name} />
+							)}
 						</Box>
 						<Box ml={2} flex={1}>
 							{name}
