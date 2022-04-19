@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { useBreakpointValue, useColorMode } from '@chakra-ui/react';
 import SearchBox from './musicSearch/SearchBox';
-
 import Stack from 'src/components/layout/Stack';
 import Box from 'src/components/layout/Box';
 import BtnLibrarySmall from 'src/components/buttons/BtnLibrarySmall';

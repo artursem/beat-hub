@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import IconMail from 'src/components/icons/IconMail';
 import IconGit from 'src/components/icons/IconGit';
 import Stack from 'src/components/layout/Stack';
 
