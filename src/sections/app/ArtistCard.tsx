@@ -11,6 +11,7 @@ import BtnRemoveFromLib from 'src/components/buttons/BtnRemoveFromLib';
 import BtnAddToLib from 'src/components/buttons/BtnAddToLib';
 import ImgThumbnail from 'src/components/images/ImgThumbnail';
 import { color } from 'src/styles/colors';
+import ImgThumbnailBlank from 'src/components/images/ImgThumbnailBlank';
 
 const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 	const library = useAppSelector(selectLibraryList);
@@ -65,7 +66,14 @@ const ArtistCard = ({ id, name, thumbnail }: ListArtists) => {
 		>
 			<Box width={152} height={100} bgGradient={gradient}>
 				<NextLink href={`/artist/${id}`} passHref>
-					<Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link>
+					{/* <Link>{thumbnail && <ImgThumbnail src={thumbnail} alt={name} />}</Link> */}
+					<Link>
+						{thumbnail ? (
+							<ImgThumbnail src={thumbnail} alt={name} />
+						) : (
+							<ImgThumbnailBlank alt={name} />
+						)}
+					</Link>
 				</NextLink>
 			</Box>
 			<Center

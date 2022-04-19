@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { RootState } from 'src/store/store';
 
 import { Album, ListArtists, InitialArtist, Status } from 'src/types/app-types';
-
 import fetchInitialArtist from './fetchInitialArtist';
 import fetchAlbums from './fetchAlbums';
 import fetchSimilar from './fetchSimilar';
@@ -10,7 +9,6 @@ import fetchGenres from './fetchGenres';
 import fetchImage from './fetchImage';
 import fetchAlbumList from './fetchAlbumList';
 import fetchSimilarList from './fetchSimilarList';
-import { Stat } from '@chakra-ui/react';
 
 export interface ArtistState {
 	initialArtist: InitialArtist;
@@ -95,11 +93,11 @@ export const artistSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchInitialData.pending, (state) => {
-				state.status = Status.loading;
 				state.albumsDetails = [];
 				state.similarDetails = [];
 				state.image = null;
 				state.genres = null;
+				state.status = Status.loading;
 				state.statusGenres = Status.loading;
 				state.statusImage = Status.loading;
 				state.statusAlbums = Status.loading;
