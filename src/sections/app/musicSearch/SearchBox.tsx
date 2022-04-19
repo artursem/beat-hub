@@ -2,7 +2,6 @@ import { ChangeEvent, FC, useEffect, useState, useRef } from 'react';
 import { useAppDispatch, useAppSelector, useDebounce } from 'src/store/hooks';
 import { useOnClickOutside } from 'usehooks-ts';
 import {
-	fetchSearch,
 	fetchDataAndThumbnails,
 	selectSearchStatus,
 	setListIsOpen,
@@ -27,7 +26,6 @@ const SearchBox: FC = () => {
 	useEffect(() => {
 		if (debouncedSearchTerm && searchTerm.length > 0) {
 			dispatch(setListIsOpen(true));
-			// dispatch(fetchSearch(searchTerm));
 			dispatch(fetchDataAndThumbnails(searchTerm));
 		}
 	}, [dispatch, searchTerm, debouncedSearchTerm]);
