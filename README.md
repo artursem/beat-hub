@@ -20,7 +20,7 @@ Here is a working live demo: [beat-hub.vercel.app](https://beat-hub.vercel.app/)
 ## Built with
 
 - Next.js 12.1.0
-- TypeScript 4.3.4a
+- TypeScript 4.3.4
 - Redux 7.2.0
 - Redux Toolkit 1.3.6
 - Chakra UI 1.8.6
