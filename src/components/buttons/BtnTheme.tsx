@@ -6,9 +6,10 @@ import IconDark from '../icons/IconDark';
 interface BtnThemeProps {
 	colorMode: 'light' | 'dark';
 	onClick: () => void;
+	tabIndex?: number;
 }
 
-const BtnTheme: FC<BtnThemeProps> = ({ colorMode, onClick }) => {
+const BtnTheme: FC<BtnThemeProps> = ({ colorMode, onClick, tabIndex }) => {
 	return (
 		<Button
 			onClick={onClick}
@@ -16,6 +17,7 @@ const BtnTheme: FC<BtnThemeProps> = ({ colorMode, onClick }) => {
 			colorScheme='teal'
 			size='md'
 			variant='solid'
+			tabIndex={tabIndex}
 		>
 			{colorMode !== 'light' ? 'Dark' : 'Light'}
 		</Button>

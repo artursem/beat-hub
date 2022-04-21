@@ -40,6 +40,7 @@ const SearchInput: FC<InputProps> = (props) => {
 					{...props}
 					onChange={props.onChange}
 					onFocus={props.onFocus}
+					tabIndex={1}
 				/>
 				{props.loading === 'true' && (
 					<InputRightElement height='100%'>

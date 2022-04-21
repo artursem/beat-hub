@@ -20,15 +20,15 @@ const Navbar = () => {
 			</Box>
 			<Stack direction='row'>
 				<Link href='/'>
-					<a>{variant ? <BtnHomeSmall /> : <BtnHome />}</a>
+					<a tabIndex={2}>{variant ? <BtnHomeSmall /> : <BtnHome />}</a>
 				</Link>
 				<Link href='/library'>
-					<a>{variant ? <BtnLibrarySmall /> : <BtnLibrary />}</a>
+					<a tabIndex={3}>{variant ? <BtnLibrarySmall /> : <BtnLibrary />}</a>
 				</Link>
 				{variant ? (
-					<BtnThemeSmall colorMode={colorMode} onClick={toggleColorMode} />
+					<BtnThemeSmall colorMode={colorMode} onClick={toggleColorMode} tabIndex={4} />
 				) : (
-					<BtnTheme colorMode={colorMode} onClick={toggleColorMode} />
+					<BtnTheme colorMode={colorMode} onClick={toggleColorMode} tabIndex={4} />
 				)}
 			</Stack>
 		</Stack>
