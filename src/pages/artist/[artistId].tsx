@@ -27,7 +27,6 @@ const Artist: NextPage<ArtistProps> = (props) => {
 		<>
 			<Head>
 				<title>{initialArtist.name} - beathub</title>
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<ArtistBlock />
 		</>

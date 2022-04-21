@@ -28,7 +28,6 @@ const IndexPage = ({ topAlbums, topArtists }: IndexPageProps) => {
 		<>
 			<Head>
 				<title>beathub</title>
-				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<TopArtists />
 			<TopAlbums />
