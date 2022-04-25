@@ -13,8 +13,8 @@ const BtnThemeSmall: FC<BtnThemeSmallProps> = ({ colorMode, onClick, tabIndex })
 	return (
 		<IconButton
 			onClick={onClick}
-			aria-label={colorMode !== 'light' ? 'Dark Mode' : 'Light Mode'}
-			icon={colorMode !== 'light' ? <IconDark /> : <IconLight />}
+			aria-label={colorMode === 'light' ? 'Dark Mode' : 'Light Mode'}
+			icon={colorMode === 'light' ? <IconDark /> : <IconLight />}
 			colorScheme='teal'
 			size='md'
 			variant='solid'
