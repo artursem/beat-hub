@@ -16,6 +16,7 @@ interface InputProps {
 	inputval: string;
 	placeholder: string;
 	loading: string;
+	label?: string;
 }
 
 const SearchInput: FC<InputProps> = (props) => {
@@ -36,6 +37,7 @@ const SearchInput: FC<InputProps> = (props) => {
 					colorScheme='teal'
 					variant='flushed'
 					type='text'
+					aria-label={props.label ? props.label : 'Search'}
 					value={props.inputval}
 					{...props}
 					onChange={props.onChange}
