@@ -11,6 +11,7 @@
 		"cypress:open": "cypress open"
 	},
 	"dependencies": {
+		"@chakra-ui/button": "^1.5.10",
 		"@chakra-ui/react": "^1.8.6",
 		"@emotion/react": "^11.8.2",
 		"@emotion/styled": "^11.8.1",
