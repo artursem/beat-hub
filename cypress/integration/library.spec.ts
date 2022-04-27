@@ -35,9 +35,3 @@ context('Library page', () => {
 		cy.get('h3').contains('Your library is empty. Please add artists you enjoy');
 	});
 });
-
-// view library, remove artist
-// navigation
-// cy.go(-1)
-//     cy.location('pathname').should('not.include', 'navigation')
-// darkmode
