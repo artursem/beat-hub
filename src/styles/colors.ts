@@ -8,6 +8,7 @@ interface Color {
 	input: [string, string];
 	inputBg: [string, string];
 	placeholder: [string, string];
+	navBg: [string, string];
 }
 
 export const color: Color = {
@@ -18,6 +19,7 @@ export const color: Color = {
 	border: ['gray.300', 'gray.700'],
 	gradient: ['linear(to-bl, gray.200, gray.400)', 'linear(to-bl, gray.700, gray.800)'],
 	input: ['gray.900', 'gray.100'],
-	inputBg: ['gray.50', 'gray.800'],
+	inputBg: ['transparent', 'transparent'],
 	placeholder: ['gray.900', 'gray.100'],
+	navBg: ['blackAlpha.300', 'blackAlpha.600'],
 };

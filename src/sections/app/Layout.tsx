@@ -10,6 +10,7 @@ const Layout: FC = ({ children }) => {
 	const textColor = useColorModeValue(...color.text);
 	return (
 		<>
+			<Navbar />
 			<Stack
 				direction='column'
 				minHeight='calc(100vh - 50px)'
@@ -20,10 +21,7 @@ const Layout: FC = ({ children }) => {
 				padding={{ base: 2, lg: 5 }}
 				alignItems='center'
 			>
-				<Navbar />
-				<Stack dir='column' width='100%' alignItems='center'>
-					{children}
-				</Stack>
+				{children}
 			</Stack>
 			<Footer />
 		</>
