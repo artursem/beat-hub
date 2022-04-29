@@ -21,7 +21,7 @@ const Layout: FC = ({ children }) => {
 				alignItems='center'
 			>
 				<Navbar />
-				<Stack dir='column' width={{ base: '100%', '2xl': '100%' }} alignItems='center'>
+				<Stack dir='column' width='100%' alignItems='center'>
 					{children}
 				</Stack>
 			</Stack>

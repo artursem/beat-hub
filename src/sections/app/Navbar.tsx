@@ -15,7 +15,7 @@ import IconHeadphones from 'src/components/icons/IconHeadphones';
 const Navbar = () => {
 	const variant = useBreakpointValue({ base: true, lg: false });
 	const { colorMode, toggleColorMode } = useColorMode();
-	const logoColor = useColorModeValue(...color.text);
+	const logoColor = useColorModeValue('#171923', '#E2E8F0');
 	const logoBg = useColorModeValue(...color.hoverBg);
 	return (
 		<Stack direction='row' width='100%' justify='space-around' align='center'>
