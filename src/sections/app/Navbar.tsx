@@ -29,7 +29,7 @@ const Navbar = () => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, [prevPosition, showNavbar]);
 
-	const variant = useBreakpointValue({ base: true, lg: false });
+	const mobile = useBreakpointValue({ base: true, lg: false });
 	const { colorMode, toggleColorMode } = useColorMode();
 	const navBg = useColorModeValue(...color.navBg);
 	const navShadow = useColorModeValue(...color.navShadow);
@@ -39,7 +39,7 @@ const Navbar = () => {
 	return (
 		<Stack
 			height='80px'
-			position='fixed'
+			position={mobile ? 'fixed' : 'static'}
 			top={showNavbar ? 0 : '-80px'}
 			transition='top 0.3s'
 			zIndex={2}
@@ -69,12 +69,12 @@ const Navbar = () => {
 			</Box>
 			<Stack direction='row'>
 				<Link href='/'>
-					<a tabIndex={2}>{variant ? <BtnHomeSmall /> : <BtnHome />}</a>
+					<a tabIndex={2}>{mobile ? <BtnHomeSmall /> : <BtnHome />}</a>
 				</Link>
 				<Link href='/library'>
-					<a tabIndex={3}>{variant ? <BtnLibrarySmall /> : <BtnLibrary />}</a>
+					<a tabIndex={3}>{mobile ? <BtnLibrarySmall /> : <BtnLibrary />}</a>
 				</Link>
-				{variant ? (
+				{mobile ? (
 					<BtnThemeSmall colorMode={colorMode} onClick={toggleColorMode} tabIndex={4} />
 				) : (
 					<BtnTheme colorMode={colorMode} onClick={toggleColorMode} tabIndex={4} />

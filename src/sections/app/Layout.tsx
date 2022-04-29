@@ -8,6 +8,7 @@ import { color } from 'src/styles/colors';
 const Layout: FC = ({ children }) => {
 	const bgColor = useColorModeValue(...color.bg);
 	const textColor = useColorModeValue(...color.text);
+
 	return (
 		<>
 			<Navbar />
@@ -18,7 +19,7 @@ const Layout: FC = ({ children }) => {
 				spacing='0'
 				bg={bgColor}
 				color={textColor}
-				padding={{ base: '70px 2px 2px 2px', md: '70px 15px 15px 15px' }}
+				padding={{ base: '70px 2px 2px 2px', lg: '15px' }}
 				alignItems='center'
 			>
 				{children}
