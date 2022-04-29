@@ -9,10 +9,11 @@ interface Color {
 	inputBg: [string, string];
 	placeholder: [string, string];
 	navBg: [string, string];
+	navShadow: [string, string];
 }
 
 export const color: Color = {
-	text: ['gray.800', 'gray.300'],
+	text: ['gray.700', 'gray.300'],
 	bg: ['gray.50', 'gray.800'],
 	hoverText: ['gray.800', 'gray.200'],
 	hoverBg: ['gray.100', 'gray.700'],
@@ -21,5 +22,6 @@ export const color: Color = {
 	input: ['gray.900', 'gray.100'],
 	inputBg: ['transparent', 'transparent'],
 	placeholder: ['gray.900', 'gray.100'],
-	navBg: ['blackAlpha.300', 'blackAlpha.600'],
+	navBg: ['gray.100', 'gray.900'],
+	navShadow: ['lg', 'none'],
 };

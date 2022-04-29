@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useColorModeValue } from '@chakra-ui/react';
 import Navbar from './Navbar';
-import Stack from 'src/components/layout/Stack';
 import Footer from './Footer';
+import Stack from 'src/components/layout/Stack';
 import { color } from 'src/styles/colors';
 
 const Layout: FC = ({ children }) => {
@@ -18,7 +18,7 @@ const Layout: FC = ({ children }) => {
 				spacing='0'
 				bg={bgColor}
 				color={textColor}
-				padding={{ base: 2, lg: 5 }}
+				padding={{ base: '70px 2px 2px 2px', md: '70px 15px 15px 15px' }}
 				alignItems='center'
 			>
 				{children}
