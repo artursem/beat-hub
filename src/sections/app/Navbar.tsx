@@ -27,7 +27,7 @@ const Navbar = () => {
 				alignItems='center'
 				borderRadius='50%'
 				backgroundColor={logoBg}
-				mr={5}
+				mr={{ base: 1, lg: 3 }}
 				pb={1}
 			>
 				<IconHeadphones color={logoColor} />

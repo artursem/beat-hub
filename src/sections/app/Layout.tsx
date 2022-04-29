@@ -17,7 +17,7 @@ const Layout: FC = ({ children }) => {
 				spacing='0'
 				bg={bgColor}
 				color={textColor}
-				padding='5'
+				padding={{ base: 2, lg: 5 }}
 				alignItems='center'
 			>
 				<Navbar />
