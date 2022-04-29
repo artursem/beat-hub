@@ -14,25 +14,23 @@ import BtnThemeSmall from 'src/components/buttons/BtnThemeSmall';
 import IconHeadphones from 'src/components/icons/IconHeadphones';
 
 const Navbar = () => {
-	// IF MOBILE!
 	const [prevPosition, setPrevPosition] = useState(0);
 	const [showNavbar, setShowNavbar] = useState(true);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollPos = window.pageYOffset;
-			setShowNavbar(prevPosition > currentScrollPos || currentScrollPos < 80);
-			setPrevPosition(currentScrollPos);
-		};
-		window.addEventListener('scroll', handleScroll);
+	const handleScroll = useCallback(() => {
+		const currentScrollPos = window.pageYOffset;
+		setShowNavbar(prevPosition > currentScrollPos || currentScrollPos < 80);
+		setPrevPosition(currentScrollPos);
+	}, [prevPosition]);
 
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
-	}, [prevPosition, showNavbar]);
+	}, [prevPosition, showNavbar, handleScroll]);
 
 	const mobile = useBreakpointValue({ base: true, lg: false });
 	const { colorMode, toggleColorMode } = useColorMode();
 	const navBg = useColorModeValue(...color.navBg);
-	const navShadow = useColorModeValue(...color.navShadow);
 	const logoColor = useColorModeValue('#171923', '#E2E8F0');
 	const logoBg = useColorModeValue(...color.hoverBg);
 
@@ -49,7 +47,7 @@ const Navbar = () => {
 			align='center'
 			p={{ base: 2, lg: 5 }}
 			bgColor={navBg}
-			boxShadow={navShadow}
+			boxShadow='lg'
 		>
 			<Box
 				width='40px'

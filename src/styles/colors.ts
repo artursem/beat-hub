@@ -22,6 +22,6 @@ export const color: Color = {
 	input: ['gray.900', 'gray.100'],
 	inputBg: ['transparent', 'transparent'],
 	placeholder: ['gray.900', 'gray.100'],
-	navBg: ['gray.100', 'gray.900'],
+	navBg: ['gray.100', '#0E1117'],
 	navShadow: ['lg', 'none'],
 };

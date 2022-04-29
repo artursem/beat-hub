@@ -19,7 +19,7 @@ const Layout: FC = ({ children }) => {
 				spacing='0'
 				bg={bgColor}
 				color={textColor}
-				padding={{ base: '70px 2px 2px 2px', lg: '15px' }}
+				padding={{ base: '70px 2px 2px 2px', lg: '10px' }}
 				alignItems='center'
 			>
 				{children}
