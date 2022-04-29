@@ -12,6 +12,7 @@ const config: InitialOptionsTsJest = {
 			tsconfig: 'tsconfig.test.json',
 		},
 	},
+	testPathIgnorePatterns: ['<rootDir>/cypress/'],
 	modulePaths: ['<rootDir>', '<rootDir>/public'],
 	moduleDirectories: ['node_modules', '<rootDir>/'],
 };

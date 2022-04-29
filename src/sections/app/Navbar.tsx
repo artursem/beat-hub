@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { useBreakpointValue, useColorMode } from '@chakra-ui/react';
+import { useBreakpointValue, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { color } from 'src/styles/colors';
 import SearchBox from './musicSearch/SearchBox';
 import Stack from 'src/components/layout/Stack';
 import Box from 'src/components/layout/Box';
@@ -9,12 +10,28 @@ import BtnHomeSmall from 'src/components/buttons/BtnHomeSmall';
 import BtnHome from 'src/components/buttons/BtnHome';
 import BtnTheme from 'src/components/buttons/BtnTheme';
 import BtnThemeSmall from 'src/components/buttons/BtnThemeSmall';
+import IconHeadphones from 'src/components/icons/IconHeadphones';
 
 const Navbar = () => {
 	const variant = useBreakpointValue({ base: true, lg: false });
 	const { colorMode, toggleColorMode } = useColorMode();
+	const logoColor = useColorModeValue(...color.text);
+	const logoBg = useColorModeValue(...color.hoverBg);
 	return (
-		<Stack direction='row' width='100%' justify='space-around' align='flex-start'>
+		<Stack direction='row' width='100%' justify='space-around' align='center'>
+			<Box
+				width='40px'
+				height='40px'
+				display='flex'
+				justifyContent='center'
+				alignItems='center'
+				borderRadius='50%'
+				backgroundColor={logoBg}
+				mr={5}
+				pb={1}
+			>
+				<IconHeadphones color={logoColor} />
+			</Box>
 			<Box flex={1} marginRight='2'>
 				<SearchBox />
 			</Box>
