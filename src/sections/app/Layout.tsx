@@ -14,7 +14,7 @@ const Layout: FC = ({ children }) => {
 			<Navbar />
 			<Stack
 				direction='column'
-				minHeight='calc(100vh - 50px)'
+				minHeight='calc(100vh - 130px)'
 				width='full'
 				spacing='0'
 				bg={bgColor}
