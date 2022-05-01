@@ -13,8 +13,11 @@ const config: InitialOptionsTsJest = {
 		},
 	},
 	testPathIgnorePatterns: ['<rootDir>/cypress/'],
-	modulePaths: ['<rootDir>', '<rootDir>/public'],
+	modulePaths: ['<rootDir>', '<rootDir>/public/'],
 	moduleDirectories: ['node_modules', '<rootDir>/'],
+	moduleNameMapper: {
+		'.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
+	},
 };
 
 export default config;
