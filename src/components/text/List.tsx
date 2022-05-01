@@ -7,7 +7,7 @@ const List: FC<ListProps> = ({ children }) => {
 			display={'flex'}
 			flexDir={{ base: 'row', md: 'column', '2xl': 'row' }}
 			justifyContent='center'
-			alignItems={{ base: 'flex-start', md: 'stretch', '2xl': 'center' }}
+			alignItems={{ base: 'flex-start', md: 'stretch', '2xl': 'flex-start' }}
 			width='100%'
 			flex={2}
 			flexWrap={'wrap'}
