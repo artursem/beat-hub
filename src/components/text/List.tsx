@@ -6,7 +6,8 @@ const List: FC<ListProps> = ({ children }) => {
 		<ListChakra
 			display={'flex'}
 			flexDir={{ base: 'row', md: 'column', '2xl': 'row' }}
-			justifyContent='center'
+			// justifyContent='center'
+			justifyContent={{ base: 'center', md: 'flex-start', '2xl': 'center' }}
 			alignItems={{ base: 'flex-start', md: 'stretch', '2xl': 'flex-start' }}
 			width='100%'
 			flex={2}

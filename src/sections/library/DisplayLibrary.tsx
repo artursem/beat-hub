@@ -13,6 +13,7 @@ import Li from 'src/components/text/Li';
 import HeadingPrimary from 'src/components/headings/HeadingPrimary';
 import HeadingSecondary from 'src/components/headings/HeadingSecondary';
 import SpinnerSmall from 'src/components/animations/SpinnerSmall';
+import Box from 'src/components/layout/Box';
 
 const DisplayCollection = () => {
 	const dispatch = useAppDispatch();
@@ -39,8 +40,12 @@ const DisplayCollection = () => {
 	let displayLibrary = (
 		<>
 			<HeadingPrimary>Your Library</HeadingPrimary>
+			{notification === 'loading' && (
+				<Box padding='55px'>
+					<SpinnerSmall />
+				</Box>
+			)}
 			<List>{libraryLi}</List>
-			{notification === 'loading' && <SpinnerSmall />}
 		</>
 	);
 
