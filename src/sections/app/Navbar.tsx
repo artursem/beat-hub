@@ -60,7 +60,11 @@ const Navbar = () => {
 				mr={{ base: 1, lg: 3 }}
 				pb={1}
 			>
-				<IconHeadphones color={logoColor} />
+				<Link href='/'>
+					<a>
+						<IconHeadphones color={logoColor} />
+					</a>
+				</Link>
 			</Box>
 			<Box flex={1} marginRight='2'>
 				<SearchBox />
