@@ -10,8 +10,7 @@
 
 ## General info
 
-Next.js application allowing user to look up information on music bands and artists, read bio, browse top albums and similar artists. App lets user add favorite bands to library saved in local storage.
-All the data, including photos comes from [Napster REST API](https://developer.napster.com/api/v2.2)
+Next.js application allowing user to search for information on recording artists. Home page offers staticly generated charts of top streamed artists and albums of the current week. Searchbar provides easy way to look up bands. App fetches data from [REST API](https://developer.napster.com/api/v2.2) and displays artists' photos and bio as well as top albums and similar artists. Library functionality allows adding bands to favourites list, which is saved in local storage.
 
 ## Demo
 
