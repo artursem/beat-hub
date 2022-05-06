@@ -14,9 +14,10 @@ test('Search for artist - hp', async () => {
 	expect(searchInput).toBeInTheDocument();
 	userEvent.clear(searchInput);
 	userEvent.type(searchInput, 'The Beatles');
-	const spinner = screen.getByRole('');
-	// await waitFor(async () => {
-	// 	const resultList = await screen.findByRole('list');
-	// 	expect(resultList).toHaveLength(5);
-	// });
+	// await screen.findByRole('list', { name: /results/i });
+	// TODO add mock service worker?
+	await waitFor(() => {
+		// const resultsList = screen.findByRole('list', { name: /results/i });
+		// expect(resultsList).toBeInTheDocument();
+	});
 });

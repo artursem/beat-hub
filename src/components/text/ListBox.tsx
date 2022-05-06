@@ -14,6 +14,7 @@ const ListBox: FC<ListProps> = ({ children }) => {
 			zIndex={2}
 			top='50px'
 			left='-60px'
+			aria-label='results'
 		>
 			{children}
 		</ListChakra>

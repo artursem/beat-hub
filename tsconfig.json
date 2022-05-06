@@ -16,6 +16,12 @@
 		"incremental": true,
 		"baseUrl": "."
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/pages/_document.js",
+		"tests/sections/app/musicSearch/SearchBox.test.js"
+	],
 	"exclude": ["node_modules"]
 }
