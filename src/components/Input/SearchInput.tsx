@@ -1,12 +1,8 @@
 import { ChangeEvent, FocusEvent, FC } from 'react';
-import {
-	InputGroup,
-	Input as InputChakra,
-	InputRightElement,
-	StylesProvider,
-	useMultiStyleConfig,
-	useColorModeValue,
-} from '@chakra-ui/react';
+import { StylesProvider, useMultiStyleConfig, useColorModeValue } from '@chakra-ui/react';
+import Input from './Input';
+import InputGroup from './InputGroup';
+import InputRightElement from './InputRightElement';
 import { color } from 'src/styles/colors';
 import SpinnerSmall from '../animations/SpinnerSmall';
 
@@ -29,7 +25,7 @@ const SearchInput: FC<InputProps> = (props) => {
 	return (
 		<InputGroup>
 			<StylesProvider value={styles}>
-				<InputChakra
+				<Input
 					color={inputColor}
 					backgroundColor={inputBgColor}
 					_placeholder={{ color: inputPlaceholderColor }}
