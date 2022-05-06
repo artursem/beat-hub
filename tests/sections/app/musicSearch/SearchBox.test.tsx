@@ -8,7 +8,7 @@ import SearchBox from 'src/sections/app/musicSearch/SearchBox';
 const render = (component: ReactElement) =>
 	rtlRender(<Provider store={store}>{component}</Provider>);
 
-test('Search for artist - hp', async () => {
+test.skip('Search for artist - hp', async () => {
 	render(<SearchBox />);
 	const searchInput = screen.getByRole('textbox', { name: 'Search' });
 	expect(searchInput).toBeInTheDocument();
