@@ -9,7 +9,7 @@ import {
 } from 'src/store/search/search-slice';
 import DisplayList from './DisplayList';
 
-import SearchInput from 'src/components/Input/SearchInput';
+import SearchInput from 'src/sections/app/musicSearch/SearchInput';
 
 const SearchBox: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('');

@@ -1,10 +1,10 @@
 import { ChangeEvent, FocusEvent, FC } from 'react';
 import { StylesProvider, useMultiStyleConfig, useColorModeValue } from '@chakra-ui/react';
-import Input from './Input';
-import InputGroup from './InputGroup';
-import InputRightElement from './InputRightElement';
 import { color } from 'src/styles/colors';
-import SpinnerSmall from '../animations/SpinnerSmall';
+import Input from '../../../components/Input/Input';
+import InputGroup from '../../../components/Input/InputGroup';
+import InputRightElement from '../../../components/Input/InputRightElement';
+import SpinnerSmall from '../../../components/animations/SpinnerSmall';
 
 interface InputProps {
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
