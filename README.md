@@ -10,7 +10,7 @@
 
 ## General info
 
-Next.js application allowing user to search for information on recording artists. Home page offers staticly generated charts of top streamed artists and albums of the current week. Searchbar provides easy way to look up bands. App fetches data from [REST API](https://developer.napster.com/api/v2.2) and displays artists' photos and bio as well as top albums and similar artists. Library functionality allows adding bands to favourites list, which is saved in local storage.
+Next.js application allowing user to search for information on recording artists. Home page offers charts of top streamed artists and albums of the current week built with incremental static regeneration. Search box provides easy way to look up bands. App fetches data from [REST API](https://developer.napster.com/api/v2.2) and displays artists' photos and bio as well as top albums and list of similar artists. Library functionality allows adding bands to favourites list, which is saved in local storage.
 
 ## Demo
 

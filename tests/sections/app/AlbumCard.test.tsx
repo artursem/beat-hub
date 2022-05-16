@@ -15,6 +15,7 @@ test('Album Card displays album info', () => {
 	);
 	const titles = screen.getAllByRole('link', { name: /kid a/i });
 	titles.forEach((title) => {
+		console.log(title);
 		expect(title).toBeInTheDocument();
 	});
 });
